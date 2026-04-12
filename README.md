@@ -3,7 +3,7 @@
 A comprehensive guide to mastering LazyVim, the powerful Neovim configuration framework. 
 
 This repository is a markdown version of [LazyVim for the Ambitious Developers book](https://lazyvim-ambitious-devs.phillips.codes/) by the author **Dusty Philips**.
-You can purchase or support him by purchasing his [ebook](https://lazyvim-ambitious-devs.phillips.codes/course/purchase/).
+You can support him by purchasing his [ebook](https://lazyvim-ambitious-devs.phillips.codes/course/purchase/).
 
 ## Table of Contents
 
