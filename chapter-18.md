@@ -36,14 +36,10 @@ Figure 99. Test Error Output
 
 When this window pops up after running tests, it isn’t focused by default, and you can close it simply by moving the cursor (similar to a diagnostic window). If you would prefer to focus the window (for example, so you can scroll it with `<Control-d>` and `<Control-u>`), you can use `<Space>to` where `o` means “output”. You can use this keybinding to show the most recent test output at any time. Or you can use `<Space>tO` (capitalized `O`) to open the output in a pane under the editor instead of a floating window.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">The Neotest Output pane will behave better if you also have the edgy Extra enabled.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-18/info.png) | The Neotest Output pane will behave better if you also have the edgy Extra enabled. |
+
 
 Once the floating window is focused, you need to use the `q` shortcut to exit it.
 
@@ -159,14 +155,10 @@ Listing 70. Local Plugin Configuration
 
 To see if it’s working so far, open any file in Neovim and run `<Space>tt` to attempt to kick off the test runner. It will fail because we haven’t properly implemented the adapter interface, but it should also pop up a notification that says, “Hello, Lua!”.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">The notification will disappear quickly, which is very inconvenient if it contains a traceback you want to introspect. You can always use <code>&lt;Space&gt;sna</code> to show all the recent messages in a pane. The <code>:messages</code> command also works.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-18/info.png) | The notification will disappear quickly, which is very inconvenient if it contains a traceback you want to introspect. You can always use `&lt;Space&gt;sna` to show all the recent messages in a pane. The `:messages` command also works. |
+
 
 #### 18.6.2. Implementing the Neotest Adapter
 
@@ -192,14 +184,10 @@ Listing 71. Neotest Adapter Interface
 
 This is the interface we need to implement. If you’re wondering where I got this, it is defined in [the Neotest source code](https://github.com/nvim-neotest/neotest/blob/master/lua/neotest/adapters/interface.lua) and linked from the Neotest README. I also have the GitHub repositories for the `neotest-jest` and `neotest-deno` packages open for reference.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">You’ll need to exit Neovim and restart it to pick up any changes you make to the init.lua file. Remember that you can use the <code>&lt;Space&gt;qq</code> command to exit Neovim and then the <code>s</code> command from the dashboard to restore your setup with a minimal amount of fuss.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-18/info.png) | You’ll need to exit Neovim and restart it to pick up any changes you make to the init.lua file. Remember that you can use the `&lt;Space&gt;qq` command to exit Neovim and then the `s` command from the dashboard to restore your setup with a minimal amount of fuss. |
+
 
 If you try to run tests on a Bun test file now, it will (probably) fail with a “No Tests Found” message. If it doesn’t, there may be another test runner installed that thinks this is a legit test file.
 
@@ -416,14 +404,10 @@ We start by creating a temporary `results_path` using the `neotest.async` librar
 
 The `if..elseif` block is essentially checking how the user kicked off the test, and running the appropriate Bun command. If they provided a test name, then we pass the `--test-name-pattern` argument to the `bun test` command. If they kicked it off as a file, we run `bun test filename`. And if they wanted to run all tests, we simply run all tests with `bun test`.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">The Bun test runner is so fast, that I would expect to mostly just use the last form with <code>&lt;Space&gt;tT</code> and the summary view open in the left sidebar.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-18/info.png) | The Bun test runner is so fast, that I would expect to mostly just use the last form with `&lt;Space&gt;tT` and the summary view open in the left sidebar. |
+
 
 The returned object includes some necessary context that will be used when we parse results. The `bun test` command is rather unusual in that it outputs the results to standard error, so we pass a `2>` redirect to store the results in the temporary file we defined.
 
@@ -435,14 +419,10 @@ This ended up being simpler than I expected, because `bun test` aggregates names
 
 The `results` method mostly just has to read through the `results_path` file that was created by our `build_spec` function and convert it to a simple Lua table. The keys of the result table are the names of the tests in question, and the values are just a second table with `{status = "passed"}` or `{status = "failed"}`. At least, that’s all we’re going to put in it. Neotest does accept some other details here that it can render in the UI, but I’ll leave that as “an exercise for the reader.”
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">When reading other instructional books, “an exercise for the reader” is just authors being lazy, or (occasionally) publishers trying to cut word count. Now you know.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-18/info.png) | When reading other instructional books, “an exercise for the reader” is just authors being lazy, or (occasionally) publishers trying to cut word count. Now you know. |
+
 
 The tricky part is the “keys are the names of the tests”. I couldn’t find any documentation on this, and it took some trial and error to discover that nested “namespaces” (`describe` calls, in this case) in Neotest are separated by `::`. The name also needs the absolute path to the test file. If we return that in the right format, Neotest will happily convert our results to the appropriate icons!
 

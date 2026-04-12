@@ -197,14 +197,10 @@ Listing 87. Third Party Colour Scheme
       },
     }
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">When looking for new colour schemes, try to find well-maintained repositories that feature "treesitter support" and provide highlight groups for all the plugins you use regularly (including those that ship with LazyVim). You can find colour schemes on the Awesome Neovim list.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-19/info.png) | When looking for new colour schemes, try to find well-maintained repositories that feature "treesitter support" and provide highlight groups for all the plugins you use regularly (including those that ship with LazyVim). You can find colour schemes on the Awesome Neovim list. |
+
 
 ### 19.8. Lazy Loading
 

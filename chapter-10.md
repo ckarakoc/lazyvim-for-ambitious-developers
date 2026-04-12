@@ -40,14 +40,10 @@ First, LazyVim pops up notifications in the upper right corner, as you have seen
 
 The secret is to use the keybinding `<Space>sn` to open the “Noice” search menu. Noice is the plugin that provides those little popups. Most often, you’ll want to follow this with either an `a` or an `l` to see all recent Noice messages, or just the last one.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">You can also use <code>&lt;Space&gt;snd</code> to dismiss any currently open notifications, but honestly, by the time you’ve completed those four keystrokes, they notifications have probably disappeared themselves already!</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-10/info.png) | You can also use `&lt;Space&gt;snd` to dismiss any currently open notifications, but honestly, by the time you’ve completed those four keystrokes, they notifications have probably disappeared themselves already! |
+
 
 The second command you’ll need for debugging LSPs is `<Space>cl`, which presents a picker of installed LSPs and useful information about whether they are working, dependencies are installed, and currently active.
 

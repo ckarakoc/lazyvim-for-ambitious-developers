@@ -38,25 +38,17 @@ In Vim-land, you normally perform the verb first and follow up with a text motio
 
 This is where Visual mode comes in. Visual mode is a Vim major mode, like Normal and Insert mode. Technically, there are three sub-modes of Visual mode. We’ll start with “Visual Character mode” and dig into the other two shortly.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">You might think that it makes sense to always select text first so you can see what you are acting on. Two newish editors called Kakoune and Helix have been experimenting with this paradigm. They are pretty cool, but I found that the “select text first” model was kind of a let-down. The editor isn’t able to determine whether any given motion is meant to <strong>move</strong> the selection or to <strong>extend</strong> the selection, so you end up with an extra keypress to tell it to do an extension. At that point, it’s no different from pressing <code>v</code> to enter Visual mode in Neovim. After using Helix for several months, I determined that it actually required more keystrokes on average than Neovim and I switched back.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-8/info.png) | You might think that it makes sense to always select text first so you can see what you are acting on. Two newish editors called Kakoune and Helix have been experimenting with this paradigm. They are pretty cool, but I found that the “select text first” model was kind of a let-down. The editor isn’t able to determine whether any given motion is meant to **move** the selection or to **extend** the selection, so you end up with an extra keypress to tell it to do an extension. At that point, it’s no different from pressing `v` to enter Visual mode in Neovim. After using Helix for several months, I determined that it actually required more keystrokes on average than Neovim and I switched back. |
+
 
 To enter Visual Character Mode, use the `v` command from Normal mode. Then move the cursor using most of the motions that you are used to from Normal mode. I say “most” only because Visual mode keymaps are independent of Normal mode keymaps, and plugins occasionally neglect to set them up for both modes. LazyVim is really good about keymaps, though, so you will rarely be surprised.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">You can also get into Visual mode by clicking and dragging with your mouse.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-8/info.png) | You can also get into Visual mode by clicking and dragging with your mouse. |
+
 
 Once you have text selected in Visual mode, you can use the same verbs you usually use to delete, change, or yank the selection. The difference is they will happen instantly to the selection rather than requiring a motion. You can even use single character verbs like `x` (which does the same thing as `d`) or `r` to replace all the characters with the same character. After you complete the verb, the editor automatically switches back to Normal mode. You can also exit visual mode without performing an action using either `Escape` or another `v`.
 
@@ -82,14 +74,10 @@ To enter block-wise Visual mode, use `Control-v` instead of `v` or `V` for Visua
 
 In plain text like this, Block-wise Visual mode doesn’t appear to be very useful, but it is handy if you need to cut and paste columns of tabular data in a csv file or markdown table, for example. I don’t use it for that functionality terribly often, but when I need it, I know there is no other way to efficiently perform the action I need.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">If you use <code>Control-V$</code>, you will get a slight adaptation of Block-wise Visual Mode where the block extends to the end of each line, in the block. This is handy if you need the block to extend to the longest line as opposed to the line your cursor is currently on.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-8/info.png) | If you use `Control-V$`, you will get a slight adaptation of Block-wise Visual Mode where the block extends to the end of each line, in the block. This is handy if you need the block to extend to the longest line as opposed to the line your cursor is currently on. |
+
 
 Block-wise Visual mode can also be used as a (poor) imitation of multiple cursors. If you use the `I` or `A` command after selecting a visual block, and then enter some text followed by `Escape`, the text you entered will get copied at either the beginning or end of the visual block. A common operation for this feature is to add `*` characters at the beginning of Markdown ordered lists or a block comment that needs a frame.
 

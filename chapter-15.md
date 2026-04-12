@@ -38,14 +38,10 @@ Pressing a key such as `a` or `i` will send you back to “Terminal mode” whic
 
 Annoyingly, this means you can’t use Normal mode to reposition your cursor on the command line; it will go back to wherever it was when you last entered normal mode.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">If you want to use Vim Normal modes to edit your command line (in any terminal; not just inside Neovim) configure your shell to use “Vi mode.” All modern shells support some version of this, and it usually allows you to use <code>Escape</code> to put the shell in a pseudo-normal mode. It gives you commands like <code>w</code> and <code>b</code> for navigation and basic line-editing commands like <code>d</code> and <code>c</code> to edit the command line.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-15/info.png) | If you want to use Vim Normal modes to edit your command line (in any terminal; not just inside Neovim) configure your shell to use “Vi mode.” All modern shells support some version of this, and it usually allows you to use `Escape` to put the shell in a pseudo-normal mode. It gives you commands like `w` and `b` for navigation and basic line-editing commands like `d` and `c` to edit the command line. |
+
 
 There are third-party plugins that try to make the terminal experience more consistent and enjoyable, but in my opinion, they are not worth the trouble. I can just press `cmd-enter` to get a new Kitty terminal pane and have a perfectly normal terminal experience.
 
@@ -184,14 +180,10 @@ Figure 81. Git Hunks Menu
 
 You can use `<Space>ghS` to stage an entire file, which would move it to the left column in the git status pickers we discussed above. If you want to stage a patch containing a subset of your changes, navigate to the hunk you want to stage (`[h` and `]h` are super handy for this) and hit `<Space>ghs`.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">Most people have an unfortunate habit of just committing everything instead of properly curating their history, but if you are one of the rare folks who uses git properly (please be that person), you’ll use the <code>&lt;Space&gt;ghs</code> command a lot.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-15/info.png) | Most people have an unfortunate habit of just committing everything instead of properly curating their history, but if you are one of the rare folks who uses git properly (please be that person), you’ll use the `&lt;Space&gt;ghs` command a lot. |
+
 
 You can also reset a hunk (effectively making it the same as it was at the time the last commit was made) using `<Space>ghr`. If you want to reset the entire file, use the “but bigger” `<Space>ghR`. Resetting is a destructive operation, so be careful (though `u` for **u**ndo can usually get you back to where you were).
 
@@ -271,14 +263,10 @@ Listing 54. Open In Diff Mode
 
 This opens the indicated files side by side in a linked diff view. Most often, you won’t have two separate files, though. Instead, you’ll want to see the difference between the current file and the staging index, which you can do with the shortcut `<Space>ghd`. Or use `<Space>ghD` to show the differences between the current file and the last commit, regardless of what has been staged.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">Once you are done operating in Diff mode, it can be tricky to get back to the normal file. The issue is that when a file is in <code>diff</code> mode, it stays that way, even if other windows are opened or closed. The secret is to use the <code>:diffoff</code> command, which will disable “diff view” for the current buffer. This doesn’t close the two side-by-side windows, though; you’ll need to use normal window and buffer management tooling such as <code>&lt;Space&gt;bd</code> and <code>&lt;Control-w&gt;q</code> to do that.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-15/info.png) | Once you are done operating in Diff mode, it can be tricky to get back to the normal file. The issue is that when a file is in `diff` mode, it stays that way, even if other windows are opened or closed. The secret is to use the `:diffoff` command, which will disable “diff view” for the current buffer. This doesn’t close the two side-by-side windows, though; you’ll need to use normal window and buffer management tooling such as `&lt;Space&gt;bd` and `&lt;Control-w&gt;q` to do that. |
+
 
 Note that by default, the diff view will collapse any code that is identical between the two files into a single fold. Use the code unfolding command `zo` to expand a section.
 
@@ -308,14 +296,10 @@ I want to stage this change, so I type `:diffp`, which means “make the other f
 
 The next line is `Four Point Five` in the left file, but was deleted in the right file. For the sake of argument, let’s say I want to “unstage” this change, which is to say “make the right file the same as the left file”. To do this from the right window, I can use `Shift-V` to enter Visual Line Mode, and select the lines containing `Four` and `Five` as well as the blank red space between those two lines representing the deleted line. Now I can type `:diffg` or `:diffget` which means “get the contents of the other window and make my window match it.” Since `:diffget` and `:diffput` accept ranges, it passes the visual selection with the usual `'<` and `'>` marks.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">If you find you like the above diff interface, but figuring out which files have differences is frustrating, you may want to configure the diffview.nvim plugin. I personally just use the git status telescope picker, but the <code>diffview.nvim</code> plugin has a nice interface and some handy commands.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-15/info.png) | If you find you like the above diff interface, but figuring out which files have differences is frustrating, you may want to configure the diffview.nvim plugin. I personally just use the git status telescope picker, but the `diffview.nvim` plugin has a nice interface and some handy commands. |
+
 
 ### 15.10. Configuring Vim Diff as Merge Tool
 

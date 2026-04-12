@@ -120,14 +120,10 @@ This line has the number `5` beside it, so I don’t have to count lines or do a
 
 Now that you know what they are for, I suggest leaving relative numbers on until you get used to them. If you find them distracting or just don’t use them, you can change to normal line numbers by editing your LazyVim configuration. Open the file `~/.config/nvim/lua/config/options.lua`, which should have been created for you by LazyVim but currently won’t have anything in it other than a comment describing what it is for.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">You can use the Space mode command <code>&lt;Space&gt;fc</code> to quickly find files in the LazyVim configuration directory. This will pop up one of the file pickers that we’ll discuss in detail in the next chapter. Type <code>options</code> and press <code>&lt;Enter&gt;</code> to open the file.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-3/info.png) | You can use the Space mode command `&lt;Space&gt;fc` to quickly find files in the LazyVim configuration directory. This will pop up one of the file pickers that we’ll discuss in detail in the next chapter. Type `options` and press `&lt;Enter&gt;` to open the file. |
+
 
 To disable relative file numbers by default, add this line to the file and save it:
 

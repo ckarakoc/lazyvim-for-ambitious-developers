@@ -8,14 +8,10 @@ LazyVim extends Neovim’s powerful search feature to make it both easier to use
 
 To search for a pattern in Vim use the `/` command in Normal mode. The mnemonic is that the `/` key is also the question mark key, and searching for something is a kind of question.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">Many tools that are not considered “modal” have adopted Vi’s <code>/</code> as a command to invoke search. For example, the exceptional Linear task tracking tool uses <code>/</code> to begin a search, as does the ubiquitous GitHub.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-12/info.png) | Many tools that are not considered “modal” have adopted Vi’s `/` as a command to invoke search. For example, the exceptional Linear task tracking tool uses `/` to begin a search, as does the ubiquitous GitHub. |
+
 
 The first time you type a `/` in Normal mode, you might lose your cursor! It doesn’t pop up a new window. Instead, `/` takes over the current file’s status bar with a magnifying glass icon:
 
@@ -35,14 +31,10 @@ The search will wrap to the top of the document if there are no more matching re
 
 If you `n` too far, you can use `Shift-N` to move the cursor to the previous result instead. And if you *know* you need to search backwards to a previous result, you can initiate the search with `?` (i.e. `Shift-/`) instead of just `/`.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">If you have used Vim before, I should warn you that this behaviour of <code>n</code> and <code>N</code> is different from the default Neovim behaviour. They used to “repeat the last <code>/</code> or <code>?</code> command,” so <code>n</code> would continue <em>up</em> the document if you started with <code>?</code>. The LazyVim model is easier to remember; <code>n</code> always means “next down” and <code>N</code> always means “previous up”.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-12/info.png) | If you have used Vim before, I should warn you that this behaviour of `n` and `N` is different from the default Neovim behaviour. They used to “repeat the last `/` or `?` command,” so `n` would continue *up* the document if you started with `?`. The LazyVim model is easier to remember; `n` always means “next down” and `N` always means “previous up”. |
+
 
 ### 12.2. Ignore Case
 
@@ -100,14 +92,10 @@ Figure 54. Live Grep Picker
 
 Remember that you can add labels to picker results by pressing `Alt-s`. I find this more useful in the `live_grep` window because unlike most pickers, a space in `live_grep` is sent as a literal space to `ripgrep`, instead of allowing us to narrow the search results by searching for something earlier in the line as we discussed in chapter 4.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">Since this is a picker, you can press <code>Alt-t</code> while it is open to put all the search results into the Trouble window so you can navigate them while editing (using <code>]q</code> and <code>[q</code>).</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-12/info.png) | Since this is a picker, you can press `Alt-t` while it is open to put all the search results into the Trouble window so you can navigate them while editing (using `]q` and `[q`). |
+
 
 Annoyingly, this search mode is completely different from Vim’s built-in search. It just passes your pattern to `ripgrep` and behaves the way `ripgrep` does. And `ripgrep` doesn’t know about things like Vim’s strange regular expression engine. It *does* support regular expressions, but they use maddeningly different syntax from Vim. Which is to say, the same syntax as pretty much everything that isn’t Vim. It’s Vim that’s maddening here, not `ripgrep`. Just so we’re all clear.
 

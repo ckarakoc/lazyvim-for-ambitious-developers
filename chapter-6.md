@@ -22,14 +22,10 @@ But the model keeps growing! It turns out, verbs can *also* be counted. The synt
 
 This model is nice because it allows you to divide and conquer your learning strategy, and reuse knowledge as you study. First you learned motion commands. Then you learned counts. Now you will learn verbs. If you learn new motion commands or new verbs in the future, you can mix them with all the verbs and motions you already know and they should behave in a predictable way.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">Various plugins try to mimic this strategy to help keep your learning model small. In fact, my main complaint with the explorer is that it doesn’t operate with the <code>&lt;verb&gt;&lt;motion&gt;</code> mental model, while mini.files does. Similarly, some folks argue that Seek mode violates the Vim mental model because counts don’t make sense with it. My opinion is that Seek mode simply transcends counts, but it still combines cleanly with verbs so it is a valid Vim model.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-6/info.png) | Various plugins try to mimic this strategy to help keep your learning model small. In fact, my main complaint with the explorer is that it doesn’t operate with the `&lt;verb&gt;&lt;motion&gt;` mental model, while mini.files does. Similarly, some folks argue that Seek mode violates the Vim mental model because counts don’t make sense with it. My opinion is that Seek mode simply transcends counts, but it still combines cleanly with verbs so it is a valid Vim model. |
+
 
 #### 6.1.1. A Note on Insert Mode
 
@@ -79,14 +75,10 @@ It is very common to want to delete or change from the cursor position to the en
 
 Yes you *could* `d$` and `c$` to delete or change to the end of the line, since `$` is the “jump to end of line” motion. That is the “correct” format for the mental model. However, because this is such a common operation, you can “cheat” with one fewer keystrokes and just use the capitalized `D` or `C` instead.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">There is no inverse shortcut verb for “delete to the beginning of the line”, so you’ll have to use <code>d^</code> or <code>d0</code> instead, where <code>^</code> is the motion to jump to the first non-blank character and <code>0</code> is the motion to jump to the first column regardless of whether it is blank.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-6/info.png) | There is no inverse shortcut verb for “delete to the beginning of the line”, so you’ll have to use `d^` or `d0` instead, where `^` is the motion to jump to the first non-blank character and `0` is the motion to jump to the first column regardless of whether it is blank. |
+
 
 ### 6.5. Operating on Entire Lines
 
@@ -120,14 +112,10 @@ I don’t find these commands very useful. I more frequently use the `~` command
 
 The duplicate commands `gUU` and `guu` do the same thing as other duplicate verbs, applying the upper/lower case operation to the entire line.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">If you find yourself doing a lot of case switching work, see Chapter 13 for a discussion of the <code>text-case</code> plugin.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-6/info.png) | If you find yourself doing a lot of case switching work, see Chapter 13 for a discussion of the `text-case` plugin. |
+
 
 ### 6.8. Repeating Commands
 
@@ -163,14 +151,10 @@ When you are ready to continue recording, use `qQ` to record in *append* mode in
 
 The easiest and fastest way to play back your most recently saved recording is with a capital `Q`.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">It is possible to store and replace multiple recordings at once using <em>registers</em> (a stupid name for a storage location that harkens back to humanity’s dark days of assembly programming). We will go into more detail about registers in chapter 8.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-6/info.png) | It is possible to store and replace multiple recordings at once using *registers* (a stupid name for a storage location that harkens back to humanity’s dark days of assembly programming). We will go into more detail about registers in chapter 8. |
+
 
 ### 6.10. Undo and Redo
 

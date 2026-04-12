@@ -90,14 +90,10 @@ Now press `Enter` to complete the command and confirm the replacement. So find a
 
 Maybe it’s not, but we’re not done. Not remotely. For one thing, that command will only replace the first instance of `pattern`, and only if the pattern happens to be on the same line as the cursor.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">It is conventional to use a <code>/</code> after the substitute command, but if you are performing a substitution on something that has a lot of <code>/</code> characters in it (e.g a Unix path), you can use another character such as <code>+</code> for the separator to avoid having to escape a bunch of <code>/</code> characters with <code>\/</code>. For example <code>:s+/home/dustyphillips/+/home/yourname/+</code> can be used instead of <code>%s/\/home\/dustyphillips\//\/home\/yourname\/</code>.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-13/info.png) | It is conventional to use a `/` after the substitute command, but if you are performing a substitution on something that has a lot of `/` characters in it (e.g a Unix path), you can use another character such as `+` for the separator to avoid having to escape a bunch of `/` characters with `\/`. For example `:s+/home/dustyphillips/+/home/yourname/+` can be used instead of `%s/\/home\/dustyphillips\//\/home\/yourname\/`. |
+
 
 #### 13.2.1. Substitute Ranges
 
@@ -187,14 +183,10 @@ If you just use `:s` without any pattern or replacement, it will repeat the last
 
 It also won’t repeat flags, but you can (usually) append the flags directly to `:s`. For beginners, the most common of these is `:%sg`, which maps to “repeat the last substitution on the entire file, globally.” This is helpful when you typed `:s/long-pattern/long-replacement` and expected it to do a global replace, but actually it just replaces the first instance on the current line. `:%sg` will repeat the substitution the way you intended it. You might also reach for `'<,'>sg` to replace in the last visual selection.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">Don’t forget that you can repeat the last visual selection with <code>gv</code> to confirm that it is actually selecting what you expected.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-13/info.png) | Don’t forget that you can repeat the last visual selection with `gv` to confirm that it is actually selecting what you expected. |
+
 
 If you want to reuse “whatever was matched in the pattern” in the replacement, you can use `\0` in the replacement string. This is particularly useful when you are using a regular expression that could potentially match different things.
 
@@ -232,14 +224,10 @@ That command might be a little intimidating if you aren’t comfortable with reg
 
 - `green` says “insert that text directly into the replacement”
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">The <code>[hH]</code> isn’t necessary if you don’t have <code>vim.opt.ignorecase=false</code> in your <code>options.lua</code>. An alternative would be to use <code>/i</code> at the end of the pattern to force ignoring case for this one search. Then <code>[hH]</code> could just be <code>h</code>.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-13/info.png) | The `[hH]` isn’t necessary if you don’t have `vim.opt.ignorecase=false` in your `options.lua`. An alternative would be to use `/i` at the end of the pattern to force ignoring case for this one search. Then `[hH]` could just be `h`. |
+
 
 You can even reuse **part** of the pattern in the replacement. To do this, place the part you want to reuse between `\(` and `\)`. Then use `\1` to represent whatever was matched between brackets in the replacement portion.
 
@@ -251,27 +239,19 @@ Figure 64. Substitute with Partial Pattern
 
 The `\(\S*\)` matches the same thing as `\S*` but it stores the result in a *capture*. Then when we want to reuse the capture in the replacement, we use `\1` to refer *back* to whatever was captured on that match.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">You might guess from the fact that we’re using numbers here that you can have and refer back to multiple captures, and your guess would be correct!</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-13/info.png) | You might guess from the fact that we’re using numbers here that you can have and refer back to multiple captures, and your guess would be correct! |
+
 
 ### 13.3. Project-wide Search and Replace
 
 LazyVim ships with a plugin called Grug-far.nvim to do a global find and replace in all files in the project. Without grug-far, you would probably (unenthusiastically) do this from the command line using `sed`, the stream-oriented evolution of `ed` that I mentioned.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">It is a good idea to commit your files to version control before running Grug-far. The changes it makes can be tricky to reverse. You can undo it file-by-file, but not all in one go. So make sure <code>git reset --hard</code> won’t cause you to lose any work that wasn’t done by Grug-far.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-13/info.png) | It is a good idea to commit your files to version control before running Grug-far. The changes it makes can be tricky to reverse. You can undo it file-by-file, but not all in one go. So make sure `git reset --hard` won’t cause you to lose any work that wasn’t done by Grug-far. |
+
 
 Grug-far is a lightweight UI wrapping `ripgrep`, the command line search tool some other plugins rely on. But that UI is pretty handy, as `ripgrep` has some arcane arguments.
 
@@ -369,23 +349,10 @@ This feature is ridiculously useful…​ when it’s useful. The occasions wher
 
 The `:substitute` command isn’t the only one that can operate on multiple lines at once, with a range. In fact, if you just want to write a few lines out to a separate file, you can pass a range to `:write`. The easiest way to do this is to select the range in Visual mode and type `:write <filename>`. Neovim will automatically convert it to `:'<,'>write` and only save those lines.
 
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content"><div class="paragraph">
-<p>Neovim doesn’t have first class multi-cursor support (yet). Historically, Vim coders have considered multi-cursor mode to be a crutch required by less powerful editors that don’t have Vim’s modes. More recently, experimental editors such as Kakoune and Helix have demonstrated that multiple cursors can integrate very well with modal editing. Modern developers like multiple selections, and Neovim is expected to ship with native multiple cursor support in the future (it’s currently listed as "Future (unknown release)" on the roadmap).</p>
-</div>
-<div class="paragraph">
-<p>In the meantime, there <em>are</em> multiple cursor plugins, but I find them to be clumsy and fragile, and recommend avoiding them at this time. Instead, you can use the commands discussed below or rely on other Vim tools such as repeating recordings (with <code>q</code> <code>Q</code>, and <code>@@</code>), or Visual Block mode (<code>Control-v</code>) with an insert or append that modifies multiple lines.</p>
-</div></td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-13/info.png) | Neovim doesn’t have first class multi-cursor support (yet). Historically, Vim coders have considered multi-cursor mode to be a crutch required by less powerful editors that don’t have Vim’s modes. More recently, experimental editors such as Kakoune and Helix have demonstrated that multiple cursors can integrate very well with modal editing. Modern developers like multiple selections, and Neovim is expected to ship with native multiple cursor support in the future (it’s currently listed as "Future (unknown release)" on the roadmap). In the meantime, there *are* multiple cursor plugins, but I find them to be clumsy and fragile, and recommend avoiding them at this time. Instead, you can use the commands discussed below or rely on other Vim tools such as repeating recordings (with `q` `Q`, and `@@`), or Visual Block mode (`Control-v`) with an insert or append that modifies multiple lines. |
+
 
 #### 13.5.1. The Norm Command
 
@@ -503,14 +470,10 @@ What a mess! This is obviously meant to be easy to write, not easy to read. If w
 
 This command means “perform a global operation on every line that starts with `f`. The operation in this case should be to replace every instance of `bar` or `bat` with the word `glib`.”
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">This is different from using a pattern in a range, such as <code>:,/foo/s/needle/haystack/</code>. This command performs the substitution on all lines between the cursor and the first line to contain <code>foo</code>, whereas <code>:%global/foo/s/needle/haystack/</code> performs the substitution on every line in the file that contains the word foo.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-13/info.png) | This is different from using a pattern in a range, such as `:,/foo/s/needle/haystack/`. This command performs the substitution on all lines between the cursor and the first line to contain `foo`, whereas `:%global/foo/s/needle/haystack/` performs the substitution on every line in the file that contains the word foo. |
+
 
 In my opinion, the most interesting use of `:global` is to run a Normal mode command on the lines that match a pattern. This effectively means mixing `:global` with `:normal`, as in `:%g/pattern/norm <some keystrokes>`.
 
@@ -522,48 +485,10 @@ Figure 70. Mixing Global and Normal
 
 You can also use global to perform a command on every line that **does not** match a pattern. Just use `g!/` instead of `g/`.
 
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content"><div class="paragraph">
-<p>The <code>g!</code> is useful in log files that have exceptions wrapping onto random lines. For example, a rudimentary log file might look like this:</p>
-</div>
-<div class="listingblock">
-<div class="title">
-Listing 40. Imaginary Log File
-</div>
-<div class="content">
-<pre class="pygments highlight"><code>2024-03-26T12:00:00 Something happened
-2024-03-26T12:01:01 Something happened
-2024-03-26T12:01:02 Something super bad happened
-  Traceback:
-    A bunch of lines I don&#39;t care about
-2024-03-26T12:02:00 Something else happened
-2024-03-26T12:03:58 Cool thing happened</code></pre>
-</div>
-</div>
-<div class="paragraph">
-<p>and prior to further processing, I might want to remove every line that doesn’t start with a date:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="./media/chapter-13/b71982d382e1e6033d069d54534139ea023988f1.png" alt="global non match dark" />
-</div>
-<div class="title">
-Figure 71. Global Invert Match
-</div>
-</div>
-<div class="paragraph">
-<p>As has become a running theme, that might be a bit eye-watering. Each <code>\d</code> means “match a digit”, while the final <code>/d</code> means “perform a delete operation on the selected lines”. The <code>g!</code> is the important part; that’s the one that means “the selected lines are ones that <em>don’t</em> match the pattern”.</p>
-</div></td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-13/info.png) | The `g!` is useful in log files that have exceptions wrapping onto random lines. For example, a rudimentary log file might look like this: Listing 40. Imaginary Log File <pre class="pygments highlight">`2024-03-26T12:00:00 Something happened 2024-03-26T12:01:01 Something happened 2024-03-26T12:01:02 Something super bad happened Traceback: A bunch of lines I don&#39;t care about 2024-03-26T12:02:00 Something else happened 2024-03-26T12:03:58 Cool thing happened`</pre> and prior to further processing, I might want to remove every line that doesn’t start with a date: <img src="./media/chapter-13/b71982d382e1e6033d069d54534139ea023988f1.png" alt="global non match dark" /> Figure 71. Global Invert Match As has become a running theme, that might be a bit eye-watering. Each `\d` means “match a digit”, while the final `/d` means “perform a delete operation on the selected lines”. The `g!` is the important part; that’s the one that means “the selected lines are ones that *don’t* match the pattern”. |
+
 
 I don’t use `:global` nearly as often as I use `:norm`. But when I do, it is a hyper-efficient way to cause massive changes in a file. It takes some getting used to, and you’ll probably be looking up the syntax the first few times you need it, but it’s a really terrific tool to have in your toolbox.
 

@@ -71,14 +71,10 @@ is the best one if you want to use all your existing Neovim plugins, but want th
 [Goneovim](https://github.com/akiyosi/goneovim)  
 is a solid contender as well.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">If you use any of these, you may well want to look for plugins that make the embedded Neovim integrated terminal experience better since you won’t be able to switch to a separate pane in a host terminal.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-20/info.png) | If you use any of these, you may well want to look for plugins that make the embedded Neovim integrated terminal experience better since you won’t be able to switch to a separate pane in a host terminal. |
+
 
 ### 20.8. Summary
 

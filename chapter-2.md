@@ -84,14 +84,10 @@ To illustrate the “do the opposite thing” situation, consider the `o` and (s
 
 The `o` key is used to enter Insert mode on a new line *below* the current one. For the “do the opposite thing” scenario, the shifted `O` means “create a new line *above* the current one and enter Insert mode on it”.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">The mnemonic “<strong>O</strong>pen a new line above/below” can help you remember the otherwise less than memorable <code>o</code> command.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-2/info.png) | The mnemonic “**O**pen a new line above/below” can help you remember the otherwise less than memorable `o` command. |
+
 
 One final useful command that takes two keystrokes is `gi`. That is a single press and release of `g` followed by `i`. It means “Go to the last place you entered Insert mode, and enter Insert mode again”. In this case, the `g` key is actually switching to a new mini-mode I call “Go To” mode, though not all the commands accessible from it are strictly related to going places. You can see the entire list of commands available in “Go To” mode by pressing the `g` key in Normal mode and waiting for the menu to pop up at the bottom of the window:
 
@@ -125,14 +121,10 @@ Figure 8. Write Command
 
 Press `Enter` to confirm and execute the command, which will save the file with the given name.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">Most commands can be shortened to their shortest unique common prefix. You usually type <code>:w myfile.txt</code> instead of <code>:write myfile.txt</code>. The most popular commands even have special combined commands, so <code>:wq</code> will save and exit, although you’ll probably prefer <code>:x</code> as it’s even shorter.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-2/info.png) | Most commands can be shortened to their shortest unique common prefix. You usually type `:w myfile.txt` instead of `:write myfile.txt`. The most popular commands even have special combined commands, so `:wq` will save and exit, although you’ll probably prefer `:x` as it’s even shorter. |
+
 
 Command mode is kind of weird. It’s like an Insert mode in the sense that you can type text into it, and some of the keybindings that work in Insert mode also work in Command mode (including `Control-r` to paste from a register). But other keybindings work differently in Command mode. The most important one is the `Tab` key, which will do a sort of “tab completion” on the command. For example, `:q<Tab>` pops up a menu like this:
 

@@ -103,14 +103,10 @@ Listing 24. Simplify Buffer Navigation Keybindings
       },
     }
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">If you have disabled bufferline as I have, you don’t need the above. <code>]b</code> and <code>[b</code> are already mapped to <code>bnext</code> and <code>bprev</code> in the default LazyVim keybindings.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-9/info.png) | If you have disabled bufferline as I have, you don’t need the above. `]b` and `[b` are already mapped to `bnext` and `bprev` in the default LazyVim keybindings. |
+
 
 The `vim.v.count1` variable is set whenever a keybinding is called with a count, so it can be accessed inside the callback and passed to the Vim command using string concatenation (the `..` operator). Restart Neovim and you can do things like `3L` to jump three buffers to the right on the buffer line.
 
@@ -220,20 +216,10 @@ Figure 37. Window Menu
 
 We’ll cover many of these in the following sections.
 
-<table>
-<colgroup>
-<col style="width: 50%" />
-<col style="width: 50%" />
-</colgroup>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content"><div class="paragraph">
-<p>This menu can also be accessed with <code>Control-w</code>. Historically, this is the the keybinding that is enabled by default in Vim and Neovim, though LazyVim has added some extra keybindings to it. However, <code>&lt;Space&gt;w</code> is a bit easier to type.</p>
-</div></td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-9/info.png) | This menu can also be accessed with `Control-w`. Historically, this is the the keybinding that is enabled by default in Vim and Neovim, though LazyVim has added some extra keybindings to it. However, `&lt;Space&gt;w` is a bit easier to type. |
+
 
 #### 9.3.1. Creating Window Splits
 
@@ -243,14 +229,10 @@ When you create a split, the new window will contain another view of the buffer 
 
 To create a horizontal split between two windows (one above the other), use `<Space>ws`. The mnemonic for this is unfortunately just “split”. They weren’t able to reuse `<Space>wh` because that is already used for switching windows.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">LazyVim also allows you to create a vertical split with <code>&lt;Space&gt;|</code> where the <code>|</code> is the vertical bar when you <code>Shift-Backslash</code>, and <code>&lt;Space&gt;&lt;Minus&gt;</code> for a horizontal split. I find <code>&lt;Space&gt;ws</code> and <code>&lt;Space&gt;wv</code> easier to type.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-9/info.png) | LazyVim also allows you to create a vertical split with `&lt;Space&gt;|` where the `|` is the vertical bar when you `Shift-Backslash`, and `&lt;Space&gt;&lt;Minus&gt;` for a horizontal split. I find `&lt;Space&gt;ws` and `&lt;Space&gt;wv` easier to type. |
+
 
 #### 9.3.2. Creating Splits When Opening Files
 

@@ -60,14 +60,10 @@ Let’s start by discussing the two windows under the editor:
 
 - The small window on the right is where the console output so far is displayed, at least for Python. Since this is the first run through the loop, there is nothing in the console section, yet.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">I’ve scaled the window down to fit in this book, but I would normally have this maximized on my largest monitor if I was in an active debugging session.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-17/info.png) | I’ve scaled the window down to fit in this book, but I would normally have this maximized on my largest monitor if I was in an active debugging session. |
+
 
 Let’s check out the left sidebar, split into several windows:
 
@@ -121,14 +117,10 @@ Now if I run `<Space>dl` (run “last” debugging command, so I don’t have to
 
 So that’s a whirlwind tour of the LazyVim debugger. It worked flawlessly in this example, but as I stated at the beginning, toy examples are normally easy with debuggers.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">Most likely, a real world Python project needs to be run in a virtual environment. If you activate the virtualenv before launching Neovim, the debugger (and LSP tools) should just work with the venv. LazyVim’s Python extra does support selecting virtualenvs, but I find that activating it before I open the editor is the least surprising way to manage it.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-17/info.png) | Most likely, a real world Python project needs to be run in a virtual environment. If you activate the virtualenv before launching Neovim, the debugger (and LSP tools) should just work with the venv. LazyVim’s Python extra does support selecting virtualenvs, but I find that activating it before I open the editor is the least surprising way to manage it. |
+
 
 ### 17.3. Remote Debugging (An Example With Go)
 

@@ -14,14 +14,10 @@ The most common picker task you will perform is to open a file using fuzzy searc
 
 The file picker is best illustrated while working in a code repository with a lot of files. So close Neovim with `Space q q` and use the `cd` command in your terminal to change to the directory of a project you’ve been working on recently (If you don’t have one close to hand, clone your favourite open source project and use that instead). Then type `nvim` to open Neovim again.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">I had you exit to the terminal above because it’s easy to reason about, but it is also possible to change directories from inside LazyVim using the <code>:cd</code> command. Type <code>:cd the/path/to/the/directory</code> and hit <code>Enter</code>, remembering that you can use the <code>Tab</code> key to autocomplete the path. Now if you use <code>:e</code> to open files, they will be relative to the directory you specified. If you are using a file picker, they may be relative to that working directory or to the project containing the current file, as discussed shortly. Use <code>:pwd</code> to see what the current directory is.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-4/info.png) | I had you exit to the terminal above because it’s easy to reason about, but it is also possible to change directories from inside LazyVim using the `:cd` command. Type `:cd the/path/to/the/directory` and hit `Enter`, remembering that you can use the `Tab` key to autocomplete the path. Now if you use `:e` to open files, they will be relative to the directory you specified. If you are using a file picker, they may be relative to that working directory or to the project containing the current file, as discussed shortly. Use `:pwd` to see what the current directory is. |
+
 
 Ok, so you’re in the root directory of a large project and you want to open an arbitrary file. Simply press `Space` twice (i.e. `Space Space`) to pop up the “Files In Current Project” picker. As I mentioned, this is the easiest keybinding to type on your entire keyboard. The Space bar on most keyboards is big, and you’re hitting it with your strongest digit: the thumb. As usual, just one `Space` will pop up the Space mode menu, and you can see that a second `Space` will present you with “Find Files (Root Dir)”.
 
@@ -103,14 +99,10 @@ This automatic root directory thing can be super useful if you are working on mu
 
 However, it can sometimes be confusing, especially if you are working in a monorepo or if you have root directories in places you don’t expect. For example, I have a fairly normal Svelte project that has a `package.json` file in it. This project uses Cypress for testing, and the Cypress folder contains a `tsconfig.json` file that causes the Typescript language server to interpret that as a separate root. So if I am working on one of the cypress test files and press `<Space><Space>`, the root directory is considered the Cypress folder and I can only open other Cypress tests. But often the thing I *wanted* to do was open a source file in the main folder to see why a test is failing. In this case, I have to press `<Escape>` to exit the picker, then `<Space>fF` to open the picker in current working directory mode instead.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">The snacks picker is inspired by the command line tool fzf which means "fuzzy find". This tool allows you to quickly access files and open directories from your shell, and I highly recommend it to augment your terminal workflow.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-4/info.png) | The snacks picker is inspired by the command line tool fzf which means "fuzzy find". This tool allows you to quickly access files and open directories from your shell, and I highly recommend it to augment your terminal workflow. |
+
 
 ### 4.3. The Snacks Explorer Plugin
 
@@ -124,14 +116,10 @@ Let’s start by opening an explorer using the `<Space>-e` keybinding, where the
 
 “Root directory” and “cwd” have the same meanings we discussed in the previous section, and you will notice the consistent relationship between lowercase and uppercase letters: `<Space>ff` and `<Space>e` both open the root directory, and `<Space>fF` and `<Space>E` both open the current working directory.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">To hide the explorer window, just press <code>&lt;Space&gt;e</code> again while it is visible, or press <code>q</code> or <code>Escape</code> while it is focused.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-4/info.png) | To hide the explorer window, just press `&lt;Space&gt;e` again while it is visible, or press `q` or `Escape` while it is focused. |
+
 
 When the explorer is opened, it shows all the files and folders in the relevant directory, with all the folders collapsed, except for the one containing the currently active file, if there is one. For example, while editing this file, my explorer looks as follows:
 
@@ -153,14 +141,10 @@ Use `i` to enter Insert mode while the explorer is focused to search for a speci
 
 The explorer will show either the root or cwd as the topmost directory. If you need to navigate “up” the tree to a higher-level directory, use the `Backspace` key.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">Backspace is often coded as <code>&lt;BS&gt;</code> in Vim, so if you see a keybinding or instructions telling you that <code>&lt;BS&gt;</code> does something, they aren’t full of (bull)! It just means Backspace.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-4/info.png) | Backspace is often coded as `&lt;BS&gt;` in Vim, so if you see a keybinding or instructions telling you that `&lt;BS&gt;` does something, they aren’t full of (bull)! It just means Backspace. |
+
 
 In addition to navigating and opening files, you can even make changes to the file system using the explorer. For example, to delete a file, you can move the cursor over that file and hit the `d` key. You’ll be prompted with a popup window asking if you are sure. Hit `y` and then `Enter` to confirm it:
 
@@ -188,14 +172,10 @@ These are just **my** opinions, and one of the golden rules of text editors is �
 
 That said, I’m clearly not alone in these opinions, because LazyVim optionally provides a different file management experience with a plugin called mini.files. It is disabled by default.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">Mini.files is part of a suite of fairly random Neovim packages known as mini.nvim. These plugins are independent from each other and provide a lot of common features that in many cases ought to ship with Neovim. Occasionally, the mini.nvim plugins are inferior to other plugins that they clone, but many are best in class. Mini.files is not the only mini.nvim plugin that ships with LazyVim, and we’ll touch on others later.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-4/info.png) | Mini.files is part of a suite of fairly random Neovim packages known as mini.nvim. These plugins are independent from each other and provide a lot of common features that in many cases ought to ship with Neovim. Occasionally, the mini.nvim plugins are inferior to other plugins that they clone, but many are best in class. Mini.files is not the only mini.nvim plugin that ships with LazyVim, and we’ll touch on others later. |
+
 
 The mini.files file manager is kind of like a Neovim-native experience of the columnar view that is popular in MacOs finder, among other file managers. The main reason I like it is that editing the directory listing is just like editing a normal text buffer. I don’t have to remember that `a` means “after” in Normal mode, but it means “add file/folder” in Explorer mode. Instead, in mini.files, I use the `o` key to “create a new line below the current line”, and then enter a new file name in Neovim Insert mode. Later, I tell mini.files to sync my changes and it will create the file for the new row.
 

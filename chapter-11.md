@@ -32,14 +32,10 @@ Most non-modal editors show you some help or “hover” text when you hold your
 
 It’s probably possible to set up Neovim to show help texts on hover, but why would you move your hand to the mouse when LazyVim has such amazing navigation on the keyboard? Instead, use the (shifted) `K` keybinding. Yeah, `K` is a pretty stupid mnemonic to remember, but `H` and `?` were already taken.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">In fact, the <code>K</code> stands for “keywordprog”, which is a legacy Vim concept that has been superseded by language servers in the modern world. So LazyVim reappropriated the keybinding.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-11/info.png) | In fact, the `K` stands for “keywordprog”, which is a legacy Vim concept that has been superseded by language servers in the modern world. So LazyVim reappropriated the keybinding. |
+
 
 ### 11.4. Listing Symbols
 

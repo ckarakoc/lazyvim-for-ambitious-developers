@@ -160,14 +160,10 @@ Here are some examples, assuming some common Unix tools are installed:
 
 - `!python ./something.py` will pipe the command through a Python script you wrote.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">If you want to run a command without modifying the text, don’t supply a range. For example, <code>:!mkdir foo</code> will run the <code>mkdir</code> command without overwriting your file content.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-14/info.png) | If you want to run a command without modifying the text, don’t supply a range. For example, `:!mkdir foo` will run the `mkdir` command without overwriting your file content. |
+
 
 I think it is unfortunate that this feature is not used more. Many features that are built into Neovim or supplied as plugins could just as easily be CLI programs that operate on piped input and output. As just one example, the `:sort` command that ships with Neovim is, in my opinion, just bloating the editor when `!sort` can run the external sort utility just as well.
 
@@ -201,14 +197,10 @@ If you like the `jk` action to leave Insert mode, the `max397574/better-escape.n
 
 The important bit here is the `"i"` as the first argument. This tells Neovim that the keymapping should happen in Insert mode instead of Normal mode (`"n"`). You can also use `"o"` for operator pending mode and `v` for visual and select modes, among others.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">In normal text and coding, the <code>;</code> key is rarely followed by any character other than <code>&lt;Space&gt;</code> or <code>&lt;Enter&gt;</code>, so it is a good candidate to use as a prefix for a variety of Insert mode operations.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-14/info.png) | In normal text and coding, the `;` key is rarely followed by any character other than `&lt;Space&gt;` or `&lt;Enter&gt;`, so it is a good candidate to use as a prefix for a variety of Insert mode operations. |
+
 
 Do not use this technique for expanding a sequence of text to a different sequence of text, though. For that, you are better off using either abbreviations or snippets, the topic of the next two sections.
 
@@ -266,14 +258,10 @@ Figure 73. Cmp Menu `if`
 
 The list shows possible completions. I can move my cursor up and down the list with the *arrow* keys or `Control-n` and `Control-p` (`j` and `k` won’t work here because I’m still in Insert mode). Most completions have a preview box pop up with documentation or an example of the completion.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">I temporarily disabled the LSP to hide non-snippet results in this screenshot.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-14/info.png) | I temporarily disabled the LSP to hide non-snippet results in this screenshot. |
+
 
 This snippet was created by the `FriendlySnippets` plugin, which is a massive collection of useful snippets that ships with LazyVim. (Also, notice that there is an `ifmain` snippet much like the abbreviation I apparently didn’t actually need to define above!)
 

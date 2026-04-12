@@ -81,14 +81,10 @@ Listing 12. Disabling LazyVim Plugins
 
 If there are any other plugins that LazyVim enables by default that you don’t want to use, just follow the same syntax. The first argument in each Lua table is a string containing the github repo (with owner) you want to disable. The second argument is to set `enabled = false`. That’s it!
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">You will inevitably forget the <code>return</code> statement at the beginning of a plugins file at some point. Now you know to watch out for it.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-5/info.png) | You will inevitably forget the `return` statement at the beginning of a plugins file at some point. Now you know to watch out for it. |
+
 
 If you don’t know the Lua language…​ honestly, don’t worry about it. I’ve never formally studied it, but I’ve picked up enough by osmosis to easily maintain my Neovim configuration.
 
@@ -130,14 +126,10 @@ There are three possible places to configure keybindings, depending on how any o
 
 To demonstrate, I want to “fix” the fact that mini files doesn’t have a “open in root” option. I like the “open in directory of current file” option, but I also want to be able to open in the root directory.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">Remember that the root directory is the top level directory of the current project according to the existence of some language-specific file such as <code>package.json</code> or <code>Cargo.toml</code>. The <code>cwd</code> is the current working directory of the editor.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-5/info.png) | Remember that the root directory is the top level directory of the current project according to the existence of some language-specific file such as `package.json` or `Cargo.toml`. The `cwd` is the current working directory of the editor. |
+
 
 Since I don’t use the explorer, I’m going to steal the `<Space>e` and `<Space>E` keybindings and use them for mini.files instead, then I’ll remap the existing `<Space>fm` keybinding to open the root so I can access all three commands. You can, of course, choose different keybindings if they map better to your mental model or you want to keep the explorer for some things.
 
@@ -247,14 +239,10 @@ Sometimes the “merging” behaviour LazyVim uses to overwrite options with the
 
 To support this situation, the `opts` entry in a Lazy.nvim plugin’s configuration table can be a function instead of a static table. The function accepts the previous `opts` table as it was configured by LazyVim as an argument. Your function needs to *modify* this table to suit your desired behaviour.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">The function based version of <code>opts</code> <strong>does not</strong> return a new <code>opts</code> table; it needs to <strong>modify</strong> the one that was passed in.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-5/info.png) | The function based version of `opts` **does not** return a new `opts` table; it needs to **modify** the one that was passed in. |
+
 
 For example, the default configuration for the LazyVim dashboard, which is configured as part of the `snacks.nvim` suite of plugins is a table that contains several entries in the keys array. The dashboard already allows you to restore the most recent session using the `s` key, but if you want to select from a *list* of recent sessions, you have to use the `<Space>qs` keybinding. (Sessions are discussed further in Chapter 9).
 
@@ -273,14 +261,10 @@ Listing 16. `snacks dashboard` Options Function
       end,
     }
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">You may want to replace the icon with something from the nerd fonts suite.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-5/info.png) | You may want to replace the icon with something from the nerd fonts suite. |
+
 
 This `opts` function accepts the LazyVim-defined `opts` table as its second parameter. My code *changes* those `opts` using the `table.insert` function provided by Neovim. I add a new entry that is positioned at index 7 in the list, just after the related `Restore Session` entry, which autoloads your most recent session.
 

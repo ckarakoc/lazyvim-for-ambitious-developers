@@ -10,14 +10,10 @@ Have I built enough suspense? Pay attention, because you will forget this. To mo
 
 I hate that the command is `(` since that feels like it should be moving to, you know, a parenthesis! But it’s not; it’s moving by sentences. Since the `.`, `!`, and `?` characters rarely mean “sentence” in normal software development, I just don’t use it that much until I start writing a book (something I keep telling myself I won’t commit to again, but it never lasts).
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">In addition to stopping after punctuation followed by whitespace, navigating by sentences also stops on "paragraph boundaries", which is to say "blank lines". If you are using sentences with counts, this can throw your navigation off because you need to add an extra step for each paragraph, as well as the punctuation that normally defines a sentence.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-7/info.png) | In addition to stopping after punctuation followed by whitespace, navigating by sentences also stops on "paragraph boundaries", which is to say "blank lines". If you are using sentences with counts, this can throw your navigation off because you need to add an extra step for each paragraph, as well as the punctuation that normally defines a sentence. |
+
 
 I do use the paragraph motions all the time, though. A paragraph is defined as all the content between two empty lines, and that is a concept that makes sense in a programming context. Most developers structure their code with logically connected statements separated by blanks. The commands to move up or down by one “paragraph” are the curly braces, `{` and `}`. If you need to jump multiple paragraphs ahead or back, they can, as usual, be prefixed by a count.
 
@@ -83,14 +79,10 @@ I use this functionality all the time when editing Python code and Svelte compon
 
 I don’t know about you, but when I write code, I tend to introduce a lot of errors in it. Depending on the language, LazyVim is either preconfigured or can be configured to give me plenty of feedback about those errors, usually in the form of a squiggly underline.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">If you aren’t seeing squiggly underlines, go back to Chapter 1 and pick a better terminal.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-7/info.png) | If you aren’t seeing squiggly underlines, go back to Chapter 1 and pick a better terminal. |
+
 
 These squiggly underlines are usually created by integration with compilers, type checkers, linters, and even spell checkers, depending on the language. Some of them are errors, some are warnings, some are hints. Some are just distractions, but most of them are opportunities to improve your code.
 
@@ -383,14 +375,10 @@ Since we are modifying *two* plugins, I put two Lua tables inside a wrapping Lua
 
 The second definition also passes a custom `opts` table. It replaces the default keys, which include `;` and `,` with a new table that only defines `f`, `F`, `t`, and `T`.
 
-<table>
-<tbody>
-<tr>
-<td class="icon"></td>
-<td class="content">If I had known that <code>;</code> was being rebound by flash.nvim, I could have found this solution by reading the config for flash.nvim on the LazyVim website and seeing what needed to be overwritten. However I wasn’t able to figure out where the <code>;</code> was being defined, and ended up asking for help on the LazyVim GitHub Discussions. People are really helpful there, and I encourage you to come say hello if you have any questions.</td>
-</tr>
-</tbody>
-</table>
+|||
+| -- | -- | 
+| ![info](./media/chapter-7/info.png) | If I had known that `;` was being rebound by flash.nvim, I could have found this solution by reading the config for flash.nvim on the LazyVim website and seeing what needed to be overwritten. However I wasn’t able to figure out where the `;` was being defined, and ended up asking for help on the LazyVim GitHub Discussions. People are really helpful there, and I encourage you to come say hello if you have any questions. |
+
 
 ### 7.5. Summary
 
