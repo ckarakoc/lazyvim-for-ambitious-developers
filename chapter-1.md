@@ -6,7 +6,7 @@ I'm guessing you're a Visual Studio Code user (a great editor that I used for a 
 
 ### 1.1. Why Vim
 
-Vim has a *very* ancient history. It was created in the early '90s as an improvement on the (much) older Vi editor, written in the 1970's. The name “Vim” actually stands for “Vi, improved”. Its predecessor, Vi is short for “Visual”, as it was an iteration on an even earlier (1971) non-visual line editing experience called `ed`.
+Vim has a *very* ancient history. It was created in the early '90s as an improvement on the (much) older Vi editor, written in the 1970's. The name "Vim" actually stands for "Vi, improved". Its predecessor, Vi is short for "Visual", as it was an iteration on an even earlier (1971) non-visual line editing experience called `ed`.
 
 |||
 | -- | -- | 
@@ -26,7 +26,7 @@ Health Benefits
 This is the big one for me. I used Vim a lot through my early career, though, like many developers, I switched to VS Code when it came out in 2015. I spend a lot of time at my keyboard, and by 2020, I was so crippled by RSI that I spent six months exclusively coding by voice (a blog article on the topic has made me more famous than I expected). A friend suggested I switch back to modal editing, and it made a huge difference. The vast majority of Vim keystrokes do not require holding multiple keys with the same hand, something that really aggravates carpal tunnel syndrome.
 
 Performance  
-Most IDEs have some sort of “vi emulation” layer or plugin that allows you to reap some of the health benefits of modal editing without fully switching to a new editor. But waiting for VS Code to start up and load all the extensions you know and love has become a meditative exercise for many (or an opportunity to return to doom scrolling). In contrast, when I load my LazyVim configuration, it helpfully tells me how long it took to load: 56.98 milliseconds. To my slow, human eyes, it's instant.
+Most IDEs have some sort of "vi emulation" layer or plugin that allows you to reap some of the health benefits of modal editing without fully switching to a new editor. But waiting for VS Code to start up and load all the extensions you know and love has become a meditative exercise for many (or an opportunity to return to doom scrolling). In contrast, when I load my LazyVim configuration, it helpfully tells me how long it took to load: 56.98 milliseconds. To my slow, human eyes, it's instant.
 
 Developer Velocity  
 This is debatable and subjective. Any tool is only as good as the trades-person who wields it, and I certainly know excellent coders who can really fly with their VS Code, Emacs, or JetBrains configurations. Still, I really believe that a finely-tuned Vim configuration can outpace any of them.
@@ -50,7 +50,7 @@ The chief drawback of both Vim and Neovim is that while they have the capability
 
 When I switched back to Vim in 2020, after becoming used to the great functionality VS Code brought to the editor ecosystem, it took me **two weeks** to get my configuration where I wanted it and I tweaked it incessantly for months after. It came in at about 300 lines of Vimscript, which I later ported to around 250 lines of Lua code. To be fair, I'm a heavy customizer in general, and my VS Code configuration was actually longer than either of those! But I'll happily admit that the VS Code out-of-the-box experience was much better.
 
-I looked at several so-called Neovim “distributions” (preconfigured setups). I won't go into details of the comparison, but LazyVim is the clear winner by far, mostly because it balances a dead simple out-of-the-box experience with relatively easy customization and configuration.
+I looked at several so-called Neovim "distributions" (preconfigured setups). I won't go into details of the comparison, but LazyVim is the clear winner by far, mostly because it balances a dead simple out-of-the-box experience with relatively easy customization and configuration.
 
 To be clear, LazyVim is Vim. The editing experience is identical. It's not a new iteration or version of Vim in the way that Neovim is. Instead, LazyVim is a mindset; it starts with an agreement on what constitutes the best plugin configurations for modern development, and a configuration that makes them work well together (keeping different plugins' keybindings from conflicting with each other is one of the major pain-points when managing editor configurations manually).
 
@@ -99,11 +99,11 @@ You can choose from many of the most popular programming fonts. Downloading and 
 
 Neovim works pretty much anywhere software can be installed, and it only relies on standard system dependencies. The chief problem is that no matter which operating system you use, you are spoiled for choice!
 
-You can visit the [Neovim home page](https://neovim.io/) and click the “Install Now” button to get the latest instructions for your operating system of choice (or of necessity) from the Neovim developers.
+You can visit the [Neovim home page](https://neovim.io/) and click the "Install Now" button to get the latest instructions for your operating system of choice (or of necessity) from the Neovim developers.
 
 #### 1.6.1. Which Version Should I Install?
 
-Neovim development happens at a super fast pace compared to their release cycle, so it is not uncommon for folks to run the latest nightly build. I have only rarely encountered bugs in builds cut from the master branch on Github, so it's generally safe. I usually run off the latest stable release when it comes out, and then when some new plugin update says “here's a cool feature if you use Neovim nightly,” I'll install the latest Neovim build instead.
+Neovim development happens at a super fast pace compared to their release cycle, so it is not uncommon for folks to run the latest nightly build. I have only rarely encountered bugs in builds cut from the master branch on Github, so it's generally safe. I usually run off the latest stable release when it comes out, and then when some new plugin update says "here's a cool feature if you use Neovim nightly," I'll install the latest Neovim build instead.
 
 I suggest starting with the latest stable version of Neovim for now, which at time of writing is 0.11.0. Avoid older instances if possible. LazyVim does tend to add features from the nightly release, so if you start to get as excited about this distro as I am, it will be a perfectly natural progression to switch to the pre-release.
 
@@ -145,13 +145,13 @@ Once you have Neovim installed, you can try it out by simply typing `nvim` (or `
 
 So, at least it's honest?
 
-Unfortunately, you're now trapped. To save you the frantic “how do I exit Vim” Google search, the command to quit is `Escape` followed by the three characters `:q!` followed by `Enter`. The whole sequence will therefore be `<Escape>` `<Colon>` `q` `<Exclamation>` `<Enter>`.
+Unfortunately, you're now trapped. To save you the frantic "how do I exit Vim" Google search, the command to quit is `Escape` followed by the three characters `:q!` followed by `Enter`. The whole sequence will therefore be `<Escape>` `<Colon>` `q` `<Exclamation>` `<Enter>`.
 
-Seriously, “How do I exit Vim” is one of the top three autocompletes on Google for “How do I exit…​”. Apparently only a Samsung TV plus and full screen mode on MacOS are less intuitive to get out of! We'll understand why this incantation works after we dig deeper into the vim mental model and command mode.
+Seriously, "How do I exit Vim" is one of the top three autocompletes on Google for "How do I exit…​". Apparently only a Samsung TV plus and full screen mode on MacOS are less intuitive to get out of! We'll understand why this incantation works after we dig deeper into the vim mental model and command mode.
 
 |||
 | -- | -- | 
-| ![info](./media/chapter-1/info.png) | If you want to, you can run the command `<Escape>:Tutor<Enter>` to open an interactive text file that you can read through and edit while learning the basics of Neovim. I do recommend doing this at some point, but now may not be the right time. A lot of things that are “normal” in the Vim tutor are different (better!) using LazyVim. The rest of this book does **not** assume you have gone through the tutor. |
+| ![info](./media/chapter-1/info.png) | If you want to, you can run the command `<Escape>:Tutor<Enter>` to open an interactive text file that you can read through and edit while learning the basics of Neovim. I do recommend doing this at some point, but now may not be the right time. A lot of things that are "normal" in the Vim tutor are different (better!) using LazyVim. The rest of this book does **not** assume you have gone through the tutor. |
 
 ### 1.8. Install LazyVim
 
@@ -227,9 +227,9 @@ Listing 4. Powershell Clone Starter
 
 Ok, you have completed the most difficult section of this book and you're finally ready to start LazyVim! Use the same terminal command as before: `nvim`.
 
-You'll see a flurry of activity as LazyVim sets everything up and downloads the plugins it thinks are essential. You may see it compile and install a bunch of treesitter grammars; if you see a message to “Show More” use `G` (i.e. `Shift+g`) to skip to the end.
+You'll see a flurry of activity as LazyVim sets everything up and downloads the plugins it thinks are essential. You may see it compile and install a bunch of treesitter grammars; if you see a message to "Show More" use `G` (i.e. `Shift+g`) to skip to the end.
 
-Once everything is installed, you'll see a summary of the plugins that were installed inside a window managed by a plugin called Lazy.nvim that we will discuss shortly. For now, once you get to the Lazy.nvim screen, you can press the `q` key. The plugin will interpret this as “quit Lazy.nvim” and the window will close.
+Once everything is installed, you'll see a summary of the plugins that were installed inside a window managed by a plugin called Lazy.nvim that we will discuss shortly. For now, once you get to the Lazy.nvim screen, you can press the `q` key. The plugin will interpret this as "quit Lazy.nvim" and the window will close.
 
 Now you can see the LazyVim dashboard, which is the first thing you'll see every time you start LazyVim in the future. It's a little more friendly than the out of the box Neovim experience:
 
@@ -255,7 +255,7 @@ In the old old days, plugin management was a completely manual process. In the l
 
 Then came the plugin manager called Lazy.nvim, created by the same person that later created LazyVim. The Lazy.nvim plugin manager should not be confused with LazyVim itself, though both are maintained by the same person. Lazy.nvim is strictly a plugin manager, whereas LazyVim is a collection of plugins and configurations that ship together. One of those plugins is Lazy.nvim.
 
-Lazy.nvim has a ton of slick features, most notably loading plugins only when needed (hence the name “Lazy”) so that your editor is lightning fast to start up. It also has a nice UI for managing plugin installation and updates.
+Lazy.nvim has a ton of slick features, most notably loading plugins only when needed (hence the name "Lazy") so that your editor is lightning fast to start up. It also has a nice UI for managing plugin installation and updates.
 
 You can access this UI from the dashboard simply by pressing the `l` key, which is labelled in the dashboard as `Lazy`. The label should probably be `Lazy Plugin Manager` to make it a bit clearer, but now you know what `Lazy` means so you won't forget.
 
@@ -273,11 +273,11 @@ The window that has popped up is called a floating window. You'll see these in a
 
 Typically, the only Lazy.nvim keybinding I use is `S`, for `Sync`. This is equivalent to running install, clean, and update in a single action. It guarantees that the versions of plugins that are actually installed are exactly consistent with the ones specified in the LazyVim configuration.
 
-So when the “Plugin Updates” notification pops up, just press `Space-l` and then `S` and wait for the sync to complete. Then press `q` to close the Lazy.nvim Plugin mode and floating window and return to what you were doing.
+So when the "Plugin Updates" notification pops up, just press `Space-l` and then `S` and wait for the sync to complete. Then press `q` to close the Lazy.nvim Plugin mode and floating window and return to what you were doing.
 
 ### 1.11. A Note on Managing Dot Files
 
-If you work on multiple different computers, you'll quickly find that you don't want to set up your LazyVim configuration separately on all of them. LazyVim does not have the equivalent of VS Code's “settings sync”, though such plugins exist.
+If you work on multiple different computers, you'll quickly find that you don't want to set up your LazyVim configuration separately on all of them. LazyVim does not have the equivalent of VS Code's "settings sync", though such plugins exist.
 
 The alternative I recommend is to store your config files in a git repository. You'll probably find there are a few other files you want to keep in there such as your terminal's config file, your `.gitconfig` and `.zshrc` / `.bashrc` / `.config/fish/config.fish`.
 
