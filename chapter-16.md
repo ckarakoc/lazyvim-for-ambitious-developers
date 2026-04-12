@@ -1,10 +1,10 @@
-## <a href="#_configuring_artificial_intelligence" class="link">Chapter 16. Configuring Artificial Intelligence</a>
+## Chapter 16. Configuring Artificial Intelligence
 
 I predicted when writing the first edition of this chapter in 2024 that it would quickly become out of date and be a nightmare to maintain. That was so true that I don’t think many people still use any of the extras and plugins it discussed. I’ve updated it as of January 2026, and it’s probably going to become immediately out of date again.
 
 You have a few options for integrating AI into your daily coding, from avoiding it altogether to completions-only to fully interactive "cursor-style" interactions. I can’t cover all of them here, but I’ll try to hit the best-supported versions in LazyVim.
 
-### <a href="#_my_current_ai_workflow_doesnt_use_lazyvim" class="link">16.1. My current AI workflow doesn’t use LazyVim</a>
+### 16.1. My current AI workflow doesn’t use LazyVim
 
 I use AI extensively for work, but not at all for my hobby coding. For work, I exclusively use the most powerful command line tool of the day. That’s usually Claude Code, but I’ve also used Gemini CLI and Codex.
 
@@ -16,7 +16,7 @@ Further, when I’m coding with AI, completions are not much help, since I’m j
 
 However, you aren’t me, and you should evaluate the pile of LazyVim extras that provide support for AI coding to see which ones work for you. Let’s start with completions.
 
-### <a href="#_sidekick_nvim" class="link">16.2. Sidekick.nvim</a>
+### 16.2. Sidekick.nvim
 
 The `Sidekick.nvim` plugin is maintained by the author of LazyVim, so it fits in well with all the tooling and UI we are used to. It features two unrelated AI features:
 
@@ -26,7 +26,7 @@ The `Sidekick.nvim` plugin is maintained by the author of LazyVim, so it fits in
 
 The former may be a nice to have if you want to use LazyVim for window management instead of navigating to separate terminal panes like I do. The next edit suggestions are like inline completions on steroids and are worth enabling if you or your company are already invested in Copilot. Let’s look at Next Edit Suggestions (NES for short, and I’d be dating myself if I told you that to me that means a game console).
 
-#### <a href="#_sidekick_next_edit_suggestions" class="link">16.2.1. Sidekick next edit suggestions</a>
+#### 16.2.1. Sidekick next edit suggestions
 
 To use it, first enable the `ai.copilot` extension as described above to get needed dependencies. Then enable the `ai.sidekick` Lazy Extra and restart your editor. You’ll then need to authenticate with the `:LspCopilotSignIn` command.
 
@@ -55,7 +55,7 @@ Next edit suggestions are not meant to replace completion menu Copilot suggestio
 
 However, if you’re into AI these days, why are you typing code at all? That’s where Sidekick’s other feature comes in.
 
-#### <a href="#_sidekick_chat_integrations" class="link">16.2.2. Sidekick chat integrations</a>
+#### 16.2.2. Sidekick chat integrations
 
 At time of writing, the gold standard for ai driven coding is, if you or your employer are willing to pay for it, Claude code running the Opus 4.6 model. Anthropic really understand how to drive an LLM for maximum effect and it shows in how Claude Code outperforms other tools that use the Opus model.
 
@@ -79,11 +79,11 @@ The benefit of running one of these tools in Sidekick instead of a separate term
 
 You can also select from and send several stored prompts using `<Space>ap`, but to be honest I would configure custom slash commands or skills for that kind of thing if your model and backend support them. The Sidekick-provided are a bit too simplistic for sophisticated models like Opus and I’d usually prefer to let the AI write a skill for me.
 
-### <a href="#_the_in_editor_automatic_coding_experiences" class="link">16.3. The in-editor automatic coding experiences</a>
+### 16.3. The in-editor automatic coding experiences
 
 If you’re looking for a more "Cursor-like" experience in Vim, LazyVim has a couple Lazy Extras for you to choose from, including copilot chat, and avante.nvim. I don’t have a ton of recent experience with these but I’ll try to give them good coverage. Last time I used Copilot Chat (as documented in the first edition of this book) it didn’t have a lot of support for agentic tooling, but that has changed. The Avante extra, unfortunately, just didn’t work for me at all.
 
-### <a href="#_copilot_chat" class="link">16.4. Copilot Chat</a>
+### 16.4. Copilot Chat
 
 CopilotChat.nvim tries to keep the coder in control and is much less automatic than the console tools. It is easiest to think of it as a chatbot that can talk to various GitHub Copilot models, and it’s a terrific addition to the copilot.lua extra that provides completions.
 
@@ -183,13 +183,13 @@ Listing 59. Exa Search Function for Copilot Chat
 
 Copilot Chat is nice if you want to have a bit more control over what tools get called than you get with the CLI tools sidekick gives you access to. It seems to be the best supported in LazyVim right now, but the responsibility to check every plugin is quite tedious if you are used to the automation provided by the CLI tools like Claude Code.
 
-### <a href="#_a_note_on_avante_nvim" class="link">16.5. A note on Avante.nvim</a>
+### 16.5. A note on Avante.nvim
 
 Avante is an attempt to make Neovim behave more like an automated coding tool such as Cursor. I haven’t been able to get it to behave in several attempts over the last couple years.
 
 Even with the Avante LazyVim Extra, I haven’t so much as been able to issue a query. I am pretty sure the Extra needs to be updated to support Snacks for it to work at all. I will try to update this section if a new release of the Extra comes out, but at the moment it isn’t worth the effort it requires to fix it.
 
-### <a href="#_code_companion_nvim" class="link">16.6. Code Companion.nvim</a>
+### 16.6. Code Companion.nvim
 
 Code Companion is a well-maintained and well documented Neovim plugin that is a little more automated than Copilot Chat (with access to more model providers) and a little less automated than Avante, at least, my understanding of how Avante is supposed to work.
 
@@ -209,7 +209,7 @@ However, this is not a true LazyVim integration. It doesn’t set up any keybind
 
 I’ll defer to the excellent [Code Companion Documentation](https://codecompanion.olimorris.dev/) for information on how to actually use the plugin. It behaves much like Copilot Chat, though its agentic integrations are a little more polished.
 
-### <a href="#_the_other_lazyvim_ai_extras" class="link">16.7. The other LazyVim AI Extras</a>
+### 16.7. The other LazyVim AI Extras
 
 There are a bunch of LazyVim Extras under the ai namespace that you can try out. I warn you that most of them are relatively outdated plugins, and even if the plugin is maintained, the LazyVim integration has become stale.
 
@@ -223,7 +223,7 @@ There are a bunch of LazyVim Extras under the ai namespace that you can try out.
 
 I used to document all of these, but at this point Claude code and the other CLI tools frantically trying to catch up to it have easily superceded all of them.
 
-### <a href="#_summary_16" class="link">16.8. Summary</a>
+### 16.8. Summary
 
 This chapter was all about AI. AI is a weirdly simple topic, considering the complexity it abstracts away. Under the hood, LLMs are really cool, but the interface to interacting with them is typically just a simple HTTP request to some API somewhere (an API that is so useful we collectively don’t think hard enough about how much we trust it).
 

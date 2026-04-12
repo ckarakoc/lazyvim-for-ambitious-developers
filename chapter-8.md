@@ -1,4 +1,4 @@
-## <a href="#_clipboard_registers_and_selection" class="link">Chapter 8. Clipboard, Registers, and Selection</a>
+## Chapter 8. Clipboard, Registers, and Selection
 
 Vim has a robust copy and paste experience that predates the operating system clipboard you are used to in other editors. Happily, the LazyVim configuration sets up the Neovim clipboard system to work with the OS clipboard automatically.
 
@@ -6,7 +6,7 @@ In fact, you already know how to cut text to the system clipboard: Just delete i
 
 That’s right. Any time you use the `d` or `c` verb, the text that you deleted is automatically cut to clipboard. This is usually very convenient, and occasionally somewhat annoying, so I’ll show you a workaround to avoid saving deleted text later in this chapter.
 
-### <a href="#_pasting_text" class="link">8.1. Pasting Text</a>
+### 8.1. Pasting Text
 
 Pasting (typically referred to as “putting” in Vim) text uses the `p` command I mentioned briefly in Chapter 1. In Normal mode, the single command `p` will place whatever is in the system clipboard at the current cursor position. This is usually the text you most recently deleted, but it can be an URL you copied from the browser or text copied from an e-mail or any other system clipboard object.
 
@@ -18,7 +18,7 @@ When you paste with `p`, your cursor will stay where it was, and the text is ins
 
 If you are already in Insert mode and need to paste something and keep typing, you can use the `Control-r` command, followed by the `+` key. The `r` may be hard to remember, but it stands for “**r**egister.” We’ll go into more detail about what registers really are, soon.
 
-### <a href="#_copying_text" class="link">8.2. Copying Text</a>
+### 8.2. Copying Text
 
 Copying text requires a new verb: `y`. It behaves similarly to `d` and `c`, except it doesn’t modify the buffer; it just copies the text defined by whatever motion or text object comes after the `y`.
 
@@ -30,7 +30,7 @@ The `yy` and `Y` commands yank an entire line, and from the cursor to the end of
 
 LazyVim will briefly highlight the text you yanked to give a nice indicator as to whether your motion command copied the correct text.
 
-### <a href="#_selecting_text_first" class="link">8.3. Selecting Text First</a>
+### 8.3. Selecting Text First
 
 Your Vim editing experience so far has not involved the concept of selecting text. Isn’t that weird? We’re 8 chapters in! In normal word processors and VS Code-like text editors, you have to select text before you can perform an operation such as deleting, copying, cutting, or changing it. Considering how awkward text selection is in those editors (you have to use your mouse or some combination of shift, and cursor movements, with extra modifier keys to make bigger movements), it’s amazing anyone gets anything done!
 
@@ -64,13 +64,13 @@ You can exit Visual mode temporarily without completely losing your selection. F
 
 Use the `o` (for “**o**ther end”) command to move the cursor to the opposite end of the block. Useful if e.g. you’ve selected a few words, and realize you forgot one at the other end of the block. You can’t get into Insert mode from Visual mode, so the `o` command gets reused for this purpose.
 
-#### <a href="#_line_wise_visual_mode" class="link">8.3.1. Line-wise Visual Mode</a>
+#### 8.3.1. Line-wise Visual Mode
 
 The `v` command is useful for fine-grained selections, but if you know that your selection is going to start and end on line boundaries, you can use a (shifted) `V` instead, to get into Line-wise Visual mode. Now wherever you move the cursor, the entire line the cursor lands on will be selected.
 
 Other than selecting entire lines, the main difference with Line-wise Visual mode is that when you apply a verb that manipulates the clipboard, (including `d`, `c`, and `y`), the lines will be cut or copied in Line-wise mode. When you put them later they will show up on the next or previous line instead of immediately after the cursor.
 
-#### <a href="#_block_wise_visual_mode" class="link">8.3.2. Block-wise Visual Mode</a>
+#### 8.3.2. Block-wise Visual Mode
 
 Block-wise Visual mode is a neat feature that is kind of unique to Vim. It allows you to visually select and manipulate a block of text that is vertically, but not horizontally contiguous. For example, I have selected several characters on each of four separate lines in the following screenshot:
 
@@ -93,7 +93,7 @@ In plain text like this, Block-wise Visual mode doesn’t appear to be very usef
 
 Block-wise Visual mode can also be used as a (poor) imitation of multiple cursors. If you use the `I` or `A` command after selecting a visual block, and then enter some text followed by `Escape`, the text you entered will get copied at either the beginning or end of the visual block. A common operation for this feature is to add `*` characters at the beginning of Markdown ordered lists or a block comment that needs a frame.
 
-### <a href="#_registers" class="link">8.4. Registers</a>
+### 8.4. Registers
 
 Registers are a way to store a string of text to be accessed later (so think of the Assembly-language definition of the word). In that regard, they are no different from a clipboard. In fact, the system clipboard in Vim **is** a register that LazyVim has set up as the default register.
 
@@ -101,7 +101,7 @@ But Vim has dozens of other registers. This means you can have *custom clipboard
 
 There are several different types of registers, but I’ll introduce the concept with the named registers, first. There are over two dozen named registers, one for each letter of the alphabet.
 
-To access a register from Normal mode, use the `"` character (i.e, `Shift-<Apostrophe>`) followed by the name of the register you want to access. Then issue the verb and motion you want to perform on that register.
+To access a register from Normal mode, use the `"` character (i.e, `Shift-`) followed by the name of the register you want to access. Then issue the verb and motion you want to perform on that register.
 
 So if I want to delete three words and store them in the `a` register *instead* of the system clipboard, I would use the command `"ad3w`. `"a` to select the register, and `d3w` as the normal command to delete three words. And if I later want to put that same text somewhere else, I would use `"ap` instead of just `p`, so the text gets pasted from the `a` register instead of the default register.
 
@@ -117,7 +117,7 @@ To show the same menu from Insert or Command mode, use `Control-r` instead of `"
 
 If you’re in the `<Space>s"` picker dialog, you’ll notice a bunch of other registers besides the named alphabet registers. I’ll discuss each of those next.
 
-#### <a href="#_clipboard_registers" class="link">8.4.1. Clipboard Registers</a>
+#### 8.4.1. Clipboard Registers
 
 In LazyVim, by default, the registers named `*` and `+` are always identical to the default (unnamed) register, and represent the contents of the system clipboard.
 
@@ -135,7 +135,7 @@ Speaking of having your clipboard contents randomly overwritten, if you know in 
 
 If you want to copy the *contents* of one register to another register, you can use the ex command `:let @a = @b` where `a` and `b` are the names of the registers you want to copy to and from. The most common use of this operation is to copy the contents of the system clipboard (which may have come from a different program) into a named register so it doesn’t get lost the next time you issue a verb. For example, `:let @b = @+` will copy the system clipboard into register `b`.
 
-#### <a href="#_the_last_yanked_or_last_inserted_text" class="link">8.4.2. The Last Yanked or Last Inserted Text</a>
+#### 8.4.2. The Last Yanked or Last Inserted Text
 
 Whenever you issue a `y` command without specifying a destination register, the text will always be stored in the `"0` register *as well as* the default register. And it will stay in `"0` until the next yank operation, no matter how many deletes or changes you do to change the default register.
 
@@ -143,7 +143,7 @@ So if you yank the text `abc` and then delete the text `def`, the `p` command wi
 
 You can also use the `".` (period) register to paste a copy of the text that was most recently inserted. So if you type the command `ifoo<Escape>` somewhere in the document and move somewhere else in the document and type `".p`, it will insert the word “foo” at the new cursor position. `".` is a register that you may occasionally want to copy into a named register if you have inserted text you want to reuse. Use the previously discussed syntax `:let @c = @.` command to do this.
 
-#### <a href="#_the_delete_numbered_registers" class="link">8.4.3. The Delete (Numbered) Registers</a>
+#### 8.4.3. The Delete (Numbered) Registers
 
 The numbered registers *should* be really useful, but I find them rather confusing. The registers `"1` through `"9` always contain the text that you most recently changed or deleted, in ascending order. So after a delete operation, whatever was in `"1` gets moved to `"2`, `"2` moves to `"3` and so on, and whatever is in `"9` gets dropped.
 
@@ -151,11 +151,11 @@ I can *never* remember the order of my recent deletes, so I would normally have 
 
 There is also a “small delete register” that can be accessed with `"-`. Whenever you delete any text, it will be stored in the numbered registers, but if that text is less than one line long, it will *also* be stored in this minus register. I have little use for this feature, as the majority of my changes are smaller than one line. That means it gets cleared before it drops out of the numbered registers.
 
-#### <a href="#_the_current_files_name" class="link">8.4.4. The Current File’s Name</a>
+#### 8.4.4. The Current File’s Name
 
 The name of the file that you are currently editing is stored in the `"%` register. It is always relative to the current working directory of the editor (usually the folder you were in when you started Neovim). The only time I ever want to access this register is to copy the filename to the system clipboard with `:let @+ = @%` so I can paste it into a GUI app or my terminal.
 
-### <a href="#_recording_to_registers" class="link">8.5. Recording to Registers</a>
+### 8.5. Recording to Registers
 
 Remember the recording commands I told you about in Chapter 6: `qq` to record and `Q` to play back the recording? Turns out I was a little overly simplistic there.
 
@@ -167,7 +167,7 @@ Having multiple sets of recordings can be really handy when you are performing a
 
 The `Q` command to play back a recording always plays back the most recently recorded command, regardless of register. If you want to play back from a different register, you would use the `@` command, followed by the name of the register. So if you recorded using `qa`, you would play it back with `@a`. As a shortcut, `@@` will always replay whichever register you most recently *played* (which is different from `Q` which always plays back the most recent *recording*).
 
-#### <a href="#_editing_recordings" class="link">8.5.1. Editing Recordings</a>
+#### 8.5.1. Editing Recordings
 
 To be clear, recordings are placed in normal registers. So if you record a sequence of keystrokes to a register using `qa` and then put the register using `"ap`, you will actually see the list of Vim commands you recorded.
 
@@ -179,7 +179,7 @@ I can use `"ap` to paste the contents of the recording, which will look like thi
 
 Now if I want to play back that modified command, I can just use `@a` as usual.
 
-### <a href="#_the_yanky_nvim_plugin" class="link">8.6. The Yanky.nvim Plugin</a>
+### 8.6. The Yanky.nvim Plugin
 
 Yanky.nvim has some niceties such as improving the highlighting of text on yank and preserving your cursor position so that you can keep typing after pasting, but its primary feature is better management of your clipboard history. LazyVim also configures it with several new keybindings to make putting text more pleasant.
 
@@ -201,7 +201,7 @@ So if you’re moving code into a nested block and need to change indentation, u
 
 You can also use `>p`, `<p`, `>P`, and `<P` to automatically add or remove indentation when you put code.
 
-### <a href="#_summary_8" class="link">8.7. Summary</a>
+### 8.7. Summary
 
 This chapter was all about selecting and copying text. We learned the `yank` verb for copying text and then dug into the various Visual modes that can be used for selecting text.
 

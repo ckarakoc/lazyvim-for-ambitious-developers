@@ -1,8 +1,8 @@
-## <a href="#_navigating_source_files" class="link">Chapter 11. Navigating Source Files</a>
+## Chapter 11. Navigating Source Files
 
 In previous chapters, we’ve learned many different ways to navigate within a single buffer, as well as between open tabs and windows. This chapter will go into detail of different ways to navigate between source files.
 
-### <a href="#_go_to_definition" class="link">11.1. Go To Definition</a>
+### 11.1. Go To Definition
 
 In my opinion, “Go to Definition” is the most valuable feature language servers have brought us. Major IDEs have supported it for compiled languages for eons, but dynamically typed languages—​such as Python—​have always been hell for static analysis, and such features were often pretty hit or miss.
 
@@ -16,7 +16,7 @@ Go to definition is context dependent, but will usually do exactly what you expe
 
 Typically, once you’ve jumped to a definition and learned what you need to learn from that file, you’ll immediately want to jump back to where you started. You can do this easily using `Control-o`, as we discussed in Chapter 3 (and `Control-i` can move forward in your jump history).
 
-### <a href="#_go_to_references" class="link">11.2. Go To References</a>
+### 11.2. Go To References
 
 The inverse of the Go to Definition command is “Go to References”. If you are looking at a function, variable, type, etc, and want to see all the places that variable is accessed, use the `gr` command.
 
@@ -26,7 +26,7 @@ It is common to want to perform some action—​such as a rename or adding an a
 
 To do that, use `gr` to show the references in a picker as usual. Then use `Alt-t` to open all results in Trouble. You can also select which results to send to Trouble before opening them using the selection behaviour described in Chapter 4.
 
-### <a href="#_context_specific_help" class="link">11.3. Context-specific Help</a>
+### 11.3. Context-specific Help
 
 Most non-modal editors show you some help or “hover” text when you hold your mouse over a word or symbol. The quantity and value of this text varies widely depending on the LSP, but usually includes a function signature and documentation for the keyword under the cursor.
 
@@ -41,7 +41,7 @@ It’s probably possible to set up Neovim to show help texts on hover, but why w
 </tbody>
 </table>
 
-### <a href="#_listing_symbols" class="link">11.4. Listing Symbols</a>
+### 11.4. Listing Symbols
 
 Another handy LSP feature is searching all the symbols in the current file or project. If you are editing a particularly long file and need to jump to a function that is not terribly close to your cursor, you might use the `<Space>ss` command (mnemonic is “search symbols”). As hinted by the double `s`, this is expected to be a fairly common action.
 
@@ -63,7 +63,7 @@ My second tip is to not forget about the `Control-q` and `Alt-t` shortcuts to du
 
 If you want to search all the symbols in your whole project, use the “but bigger” mnemonic. `<Space>sS` will perform such a search. However, be warned that not all LSPs support workspace symbol search. Some only search in currently open files, and even many of those that fully support workspace symbol search are unusably slow.
 
-### <a href="#_trouble_also_has_a_symbols_outline" class="link">11.5. Trouble Also has a Symbols Outline</a>
+### 11.5. Trouble Also has a Symbols Outline
 
 You can also open a symbols outline using the Trouble plugin. The keybinding is `<Space>cs`, which you may have trouble finding because it is in the `Code` menu rather than the `Search` menu. Unlike most Trouble windows, it opens in a right sidebar by default. It creates a lovely tree view and you can even collapse and expand the tree nodes using the folding keybindings we discussed in Chapter 9.
 
@@ -75,7 +75,7 @@ You can resize the Trouble window using the same keybindings you usually use for
 
 The fastest way to use the Trouble window is to use Seek mode. Recall that Seek mode can jump to *any* currently visible window, which includes Trouble. So if I am currently editing the above file and my cursor is somewhere near the end of the file, I can use `spub` to enter Seek mode and search for the characters “pub”. This will place a label on the `publicKeyToken` in the Trouble window. If I hit that label, my cursor jumps to the trouble window and my editor window immediately scrolls to the function in question. Now I just have to hit `Enter` to move the cursor back to the file I’m editing.
 
-### <a href="#_context" class="link">11.6. Context</a>
+### 11.6. Context
 
 The `nvim-treesitter-context` extra is a helpful way to know where you are in the current file. It uses treesitter to figure out which functions and types you are in, and then pins the lines that define those types to the top of the editor. Enable it as usual by visiting `:LazyExtras` and hitting `x` over the line that contains `nvim-treesitter-context`.
 
@@ -95,7 +95,7 @@ The effect is quite subtle, but the definitions that make their way into this co
 
 If you need to disable the context temporarily, use the keybinding `<Space>ut`. We haven’t seen much of the `<Space>u` menu yet, where you can toggle various User Interface effects. This is largely because the default user interface is configured well enough that you don’t want to change it often!
 
-### <a href="#_navigating_with_bookmarks" class="link">11.7. Navigating with (Book)marks</a>
+### 11.7. Navigating with (Book)marks
 
 You already know how to navigate through your history with `Control-o` and `Control-i`, and to jump around documents effectively using a wide variety of motions.
 
@@ -137,7 +137,7 @@ You can also use `'<` and `'>` to jump to the beginning or end of the most recen
 
 The other symbol mark that I use frequently is `'.` which jumps to the last place I inserted or changed text. This can sometimes be quicker than a series of `Control-o` keypresses.
 
-### <a href="#_summary_11" class="link">11.8. Summary</a>
+### 11.8. Summary
 
 In this chapter, we learned how to navigate code files using go to definition and references, and various “document symbol” plugins.
 

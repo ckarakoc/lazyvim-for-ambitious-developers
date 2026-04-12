@@ -1,10 +1,10 @@
-## <a href="#_buffers_and_layouts" class="link">Chapter 9. Buffers and Layouts</a>
+## Chapter 9. Buffers and Layouts
 
 No matter which programming language you are working with, it is inevitable that you will be working on multiple files at a time. And in multiple areas within the same file.
 
 Like all coding editors (other than Notepad), Neovim has a robust system for working with multiple files. LazyVim is configured with a powerful buffer, file, and window management system that may feel familiar at first, but is actually far more powerful than your average editor.
 
-### <a href="#_some_terminology" class="link">9.1. Some Terminology</a>
+### 9.1. Some Terminology
 
 Sometimes it seems like every window management system uses the same words for different things. If you read the documents for e.g. tmux, emacs, kitty, vim, and i3, you’ll end up with multiple definitions for words like “window”, “pane”, “tab”, and “layout”.
 
@@ -35,7 +35,7 @@ A file that exists on disk. Each buffer is linked to at most one file, though it
 
 So far in this book, all your interactions have happened in a single window in a single tab, with possibly multiple buffers open. Now, things are about to get much more interesting.
 
-### <a href="#_buffers" class="link">9.2. Buffers</a>
+### 9.2. Buffers
 
 If you’ve used a picker, the explorer, or mini.files to open multiple files, you may well think that a buffer is a tab. In this view, I have three buffers open, only one of which is currently visible:
 
@@ -55,7 +55,7 @@ This implies that buffers are a “global” concept. There is one collection of
 
 You can, of course, use the mouse to select different buffers from the buffer line with a single click. But why would you do that when there are **so many** ways to access buffers with the keyboard in LazyVim?
 
-#### <a href="#_navigating_between_open_buffers" class="link">9.2.1. Navigating Between Open Buffers</a>
+#### 9.2.1. Navigating Between Open Buffers
 
 The absolute easiest way to switch between buffers is using the `H` and `L` (i.e. `Shift-h` and `Shift-l`) keys. By this point you are hopefully intimately familiar with the fact that `h` means left and `l` means right for cursor movement. If you press the shift key with these, you will switch the buffer visible in the currently active window to whichever buffer is to the left or right of the current buffer in the buffer line.
 
@@ -128,7 +128,7 @@ This is useful if you are working on large projects that have so many files that
 
 Personally, I have disabled the Bufferline plugin altogether, and `<Space><comma>` is the primary interface through which I manage my buffers.
 
-#### <a href="#_closing_buffers" class="link">9.2.2. Closing Buffers</a>
+#### 9.2.2. Closing Buffers
 
 You will often want to close the current buffer without closing the split(s) it is currently open in. The keybinding for this is `<Space>bd`, where `<Space>b` pops up a useful menu of other buffer related functions, and `d` means “delete”. You aren’t actually deleting the underlying *file* when you do this; you’re just deleting the buffer from Vim’s memory: i.e. closing it.
 
@@ -192,7 +192,7 @@ The first behaves like `<Space>bd` to close the current buffer. The other closes
 
 You can also close buffers directly from the buffer picker interface (from `<Space>,`) using `Control-x` to close the buffer that the cursor is on.
 
-#### <a href="#_scratch_buffers" class="link">9.2.3. Scratch Buffers</a>
+#### 9.2.3. Scratch Buffers
 
 Scratch buffers are handy areas to keep notes about a project. Historically, I’ve always kept my notes in a separate new window, and saved it with some arbitrary name if I realize I need it to last longer than one editing session. Except…​ sometimes I forget to save it.
 
@@ -208,7 +208,7 @@ Occasionally, you may need to open a scratch buffer that was saved on a differen
 
 Now that you know all about buffers, let’s discuss windows.
 
-### <a href="#_windows_2" class="link">9.3. Windows</a>
+### 9.3. Windows
 
 In most modern environments, “windows” refer to the OS-level windows such as the terminal you are running Neovim in. Since Vi predates such environments, they were able to use the word window to refer to what are nowadays more commonly described as “panes” or “splits” in other environments.
 
@@ -235,7 +235,7 @@ We’ll cover many of these in the following sections.
 </tbody>
 </table>
 
-#### <a href="#_creating_window_splits" class="link">9.3.1. Creating Window Splits</a>
+#### 9.3.1. Creating Window Splits
 
 Windows in LazyVim can be created on the fly at any time. To split the current window in half “vertically” with one window on the left and a new window on the right, use the `<Space>wv` keymap.
 
@@ -252,7 +252,7 @@ To create a horizontal split between two windows (one above the other), use `<Sp
 </tbody>
 </table>
 
-#### <a href="#_creating_splits_when_opening_files" class="link">9.3.2. Creating Splits When Opening Files</a>
+#### 9.3.2. Creating Splits When Opening Files
 
 You already know you can open a file in the current window from Snacks explorer by moving your cursor to the file and pressing `<Enter>`. You can also use the `Control-v` keybinding in the explorer to open it in a *vertical* split. Use `Control-s` to create a horizontal split.
 
@@ -260,13 +260,13 @@ These keybindings also work in the various snacks pickers to open in vertical or
 
 Finally, if you use mini.files, you can open a file in a split sensibly using the same keybindings as in a normal window (`<Space>wv` and `<Space>ws`).
 
-#### <a href="#_navigating_between_windows" class="link">9.3.3. Navigating Between Windows</a>
+#### 9.3.3. Navigating Between Windows
 
 You can move your cursor between window splits by holding the control key along with any of the `h`, `j`, `k`, or `l` home row "arrow-key" directions. They can also be prefixed with numerical counts if you want to skip over a window to get to the next one.
 
 Alternatively, you can use the same keys with `<Space>w`. So `<Space>wh` will move to the window to the left of the current one.
 
-##### <a href="#_smart_splits" class="link">Smart Splits</a>
+##### Smart Splits
 
 I suggest the [mrjones2014/smart-splits.nvim](https://github.com/mrjones2014/smart-splits.nvim) plugin, which can be configured to navigate between Vim windows and Kitty, Wezterm, or Tmux panes with the same keybindings. Consider this screenshot:
 
@@ -285,28 +285,28 @@ Listing 26. Smart-splits configuration
       build = "./kitty/install-kittens.bash",
       keys = {
         {
-          "<A-h>",
+          "",
           function()
             require("smart-splits").move_cursor_left()
           end,
           desc = "Move to left window",
         },
         {
-          "<A-l>",
+          "",
           function()
             require("smart-splits").move_cursor_right()
           end,
           desc = "Move to right window",
         },
         {
-          "<A-j>",
+          "",
           function()
             require("smart-splits").move_cursor_down()
           end,
           desc = "Move to below window",
         },
         {
-          "<A-k>",
+          "",
           function()
             require("smart-splits").move_cursor_up()
           end,
@@ -317,7 +317,7 @@ Listing 26. Smart-splits configuration
 
 If you are using WezTerm or Tmux you won’t need the `build =` line, but for all three environments, you’ll also need to add some configuration to your Kitty, WezTerm, or Tmux configuration as described in the plugin’s README.
 
-#### <a href="#_closing_a_window_split" class="link">9.3.4. Closing a Window Split</a>
+#### 9.3.4. Closing a Window Split
 
 You can close a window at any time using one of three keybindings:
 
@@ -331,7 +331,7 @@ In all three cases, the **buffer** remains open in the bufferline. Only the wind
 
 If, instead, you want to close all splits except the active one, use `<Space>wo` for “**o**nly this window” or “close **o**ther” (whichever is easier to remember).
 
-#### <a href="#_resizing_windows" class="link">9.3.5. Resizing Windows</a>
+#### 9.3.5. Resizing Windows
 
 In my unconventional opinion, the easiest way to resize Vim splits is to use…​ *the mouse*. There is a vertical bar between vertical splits that you can click and drag on. The mouse cursor doesn’t change to give you any feedback that you can click and drag on it, but it works.
 
@@ -341,7 +341,7 @@ If you insist on using the keyboard, the keybindings are in the `<Space>w` menu:
 
 To change everything to a “default” size, use `<Space>w=` which will make all the windows “equally high and wide.”
 
-#### <a href="#_hydra_mode" class="link">9.3.6. Hydra Mode</a>
+#### 9.3.6. Hydra Mode
 
 Occasionally, you’ll want to run several window commands in a row, for example when resizing a window or creating a layout containing several splits. Having to type `<Space>w` between each command would be rather tedious in these situations, so the `which-key` plugin gives us Hydra mode.
 
@@ -349,7 +349,7 @@ To enter Hydra window mode, press `<Space>w<Space>`. All this does is “pin” 
 
 To leave Hydra mode just hit `<Escape>` and return to your normal editing.
 
-#### <a href="#_zoom_and_zen_mode" class="link">9.3.7. Zoom and Zen Mode</a>
+#### 9.3.7. Zoom and Zen Mode
 
 To get into or out of zen mode, use the `<Space>uz` keybinding, which is mapped to an action in `snacks.nvim`. under the UI menu. Zen mode opens a new window centred in front of your existing files, dimming them in the background, like this:
 
@@ -363,7 +363,7 @@ Zoom mode is similar in that it temporarily changes the window layout. It simply
 
 This can be handy if you need to temporarily focus on or expand a buffer. Historically, I’ve always gotten this behaviour by opening the same buffer in a new tab, so lets discuss tabs next.
 
-### <a href="#_tabs" class="link">9.4. Tabs</a>
+### 9.4. Tabs
 
 Tabs in Vim are rather unusual. Some other paradigms might describe them as “Layouts”. All tabs are connected to the same list of currently open buffers, which is different from most tab models, but each tab can be split into different window layouts. So you might have one tab with three vertical splits and a second tab with four windows open in a grid, for example. In each of the seven splits you can have any buffer you like open, possibly in multiple locations.
 
@@ -395,7 +395,7 @@ There are several ways to close a tab:
 
 - Click the `X` icon to the right of the tabs in the tab bar.
 
-### <a href="#_code_folding" class="link">9.5. Code Folding</a>
+### 9.5. Code Folding
 
 Vim’s code folding system is almost too robust, probably because it has had many iterations of “best practices” over the years. LazyVim is configured with the *current* best practices, so you generally only need a small subset of the complete list of folding commands.
 
@@ -427,7 +427,7 @@ The way LazyVim is configured, you don’t have much control over what gets fold
 
 If you find that you want way more control over code folding, I recommend reading `:help folding` in its entirety. More than likely, you’ll decide that actually, you don’t want more control over folding and just want LazyVim to handle it for you!
 
-### <a href="#_sessions" class="link">9.6. Sessions</a>
+### 9.6. Sessions
 
 After a long hard day of coding, you probably have several buffers open and your splits and tabs configured with all the files in just the right places. Wouldn’t it be nice to put the code away for the evening and come back to all those buffers, tabs, and splits just as they were?
 
@@ -443,7 +443,7 @@ If you use a graphical frontend to Neovim such as Neovide or VimR, the `<Space>q
 
 One last note on sessions: if you have opened Neovim temporarily and want to close it without wiping out the session that was saved the last time you closed it, hit `<Space>qd` at any time after you open Neovim and before you close it. In some contexts (notably, git commit messages), this happens automatically so you don’t have to worry about making a commit after you close the editor and then losing your session.
 
-### <a href="#_summary_9" class="link">9.7. Summary</a>
+### 9.7. Summary
 
 In this chapter, we learned about Vim’s buffers, windows and tabs, and how they are different not only from each other, but also from many other window management paradigms. Vim has the same concepts as other editors, but they are sometimes mixed or named in different ways.
 

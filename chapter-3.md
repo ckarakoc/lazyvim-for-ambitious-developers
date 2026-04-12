@@ -1,4 +1,4 @@
-## <a href="#_getting_around" class="link">Chapter 3. Getting Around</a>
+## Chapter 3. Getting Around
 
 Software developers spend far more time editing code than we do writing it. We’re always debugging, adding features, and refactoring.
 
@@ -10,7 +10,7 @@ In VS Code, often the quickest way to get from one point in the code to another 
 
 Vim also supports mouse navigation, but you’ll likely reach for it less often once you train up on the navigation keymappings. LazyVim has keybindings for the same Language Server Protocol features that VS Code has, and they are often more accessible. The big difference with Vim is the entire keyboard’s worth of navigation commands that are opened up to you when your editor is in Normal mode.
 
-### <a href="#_seeking_text" class="link">3.1. Seeking Text</a>
+### 3.1. Seeking Text
 
 LazyVim ships with a plugin called flash.nvim, which was created by the maintainer of LazyVim and integrates very nicely with it.
 
@@ -52,7 +52,7 @@ Seek mode does have drawbacks however, at least the way flash.nvim implements it
 
 For this reason, I don’t seek near ends of lines. Instead, I’ll seek to a word somewhere in the middle of the same line and then use `A` which, as you may recall, will put me in Insert mode at the end of the line. Alternatively, if I don’t want to enter Insert mode, I will use the `$` symbol (`Shift+4`), which is the Normal mode command for “Move cursor to end of current line”.
 
-### <a href="#_scrolling_the_screen" class="link">3.2. Scrolling the Screen</a>
+### 3.2. Scrolling the Screen
 
 Seek mode only works if the text you want to jump to is visible on the screen. You can’t label something you can’t see! Often, this means you want to use search or one of the larger or more specific motions discussed later, but there are also a few keybindings you can use to scroll the screen so you can see your target before you jump to it.
 
@@ -66,7 +66,7 @@ To scroll the window by a single line, use `Control-y` and `Control-e`. I have n
 
 The reason I don’t use these keys (other than lack of a decent mnemonic) is that I prefer to do relative cursor positioning using `z` mode.
 
-#### <a href="#_z_mode" class="link">3.2.1. Z Mode</a>
+#### 3.2.1. Z Mode
 
 The `z` menu mode is an eclectic mix of cursor positioning, code folding, and random commands. You can see a list by pressing the `z` key while in Normal mode:
 
@@ -82,7 +82,7 @@ There are others that will also move the cursor to the first column of the windo
 
 You can find other scrolling keybindings in the Neovim documentation by typing `:help scrolling`, but the ones I just mentioned will probably more than cover your needs as you learn far more nuanced methods of navigating code.
 
-### <a href="#_the_first_rule_of_vim" class="link">3.3. The First Rule of Vim</a>
+### 3.3. The First Rule of Vim
 
 So there is a holy rule in Vim that I constantly break for valid reasons. Unless you are the very strange combination of weird that I am, you probably should not break it quite so often:
 
@@ -100,7 +100,7 @@ Open a largish file in Neovim (you can use `:e path/to/filename`) and experiment
 
 Vim, Neovim, and LazyVim are all *really* good at reusing motions, so you will find that `h`, `j`, `k`, and `l` are used for a lot of different navigation sequences as you progress through this book. Take enough time to really get used to them. But recognize that if you ever have to push these keys more than twice in succession to move the cursor, you’re wasting keystrokes.
 
-### <a href="#_counting" class="link">3.4. Counting</a>
+### 3.4. Counting
 
 The vast majority of commands in Vim can be prefixed with a *count* to repeat the motion multiple times. The count is typically entered as a sequence of digits before the command you want to repeat.
 
@@ -144,7 +144,7 @@ Listing 8. Disable All Line Numbers
     vim.opt.number = false
     vim.opt.relativenumber = false
 
-### <a href="#_find_mode" class="link">3.5. Find Mode</a>
+### 3.5. Find Mode
 
 If you need to move your cursor to a position that is relatively close to its current position, you may want to use LazyVim’s Find mode instead of the Seek mode we described earlier. The default Find mode in Neovim is rather limited, but the flash.nvim plugin that enables Seek mode makes it much nicer to use.
 
@@ -164,7 +164,7 @@ There is also a subtle variation of Find mode that I call “**T**o” mode, alt
 
 You might think that To mode is kind of redundant because you could fairly easily use Find mode followed by a single `h` to move the cursor left. But “To” mode is extremely useful when you are combining it with operations to edit the text, which we will discuss later. As a taste, if you use the command `d2ts`, it will delete all text between the cursor and the second `s` it encounters, but leave that `s` alone. This is much easier than the `d2fsis<Escape>` that would be required if you used a find command and then had to enter Insert mode to add the `s` back.
 
-### <a href="#_moving_by_words" class="link">3.6. Moving by Words</a>
+### 3.6. Moving by Words
 
 When `f` or `t` feels too big, and cursors with counts feel too small, you’ll most likely want to use the word movement commands. In other editors and IDEs you might be used to getting this functionality by holding `Control`, `Alt`, or `Option` while using the arrow keys.
 
@@ -180,7 +180,7 @@ Surprisingly, it takes a bit more work to move to the end of the *previous* word
 
 Collectively, you may occasionally hear the `w`, `e`, and `b` commands referred as the “web” words. It just means "moving by words". These are probably the most common movements you will use, more than individual cursor positions, simply because most editing actions tend to involve changing or deleting a word or sequence of words.
 
-### <a href="#_moving_by_words_only_bigger" class="link">3.7. Moving by Words, Only BIGGER</a>
+### 3.7. Moving by Words, Only BIGGER
 
 The “shifted” form of the `web` words also move by words, but the definition of “word” is subtly different. Specifically, a capital `W` will move to just after the next whitespace character, where a lowercase `w` will use other forms of punctuation to delimit a word. Consider a method call on an object that looks something like this in many languages:
 
@@ -204,7 +204,7 @@ The `B`, `E`, and `gE` motions behave similarly, moving in the appropriate direc
 
 One thing that is kind of annoying both in Vim and the way LazyVim is configured is that there’s no way to navigate between the individual words of `CamelCaseWords` or `snake_case_words`. You can use `fC` or `t_` and similar if you want to, but I will later show you how to set up the `nvim-spider` plugin that makes navigating these common programming constructs simpler.
 
-### <a href="#_line_targets" class="link">3.8. Line Targets</a>
+### 3.8. Line Targets
 
 Very frequently, you need to move to the beginning or end of the line you are currently editing. Often you can use `I` or `A` for this if your goal is to move to that location and enter Insert mode, but if you need to move there and stay in Normal mode (e.g. for other purposes such as to delete or change a word) you can use the `^`, `$`, and `0` commands.
 
@@ -218,7 +218,7 @@ There is also a command to go to the end of the line excluding whitespace, but I
 
 The two character combination `g_` (g underscore) means “go to the last non-blank character”. I guess `_` kind of looks like "not a space", so it’s kind of mnemonic? I include it to be comprehensive, but you’ll likely not use it much. You also have the option of combining other commands you’ve learned so you don’t have to memorize this one-off. For example, you can use the three character `$ge` (combining “end of line” with go backwards to end of word) or `$be` to move to the last non-blank on the line. You have options; pick the one that you find is easiest to remember or type!
 
-### <a href="#_jumping_to_specific_lines" class="link">3.9. Jumping to Specific Lines</a>
+### 3.9. Jumping to Specific Lines
 
 If you compile some code or run a linter, you will invariably be given a line number where the error occurred (unless the compiler is particularly useless).
 
@@ -230,7 +230,7 @@ You can go to the top of the file with `1G` if you want, but since this is such 
 
 Since the most common place you are likely to want to “go to” is a line number, the easiest to type `G` and `gg` commands are used for line number navigation.
 
-### <a href="#_jump_history" class="link">3.10. Jump History</a>
+### 3.10. Jump History
 
 All this jumping around can make you feel a little lost. Luckily, there are two super-useful keybindings for going back to places you previously jumped.
 
@@ -242,7 +242,7 @@ Neovim keeps a history of *all* your jumps, so you can jump between several loca
 
 If you jump too far, you can use the `Control-i` keybinding to jump *forward* in history. It’s just the opposite of `Control-o`. I don’t know why `i` and `o` were chosen for these; maybe because they are side-by-side on a Qwerty keyboard? They are used commonly enough that once you learn them, you won’t forget.
 
-### <a href="#_summary_3" class="link">3.11. Summary</a>
+### 3.11. Summary
 
 Navigating code is a huge topic in Vim. You’ve already learned enough commands that you can navigate a Vim window more efficiently than most non-modal editors can dream of. But we’ve barely scratched the surface, and we’ll be covering a bunch of even more useful code navigation commands later.
 

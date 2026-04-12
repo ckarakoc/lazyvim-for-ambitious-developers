@@ -1,8 +1,8 @@
-## <a href="#_source_control" class="link">Chapter 15. Source Control</a>
+## Chapter 15. Source Control
 
 LazyVim ships with several features to manage your source control history, and there are some excellent third-party plugins you can use as well. Some of these plugins work with multiple version control systems, while others are git-centric. This book will assume you use git because, well, you probably do, even if you use other systems as well.
 
-### <a href="#_the_integrated_terminal_a_rant" class="link">15.1. The Integrated Terminal (A Rant)</a>
+### 15.1. The Integrated Terminal (A Rant)
 
 For reasons I cannot explain, Neovim ships with a terminal emulator. It is bizarre to me that an editor that *runs in a terminal* ships a terminal. It is literally possible to open a terminal, open Neovim, open a terminal in Neovim, and open Neovim in a terminal in Neovim.
 
@@ -24,7 +24,7 @@ This is not a Neovim-specific feature. The `Control-z` trick works with (almost)
 
 Between terminal splits and `Control-z`, there’s just no need for the editor to have its own terminal embedded with it. Still, Neovim ships with an integrated terminal, so I should probably explain how to use it.
 
-### <a href="#_the_integrated_terminal_for_real_this_time" class="link">15.2. The Integrated Terminal (For Real This Time)</a>
+### 15.2. The Integrated Terminal (For Real This Time)
 
 You can pop up a terminal at any time in Lazyvim using the keybinding `Control-/`. It will appear in front of all your other editor windows (unless you have the Edgy extra enabled, in which case it will show up in the bottom half of the editor) and can be dismissed with `Control-/` again.
 
@@ -49,7 +49,7 @@ Annoyingly, this means you can’t use Normal mode to reposition your cursor on 
 
 There are third-party plugins that try to make the terminal experience more consistent and enjoyable, but in my opinion, they are not worth the trouble. I can just press `cmd-enter` to get a new Kitty terminal pane and have a perfectly normal terminal experience.
 
-### <a href="#_checking_your_git_status" class="link">15.3. Checking Your Git Status</a>
+### 15.3. Checking Your Git Status
 
 Lazyvim is preconfigured with a handful of carefully configured plugins that make your version control life much better.
 
@@ -83,13 +83,13 @@ If the sign shows up in the *first* column, it means the file has been staged an
 
 In addition to allowing you to effectively view your git status, this picker also allows you to *stage* entire files. To do so, focus a file and hit the `<Tab>` key to stage the file if it was previously unstaged, or to unstage it if it was previously staged.
 
-#### <a href="#_other_git_pickers" class="link">15.3.1. Other Git Pickers</a>
+#### 15.3.1. Other Git Pickers
 
 Snacks.nvim comes with pickers to view and search commit history, and to check out a branch, among other git operations. The log can be accessed with `<Space>gl`. The branch picker doesn’t have a keybinding but you can use the lua command `:lua Snacks.picker.git_branches()` to show it. If you particularly like this command, bind a keybinding to it.
 
 There are a variety of less commonly-used git-related pickers you can find by typing `:lua Snacks.picker.git` and then `Tab`.
 
-### <a href="#_interacting_with_github" class="link">15.4. Interacting with GitHub</a>
+### 15.4. Interacting with GitHub
 
 If you have the `gh` command installed for manipulating GitHub, LazyVim can file issues and comment on PRs on your behalf. The interface takes some getting used to, and it may not be worth the effort. The GitHub API is slow enough to make waiting for lists of PRs and issues to load a painful experience that outweighs most benefit from being able to comment with vim keybindings. However, your thresholds may be different, so I’ll cover the basics here.
 
@@ -158,7 +158,7 @@ When you are done commenting on all the files, don’t forget to invoke the acti
 
 That may seem a bit confusing, but in practice, it’s quite elegant. The UI is context sensitive, but is always tied to an action menu accessible with `<Enter>`. If it wasn’t so slow to load the list of open PRs in the first place, I would use it all the time!
 
-### <a href="#_status_of_the_currently_focused_file" class="link">15.5. Status of the Currently Focused File</a>
+### 15.5. Status of the Currently Focused File
 
 Every buffer has a couple subtle indications of the changes in that file. Consider this screenshot:
 
@@ -174,7 +174,7 @@ Additionally, in the status bar, just to the left of the file progress indicator
 
 Figure 80. Git Status in Status Bar
 
-### <a href="#_staging_from_the_editor" class="link">15.6. Staging From the Editor</a>
+### 15.6. Staging From the Editor
 
 You can add files to git’s index (so they are ready to commit) right from the editor. The `<Space>gh` menu (mnemonic is “**g**it **h**unks”) has a bunch of interesting subcommands:
 
@@ -197,7 +197,7 @@ You can also reset a hunk (effectively making it the same as it was at the time 
 
 If you accidentally stage a hunk, use `<Space>ghu` to unstage it. Unlike reset, this won’t change the file; the changes will still be there; they just won’t be staged anymore.
 
-### <a href="#_git_information_keybindings" class="link">15.7. Git Information Keybindings</a>
+### 15.7. Git Information Keybindings
 
 The blame line (`<Space>ghb`) command shows the commit that last changed the line the cursor is currently on, useful for answering the all-important question “Why on Earth did I do that?”
 
@@ -247,7 +247,7 @@ Listing 53. Git Hunks Menu Keymaps
 
 I got these by copying them from the git-signs config on the LazyVim website and converting from `map` calls to the `keys =` format.
 
-### <a href="#_lazygit" class="link">15.8. Lazygit</a>
+### 15.8. Lazygit
 
 Lazygit (which, despite sharing the `Lazy` namespace with LazyVim and Lazy.nvim, is by an entirely different developer) is a terminal UI tool for interacting with git. It is a separate program that you will need to install with your operating system’s package manager (e.g. `brew install lazygit`) if you want to use it.
 
@@ -259,7 +259,7 @@ Ironically, I used lazygit (in its standalone format from the command line) a lo
 
 I also now do most of my git work with the exceptional [git-spice](https://abhinav.github.io/git-spice/) tool, which simplifies many of the flows I used to use lazygit for (especially rebasing). I still use lazygit every day; I just don’t have it open 100% of the time like I used to.
 
-### <a href="#_diff_mode" class="link">15.9. Diff Mode</a>
+### 15.9. Diff Mode
 
 Neovim comes with a powerful, but slightly hard-to-learn diff viewing mode. It shows “before” and “after” files side by side and can even be configured to show the “parent” and changed state if you want a fancy merge tool.
 
@@ -282,7 +282,7 @@ This opens the indicated files side by side in a linked diff view. Most often, y
 
 Note that by default, the diff view will collapse any code that is identical between the two files into a single fold. Use the code unfolding command `zo` to expand a section.
 
-#### <a href="#_editing_diffs" class="link">15.9.1. Editing Diffs</a>
+#### 15.9.1. Editing Diffs
 
 If you use the `<Space>ghd` command to show your file in diff view against the index mode, you can keep editing the file to make additional changes. If you do this, only edit the file on the *right*. This is the “working” file. The file on the left is the “index” file; it shows the staged changes. If you want to “edit” the file on the left, use the `<Space>ghs`, `<Space>ghr`, and `<Space>ghu` to stage, reset, and unstage hunks from the right side. It is not *forbidden* to edit the index file directly, but it will confuse the Diff mode machinery, so stick to editing, staging, and unstaging from the right side.
 
@@ -312,12 +312,12 @@ The next line is `Four Point Five` in the left file, but was deleted in the righ
 <tbody>
 <tr>
 <td class="icon"></td>
-<td class="content">If you find you like the above diff interface, but figuring out which files have differences is frustrating, you may want to configure the <a href="https://github.com/sindrets/diffview.nvim">diffview.nvim</a> plugin. I personally just use the git status telescope picker, but the <code>diffview.nvim</code> plugin has a nice interface and some handy commands.</td>
+<td class="content">If you find you like the above diff interface, but figuring out which files have differences is frustrating, you may want to configure the diffview.nvim plugin. I personally just use the git status telescope picker, but the <code>diffview.nvim</code> plugin has a nice interface and some handy commands.</td>
 </tr>
 </tbody>
 </table>
 
-### <a href="#_configuring_vim_diff_as_merge_tool" class="link">15.10. Configuring Vim Diff as Merge Tool</a>
+### 15.10. Configuring Vim Diff as Merge Tool
 
 Everyone seems to hate resolving merge conflicts. Armed with Diff mode and rebasing, I actually find the process kind of enjoyable. The trick is to have a slightly complicated `~/.gitconfig` (and a very large monitor).
 
@@ -390,7 +390,7 @@ After running `vag` and the `:%diffg 2` command, the bottom window looks the sam
 
 Merge conflicts can always be somewhat stressful, but I find the four window view often makes it easier to understand what changed and why. That said, I only reach for it when I’m in a particularly knotty merge situation. Normally, I use the git-conflict.nvim plugin.
 
-### <a href="#_git_conflict_nvim" class="link">15.11. Git-conflict.nvim</a>
+### 15.11. Git-conflict.nvim
 
 While merge-tool is very helpful when working with particularly complicated merges, for simple conflicts, I usually find it quicker to just edit the file with the conflict markers in it directly. A plugin called git-conflict.nvim provides syntax highlighting and some keybindings to help navigate conflicts.
 
@@ -449,7 +449,7 @@ In all cases, but especially in the latter two, you will likely need to do some 
 
 About ninety percent of the time, this plugin is all I need to resolve a conflict. I only use the mergetool when things are particularly hairy or complicated.
 
-### <a href="#_summary_15" class="link">15.12. Summary</a>
+### 15.12. Summary
 
 This chapter introduced a lot of different ways of interacting with git and version control from inside LazyVim. You probably won’t use all of it, but I wanted to present multiple options so you can decide which ones work best for you.
 

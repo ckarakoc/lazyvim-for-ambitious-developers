@@ -1,42 +1,42 @@
-## <a href="#_where_to_go_next" class="link">Chapter 20. Where to go Next</a>
+## Chapter 20. Where to go Next
 
 We’re wrapping up our LazyVim journey together, but if you’ve made it this far, I’m sure you’ll continue to forge new paths with this excellent Neovim distro. This final chapter summarizes some of my favourite places to go for more help, deeper insights, news, and plugins.
 
-### <a href="#_reread_this_book" class="link">20.1. Reread This Book</a>
+### 20.1. Reread This Book
 
 You’ve definitely forgotten some interesting tidbits that I’ve covered in this book. I know this because in rereading it myself during each of several editorial passes I have learned things. One of the reasons I love writing is that it forces me to cover topics in far greater detail than I otherwise would.
 
 So I recommend rereading this book, or at least skimming through it. Write out a cheat sheet of every keybinding that fits in the “That’s really cool but I don’t think I’ll memorize it” box. I recommend handwriting it; it’ll stick in your memory longer and you can keep annotating it on your desk as you learn new things.
 
-If you are reading a print or E-book copy, it will, sadly, become outdated. For the latest version, have a look at my official website at <a href="https://lazyvim-ambitious-devs.phillips.codes" class="bare">https://lazyvim-ambitious-devs.phillips.codes</a>, and subscribe to my mailing list if you want to hear about updates.
+If you are reading a print or E-book copy, it will, sadly, become outdated. For the latest version, have a look at my official website at https://lazyvim-ambitious-devs.phillips.codes, and subscribe to my mailing list if you want to hear about updates.
 
-### <a href="#_the_neovim_documentation" class="link">20.2. The Neovim Documentation</a>
+### 20.2. The Neovim Documentation
 
 Vim was created in 1991 when not everyone had access to the Internet. Back then it was common to ship documentation with software instead of linking to it on the world-wide web (indeed, the web was created the same year). Given that you had the stamina to read this entire book, you might just want to type `:help user-manual<Enter>` and read from beginning to end. Possibly more than once throughout your Vim career. (`:help<Enter>` will give access to even more documentation).
 
 The key to navigating the help files is the keybinding `Control-]`. The documentation is interlinked like a wiki and if you place your cursor over any of the bold text and hit `Control-]`, you’ll jump to that section, much like clicking a link.
 
-If you prefer reading documentation in a web browser, the user manual is rendered to html at <a href="https://neovim.io/doc/user/usr_toc.html" class="bare">https://neovim.io/doc/user/usr_toc.html</a>. It’s the same content as `:help`, just more clicky.
+If you prefer reading documentation in a web browser, the user manual is rendered to html at https://neovim.io/doc/user/usr_toc.html. It’s the same content as `:help`, just more clicky.
 
 The manual is extremely comprehensive and covers a lot of commands and keybindings that maybe aren’t as relevant as they once were. I believe I’ve covered everything that is relevant to a modern developer, but I’m sure you’ll find additional nuggets of wisdom in there.
 
-### <a href="#_the_lazyvim_documentation" class="link">20.3. The LazyVim Documentation</a>
+### 20.3. The LazyVim Documentation
 
-LazyVim has its own website at <a href="https://www.lazyvim.org" class="bare">https://www.lazyvim.org</a>. It is a little sparse on hand-holding (which is why this book exists), but it is a super valuable resource once you know how to use it. Most importantly, it comprehensively lists the current configuration for every plugin and extra that ships with the distro. You **will** be visiting these from time to time when you want to tweak the configuration to better match your usage. Every plugin is listed with an `Options` and a `Full Spec` tab. The `Options` represent whatever LazyVim passes as `opts` for that plugin spec, while `Full Spec` includes the entire configuration.
+LazyVim has its own website at https://www.lazyvim.org. It is a little sparse on hand-holding (which is why this book exists), but it is a super valuable resource once you know how to use it. Most importantly, it comprehensively lists the current configuration for every plugin and extra that ships with the distro. You **will** be visiting these from time to time when you want to tweak the configuration to better match your usage. Every plugin is listed with an `Options` and a `Full Spec` tab. The `Options` represent whatever LazyVim passes as `opts` for that plugin spec, while `Full Spec` includes the entire configuration.
 
-### <a href="#_lazyvim_discussion_groups" class="link">20.4. LazyVim Discussion Groups</a>
+### 20.4. LazyVim Discussion Groups
 
 The quickest way to get answers to questions (at least, those questions that can’t be accurately answered by AI) is to ask them in the [discussion groups on GitHub](http:///github.com/LazyVim/LazyVim/discussions). I am somewhat active there, but your question will probably be answered by someone far more knowledgeable than me.
 
 If you have found an issue with LazyVim, the first step is to create a minimal repro with as few plugins as possible. The LazyVim issue tracker contains a template for a `repro.lua` that you can use to configure the minimal repro. Add the relevant plugins and run it with `nvim -u repro.lua` to test the issue. Upload this with your issue (or to the Discussion groups) to make it easy for the maintainers to help you.
 
-### <a href="#_finding_interesting_plugins" class="link">20.5. Finding Interesting Plugins</a>
+### 20.5. Finding Interesting Plugins
 
 For the most part, LazyVim contains the best-in-class version of most plugins you’ll need. However, if there is a feature you think the editor should have and it isn’t available as an extra, you can almost certainly find it in the [Awesome Neovim](https://github.com/rockerBOO/awesome-neovim) repo on Github.
 
 Another terrific resource is the [neovimcraft](https://neovimcraft.com) website. Incidentally, the maintainers of neovimcraft are also responsible for [pgs.sh](https://pgs.sh), the host for this book’s website. I appreciate their product so I wanted to throw in some free advertising for them.
 
-### <a href="#_dotfiles" class="link">20.6. Dotfiles</a>
+### 20.6. Dotfiles
 
 Historically, the easiest way to configure Vim has always been to look at someone else’s configuration and copy the interesting bits. Nowadays, the easiest way is to use LazyVim, but you may still want to check out the dotfiles of some prominent Neovim and LazyVim users:
 
@@ -54,7 +54,7 @@ I don’t really deserve to be mentioned alongside the other names on this list!
 
 These are also people worth following on various social networks.
 
-### <a href="#_neovim_guis" class="link">20.7. Neovim GUIs</a>
+### 20.7. Neovim GUIs
 
 I still maintain that LazyVim is best run in a first-rate terminal, but there are some excellent GUIs out there that you can try if you want.
 
@@ -80,7 +80,7 @@ is a solid contender as well.
 </tbody>
 </table>
 
-### <a href="#_summary_20" class="link">20.8. Summary</a>
+### 20.8. Summary
 
 This was a short chapter summarizing various resources you might find valuable as you independently continue your LazyVim and Neovim journey.
 

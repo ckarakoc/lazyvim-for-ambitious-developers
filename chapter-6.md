@@ -1,4 +1,4 @@
-## <a href="#_basic_editing" class="link">Chapter 6. Basic Editing</a>
+## Chapter 6. Basic Editing
 
 Armed with the navigation keybindings you’ve already learned and the ability to enter and leave Insert mode at will, your Vim editing experience is getting pretty close to on par with what you might be used to in non-modal editors.
 
@@ -8,7 +8,7 @@ Yes, you can do all of these things by navigating to where you want to, and ente
 
 The best part is that you already know most of what you need to take advantage of very powerful editing commands!
 
-### <a href="#_the_vim_command_mental_model" class="link">6.1. The Vim Command Mental Model</a>
+### 6.1. The Vim Command Mental Model
 
 The navigation commands such as `s` and `f` and `hjkl` and `web` that you already know are collectively known as *motion* commands. They move the cursor from its current location to a new location.
 
@@ -31,7 +31,7 @@ This model is nice because it allows you to divide and conquer your learning str
 </tbody>
 </table>
 
-#### <a href="#_a_note_on_insert_mode" class="link">6.1.1. A Note on Insert Mode</a>
+#### 6.1.1. A Note on Insert Mode
 
 Like all models, this one is not perfect. For example, you can use counts with the `i`, `I`, `a`, and `A` commands, but it’s clear that “enter Insert mode” is neither a motion nor a verb.
 
@@ -41,7 +41,7 @@ But the `<count>i` “not-motion” commands *cannot* be combined with verbs lik
 
 So now that you understand how the motions you already know can combine with verbs to perform actions other than navigation, you just need to learn some verbs.
 
-### <a href="#_deleting_text" class="link">6.2. Deleting Text</a>
+### 6.2. Deleting Text
 
 I’ve previewed this a couple times already, and even if I hadn’t, you can probably guess that the verb for deleting text is `d`.
 
@@ -67,13 +67,13 @@ So `d` will work with all the motion commands you know, as well as all the motio
 
 When the delete command is completed, Neovim will still be in Normal mode, and you can immediately perform any other `<verb><motion>` combination.
 
-### <a href="#_changing_text" class="link">6.3. Changing Text</a>
+### 6.3. Changing Text
 
 Sometimes you just want to delete text, but another common task is editing text. Replace a word with another word, change spelling, delete the rest of the paragraph and replace it with something new, etc.
 
 This *could* easily be handled by combining the delete verb with Insert mode (e.g. `dwi` will delete a word and enter Insert mode.) However, you can save a keystroke by using the `c` verb, which means “**c**hange”. If you replace the `d` in each of the examples I outlined above with a `c`, you will effectively get “delete the text and immediately enter Insert mode.”
 
-### <a href="#_operating_to_end_of_the_current_line" class="link">6.4. Operating to End of the Current Line</a>
+### 6.4. Operating to End of the Current Line
 
 It is very common to want to delete or change from the cursor position to the end of the current line, leaving the beginning of the line intact. These actions happen more often than you would expect in source code editing, so there is a shortcut for them.
 
@@ -88,7 +88,7 @@ Yes you *could* `d$` and `c$` to delete or change to the end of the line, since 
 </tbody>
 </table>
 
-### <a href="#_operating_on_entire_lines" class="link">6.5. Operating on Entire Lines</a>
+### 6.5. Operating on Entire Lines
 
 Another common action is to change or delete an *entire* line of text. So much so, in fact, that there are special motions for “the whole line”. These motions are accessed by duplicating the verb. This is another place where the mental model kind of breaks down; the interpretation of the motion *depends* on the verb.
 
@@ -96,7 +96,7 @@ In practice, this just means that `dd` deletes an entire line and `cc` deletes i
 
 You can combine these bespoke motions with counts. `d3d` will delete three lines, and `3dd` will delete one line three times (which is faster to type because you don’t have to move your finger off of `d` to hit it twice). Yes, that has the same outcome either way, but the model is such that you can use either of them. Note that there are situations where the two formats may have subtly different behaviours, although in practice I have never encountered surprises.
 
-### <a href="#_some_shortcuts_for_modifying_individual_characters" class="link">6.6. Some Shortcuts for Modifying Individual Characters</a>
+### 6.6. Some Shortcuts for Modifying Individual Characters
 
 Another common operation is to perform a delete or change operation on a single character or specific number of characters. You could do this using `dl` to delete the character under the cursor or `4dl` to delete that character and the three characters that come after it. However, because you do this so often, there is a shorthand verb that doesn’t have a motion (or rather, the motion is implied): `x`. For example, you can use `x` to delete an extraneous `u` in words like “behaviour” if you prefer American spelling. The single letter will be deleted, and you’ll be back in Normal mode ready to proceed.
 
@@ -108,7 +108,7 @@ If, instead of deleting, you need to replace a character with a different charac
 
 One shortcut I do use frequently can delete the newline at the end of the current line. Use the `J` (“**J**oin Lines”) command from anywhere in the line. I use this one a lot. If you need to merge multiple consecutive lines together, `J` takes a count. It generally does the right thing around whitespace (replacing indentation with a single space), but if you need to do a join without modifying whitespace, use the two-character verb `gJ`.
 
-### <a href="#_manipulating_case" class="link">6.7. Manipulating Case</a>
+### 6.7. Manipulating Case
 
 If you need to convert a character or sequence of characters to uppercase, use the verb `gU` (that’s a shifted `U` for the second character) followed by any standard navigation motion. I find this particular verb frustrating because `g` is normally assigned to the `Go To` motions. In this case, (as with `gJ` above) it is a verb instead.
 
@@ -129,7 +129,7 @@ The duplicate commands `gUU` and `guu` do the same thing as other duplicate verb
 </tbody>
 </table>
 
-### <a href="#_repeating_commands" class="link">6.8. Repeating Commands</a>
+### 6.8. Repeating Commands
 
 LazyVim doesn’t have a multiple cursor mode. There *are* plugins to support multiple cursors, but in my experience they don’t work very well. The Neovim developers have multiple cursors on their roadmap, so I am hoping they will come up with a paradigm that integrates nicely with the Vim mental model.
 
@@ -143,7 +143,7 @@ Like motions and verbs, the `.` command can be given a count. However, counts wi
 
 This means that if you use the verb `3dd` to delete three lines, and the next operation you perform is `2.` (“2 dot”), the second operation will delete *two* lines, rather than six.
 
-### <a href="#_recording_commands" class="link">6.9. Recording Commands</a>
+### 6.9. Recording Commands
 
 Vim’s command recording and playback system is extremely powerful. You can trivially record an arbitrary sequence of navigation, editing, and insertion commands, then repeat that sequence on demand at any location.
 
@@ -153,13 +153,13 @@ After that, type whatever sequence of navigation, editing, and insertion command
 
 When you are finished recording, just press `q` again. The recording will be stored ready for replay whenever you desire.
 
-#### <a href="#_appending_to_a_recording" class="link">6.9.1. Appending to a Recording</a>
+#### 6.9.1. Appending to a Recording
 
 If you partially complete your recording and then realize you need some more information or need to make an edit before completing the recording, you can pause the recording using `q` as usual and do the thing you need to do.
 
 When you are ready to continue recording, use `qQ` to record in *append* mode instead. The main tip here is that you need to make sure your cursor is in a location such that the merged recording will make sense. This usually means the same place it was when you stopped recording, although it may depend on what changes you made in the meantime.
 
-#### <a href="#_playing_back_a_recording" class="link">6.9.2. Playing Back a Recording</a>
+#### 6.9.2. Playing Back a Recording
 
 The easiest and fastest way to play back your most recently saved recording is with a capital `Q`.
 
@@ -172,7 +172,7 @@ The easiest and fastest way to play back your most recently saved recording is w
 </tbody>
 </table>
 
-### <a href="#_undo_and_redo" class="link">6.10. Undo and Redo</a>
+### 6.10. Undo and Redo
 
 Obviously, these are the most important operations in the whole book! Use the `u` key to undo your most recent change. Note that “most recent change” can be a pretty big whack of text, especially if you haven’t exited Insert mode for a while. For example, I wrote this entire paragraph in one Insert session. If I press `u` the entire paragraph will be lost.
 
@@ -184,7 +184,7 @@ It’s kind of the same concept as git branches, except your history is *automat
 
 About 99.9% of the time, `u` and `Control-r` will be all you need, but that remaining 0.1% can make `undotree` a godsend when you need it.
 
-### <a href="#_summary_6" class="link">6.11. Summary</a>
+### 6.11. Summary
 
 In this chapter, we expanded our understanding of the Vim mental model, and then introduced several verbs that can be combined with the navigation motions we were already familiar with.
 

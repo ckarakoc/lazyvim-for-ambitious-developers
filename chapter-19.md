@@ -1,10 +1,10 @@
-## <a href="#_comprehensive_guide_to_lazyvim_configuration" class="link">Chapter 19. Comprehensive Guide to LazyVim Configuration</a>
+## Chapter 19. Comprehensive Guide to LazyVim Configuration
 
 We covered basic plugin configuration in Chapter 5, and I’ve given details on how to deal with more complicated situations when I needed them to configure a specific plugin, but it’s scattered throughout the book.
 
 This chapter will start with a bit of a review of all that and then attempt to give you the tools you need to find and configure other Neovim plugins that are not available as Lazy Extras.
 
-### <a href="#_plugins_directory" class="link">19.1. Plugins Directory</a>
+### 19.1. Plugins Directory
 
 As we covered in Chapter 5, plugins are managed by the Lazy.nvim plugin manager. It is configured to automatically load any `.lua` file in your config folder’s `lua/plugins` directory. Typically, this will be `~/.config/nvim/lua/plugins` where `~` is your home directory. However, if you use the `NVIM_APPNAME` environment variable, then it will be `~/.config/$NVIM_APPNAME/lua/plugins`.
 
@@ -46,7 +46,7 @@ Listing 82. Multiple Plugins in One File
 
 Personally, I usually place each plugin in its own file so they are easy to search for when I use the `<Space>fc` shortcut. However, I do use the multiple plugin format when the existence of one plugin requires me to modify the configuration of another.
 
-### <a href="#_plugin_specifications_cascade" class="link">19.2. Plugin Specifications Cascade</a>
+### 19.2. Plugin Specifications Cascade
 
 Any one plugin can be specified multiple times in your configuration and LazyVim will merge everything together. There are a few cases where this is useful:
 
@@ -56,19 +56,19 @@ Any one plugin can be specified multiple times in your configuration and LazyVim
 
 - (Most Common) LazyVim pre-configures many plugins with sensible defaults, but you will occasionally want to override those defaults with your preferred keybindings or options.
 
-### <a href="#_plugin_specification" class="link">19.3. Plugin Specification</a>
+### 19.3. Plugin Specification
 
 The simplest plugin specification is just a table containing a single string with the GitHub username and repo separated by a `/`. Occasionally, this is all you need, especially for VimScript plugins. If the plugin in question isn’t hosted on GitHub, you can omit this first argument and pass either `dir=/path/to/a/folder` or `url=https://domain.com/path/to/plugin`.
 
 If you need to pin your plugin to a specific version or git branch, you can pass the `branch`, `tag`, `commit`, or `version`. For GitHub-hosted plugins, you can find the values for these version specifiers on GitHub. You will likely use this only rarely, as it is normal to install the `main` branch of the plugin. But if you know that a recent change in a plugin is causing issues for you, or if you want to try out some bleeding edge feature that hasn’t been merged yet, you’ll want to set one of these.
 
-There are almost two dozen options you can pass to a Lazy.nvim plugin specification, all documented at <a href="https://lazy.folke.io/spec" class="bare">https://lazy.folke.io/spec</a>. We discussed some of them in Chapter 5, namely `enabled`, `opts`, and `keys`. Now we’ll touch on several of the others.
+There are almost two dozen options you can pass to a Lazy.nvim plugin specification, all documented at https://lazy.folke.io/spec. We discussed some of them in Chapter 5, namely `enabled`, `opts`, and `keys`. Now we’ll touch on several of the others.
 
-### <a href="#_plugin_lifecycle_methods" class="link">19.4. Plugin Lifecycle Methods</a>
+### 19.4. Plugin Lifecycle Methods
 
 There are several options that are invoked at various times during the lifecycle of a plugin. You only need to specify these rarely, but they can be very useful to control when code executes, especially if you are trying to port “raw config” installation instructions to Lazy.nvim config.
 
-#### <a href="#_build" class="link">19.4.1. Build</a>
+#### 19.4.1. Build
 
 The `build` option is called once when the plugin is installed or updated, and is not called during the normal startup or execution of Neovim. We saw an example of it in the `smart-splits` configuration in chapter 9. In that example, we passed a string path to a shell script that ships with the plugin. Every time the plugin is installed or upgraded, that build command is run, ensuring that the relevant Kitty scripts are installed. In addition to a string pathname, `build` can also be a:
 
@@ -84,13 +84,13 @@ The `build` option is called once when the plugin is installed or updated, and i
 
 As a plugin consumer, you will likely only specify the `build` function if the plugin’s documentation instructs you to do so.
 
-#### <a href="#_init" class="link">19.4.2. Init</a>
+#### 19.4.2. Init
 
 The `init` option is executed during program startup, so to keep the startup time short, it’s best to avoid it unless absolutely necessary. It accepts a Lua function with a single argument holding any specs for that plugin. (Specifically, it is an instance of [LazyPlugin](https://github.com/folke/lazy.nvim/blob/main/lua/lazy/types.lua)).
 
 I’ve never actually had to specify `init` in any of my plugin configurations. Typically, if I need the plugin to execute at startup, I use `lazy=false` so it configures the whole thing on startup. I can see `init` being helpful if there are legitimate two-step setups, but in my experience, all of those are in plugins that LazyVim is managing on my behalf, so I’ve never needed it.
 
-#### <a href="#_config" class="link">19.4.3. Config</a>
+#### 19.4.3. Config
 
 The `config` option is the one you are most likely to specify, but try to only reach for it if you’ve run out of other options. It is called whenever the plugin is loaded, which may be on startup, or only when it is first used, depending on how it is configured.
 
@@ -125,11 +125,11 @@ The main place where this becomes a problem is when you want to customize the de
 
 Unlike with `opts` and `keys`, only one `config` function is called (the last one loaded). So if you specify `config` for a plugin, the LazyVim one will not execute.
 
-Typically, these overridden configs can be modified with judicious use of `opts` or `keys`, but if you need to do imperative tasks that differ from whatever LazyVim provides, there’s a good chance you’ll be copying the entire configuration for that plugin from the <a href="https://lazyvim.org" class="bare">https://lazyvim.org</a> website into your personal config.
+Typically, these overridden configs can be modified with judicious use of `opts` or `keys`, but if you need to do imperative tasks that differ from whatever LazyVim provides, there’s a good chance you’ll be copying the entire configuration for that plugin from the https://lazyvim.org website into your personal config.
 
 While that’s not a great outcome, it’s still better than if you didn’t use LazyVim at all, because then you’d have to write the entire configuration from scratch instead of copying and modifying a trusted source for a small subset of plugins.
 
-### <a href="#_modifying_options_in_place" class="link">19.5. Modifying Options In-place</a>
+### 19.5. Modifying Options In-place
 
 The “merging” that LazyVim does on `opts` if you supply a lua table may not always do the right thing, especially with nested tables or if you want to remove a key. Sometimes it is better to specify `opts` as a Lua function. LazyVim will pass the "previous" version of the `opts` table as input and the function needs to modify it *in place*. A great example is adding an entry to the dashboard menu:
 
@@ -148,7 +148,7 @@ Listing 85. Modifying Options With Function
 
 Here, `opts` is specified as a function that takes two arguments, and we modify the second one, which is the Lua table LazyVim is building to pass into `config`.
 
-### <a href="#_configuring_non_plugin_options" class="link">19.6. Configuring Non-plugin Options</a>
+### 19.6. Configuring Non-plugin Options
 
 Vim is a highly configurable editor and Neovim is even more so. There are over three hundred options in the `:help option-list` output. The default Vim configuration for most of these is fine, though there are a few that have silly defaults for historical reasons. Neovim has fixed a few of these and LazyVim sets almost a third of them so the out-of-the-box experience approximates what most modern developers would want.
 
@@ -160,7 +160,7 @@ For any given option, you *probably* want to set the `vim.opt.<optionname>` fiel
 
 In general, use `vim.opt` unless you see `vim.g` or `g:` in the documentation or code you are copying from.
 
-### <a href="#_setting_the_colour_scheme_theme" class="link">19.7. Setting the Colour Scheme (Theme)</a>
+### 19.7. Setting the Colour Scheme (Theme)
 
 Vim has two options for setting the colour scheme and they can interact in unexpected ways.
 
@@ -201,12 +201,12 @@ Listing 87. Third Party Colour Scheme
 <tbody>
 <tr>
 <td class="icon"></td>
-<td class="content">When looking for new colour schemes, try to find well-maintained repositories that feature "treesitter support" and provide highlight groups for all the plugins you use regularly (including those that ship with LazyVim). You can find colour schemes on the <a href="https://github.com/rockerBOO/awesome-neovim/">Awesome Neovim list</a>.</td>
+<td class="content">When looking for new colour schemes, try to find well-maintained repositories that feature "treesitter support" and provide highlight groups for all the plugins you use regularly (including those that ship with LazyVim). You can find colour schemes on the Awesome Neovim list.</td>
 </tr>
 </tbody>
 </table>
 
-### <a href="#_lazy_loading" class="link">19.8. Lazy Loading</a>
+### 19.8. Lazy Loading
 
 LazyVim automatically lazy-load plugins on demand instead of during program startup. This can shave milliseconds off your startup time (that oh-so-precious resource).
 
@@ -228,7 +228,7 @@ If instead the plugin should only be loaded if certain commands are called, spec
 
 You can also specify a Neovim `event` that should trigger the plugin to load. There are way too many of these to list in this book, so I’ll refer you to `:help events`. The most common ones to trigger plugin loading would be `BufEnter`, `BufRead`, and `BufWrite`.
 
-### <a href="#_filetype_specific_configuration" class="link">19.9. Filetype-specific Configuration</a>
+### 19.9. Filetype-specific Configuration
 
 If you need to configure something to run for a specific filetype, you’ll need the `nvim_create_autocmd` function. Technically you can place this call anywhere, including `init.lua` or the `config` or `init` for a specific plugin, but the LazyVim convention is to put them in the `lua/config/autocmds.lua` file.
 
@@ -247,7 +247,7 @@ The second argument contains the options for the autocommand. In this case I am 
 
 In this case I’m using the `command` key to execute a command whenever I read a `*.svx` file. You can instead specify a `callback` key where the value is a Lua function that will be called whenever the event occurs.
 
-### <a href="#_per_project_configuration" class="link">19.10. Per-project Configuration</a>
+### 19.10. Per-project Configuration
 
 Sometimes, you’ll want to have a custom LazyVim configuration for a specific project. For example, most of my Typescript projects are in Svelte, which means I can’t (yet) use the exceptional `biome` linter/formatter for them. That means I’m using `prettier` for formatting in these repos. My `extend-conform.lua` plugin specification looks like this:
 
@@ -286,12 +286,12 @@ Listing 90. Project-specific `.lazy.lua`
 
 You can choose to commit this with your project or `.gitignore` it depending on the standards of the project.
 
-### <a href="#_lazyvim_recipes" class="link">19.11. LazyVim Recipes</a>
+### 19.11. LazyVim Recipes
 
 LazyVim helpfully collects some of the most commonly requested features as recipes on their [home page](https://www.lazyvim.org/configuration/recipes). Most of these can simply be copied directly into any file in your `lua/plugins` folder. Remember to add `return` in front of them so that whatever table they give you is exported.
 
 Most of the recipes are just providing a set of suggested `opts` to trigger the behaviour in question. These `opts` are always plugin-specific and you’ll need to visit the help file or README for the plugin to understand what they are doing.
 
-### <a href="#_summary_19" class="link">19.12. Summary</a>
+### 19.12. Summary
 
 This chapter was all about configuring LazyVim. Much of it may have been review of examples I’ve used throughout the book when adding plugins to support specific features. However, I wanted to make sure there was coverage in one place for when you want to look things up.

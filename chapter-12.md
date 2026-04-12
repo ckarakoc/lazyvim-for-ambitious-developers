@@ -1,10 +1,10 @@
-## <a href="#_searching" class="link">Chapter 12. Searching…​</a>
+## Chapter 12. Searching…​
 
 It’s kind of amazing that we’ve gotten this far without covering searching. Find and replace in Vim has always been far more powerful and nuanced than in most editors, which just give you a little dialog with three fields and, if you’re lucky, a check box to specify regular expressions.
 
 LazyVim extends Neovim’s powerful search feature to make it both easier to use and prettier. You know about the Seek (`s`) and Treesitter (`S`) modes for navigating to and selecting objects you can see, as well as their remote operator-pending objects counterparts: `r` and `R`. These work great when the text you are looking for is currently visible. However, when you need to search a file and have it automatically scroll to search results, they are insufficient.
 
-### <a href="#_search_in_current_file" class="link">12.1. Search in Current File</a>
+### 12.1. Search in Current File
 
 To search for a pattern in Vim use the `/` command in Normal mode. The mnemonic is that the `/` key is also the question mark key, and searching for something is a kind of question.
 
@@ -44,7 +44,7 @@ If you `n` too far, you can use `Shift-N` to move the cursor to the previous res
 </tbody>
 </table>
 
-### <a href="#_ignore_case" class="link">12.2. Ignore Case</a>
+### 12.2. Ignore Case
 
 If you enter your search term as all lowercase letters, LazyVim will ignore case by default, but if you include a capital letter in your search term, it will enable case sensitivity. So searching for `in` will match `in` and `In`, but searching for `In` will only match `In`.
 
@@ -58,7 +58,7 @@ If you want to make the change permanent, open your `options.lua` file and add `
 
 The `\C` trick seems kind of weird at first, but when you think about the alternative used in most code editors, where you have to move your hand to your mouse, target a tiny checkbox with a label like `wW`, and click it, then refocus the search box and continue typing, you’ll probably decide that `\C` is faster.
 
-### <a href="#_regular_expressions" class="link">12.3. Regular Expressions</a>
+### 12.3. Regular Expressions
 
 Vim searches use regular expressions by default. But they are kind of strange regular expressions.
 
@@ -84,7 +84,7 @@ If you want to “disable” regular expression matching for a specific search, 
 
 If you desperately need a regular expression to do something you can <span class="line-through">ask Claude</span> skim through `:help regular expressions` to find the syntax you need. You will come away either enlightened or frustrated.
 
-### <a href="#_search_in_project" class="link">12.4. Search In Project</a>
+### 12.4. Search In Project
 
 If you need to search for a word across your entire codebase, instead of just in one file, use the command `<Space>/` instead of just `/`. It will pop up the ever-so-familiar picker, this time in something called `live_grep` mode.
 
@@ -111,7 +111,7 @@ Remember that you can add labels to picker results by pressing `Alt-s`. I find t
 
 Annoyingly, this search mode is completely different from Vim’s built-in search. It just passes your pattern to `ripgrep` and behaves the way `ripgrep` does. And `ripgrep` doesn’t know about things like Vim’s strange regular expression engine. It *does* support regular expressions, but they use maddeningly different syntax from Vim. Which is to say, the same syntax as pretty much everything that isn’t Vim. It’s Vim that’s maddening here, not `ripgrep`. Just so we’re all clear.
 
-### <a href="#_summary_12" class="link">12.5. Summary</a>
+### 12.5. Summary
 
 This chapter was all about search: the `/` shortcut to enter Search in file mode, and the `<Space>/` shortcut to enter find in project mode.
 

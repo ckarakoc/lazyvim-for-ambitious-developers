@@ -1,10 +1,10 @@
-## <a href="#_and_replacing" class="link">Chapter 13. …​And Replacing</a>
+## Chapter 13. …​And Replacing
 
 Vim has a very powerful find and replace mechanism. It…​ takes some getting used to. On the one hand, it’s pretty hard to go back after you’ve gotten used to the power of Vim substitution. On the other hand, getting used to it can take a lifetime.
 
 You definitely need to know how to do old-school substitution in Vim, but I first want to discuss a slightly easier version of find and replace that I have been reaching for more and more often.
 
-### <a href="#_nvim_rip_substitute" class="link">13.1. Nvim-rip-substitute</a>
+### 13.1. Nvim-rip-substitute
 
 The `nvim-rip-substitute` plugin by Chris Grieser provides a familiar find and replace dialog that is similar to most other tools and editors. It isn’t as powerful as native Vim substitution, but it is easier to use.
 
@@ -60,7 +60,7 @@ Rip-substitute also keeps track of your history. Use the up and down arrows in n
 
 I have made rip-substitute my daily driver for find and replace. It is powerful enough to cover the majority of my needs, and its default behaviour is quite a bit saner than the substitute command we’ll cover next. That said, rip-substitute can’t do everything, so you’ll still need to reach for the deep dive below from time to time.
 
-### <a href="#_substitute_command" class="link">13.2. Substitute Command</a>
+### 13.2. Substitute Command
 
 Substitution predates Vim and even Vi; it goes back to the legendary `ed` by the even more legendary Ken Thompson. He wrote the original paper on regular expressions, (among **many** other foundational tools) so I suspect `ed` is the first place regexes were used in the wild.
 
@@ -99,7 +99,7 @@ Maybe it’s not, but we’re not done. Not remotely. For one thing, that comman
 </tbody>
 </table>
 
-#### <a href="#_substitute_ranges" class="link">13.2.1. Substitute Ranges</a>
+#### 13.2.1. Substitute Ranges
 
 Many Neovim ex commands can be preceded by a range of lines that the command will operate on. The syntax for ranges can be a little confusing, and to this day I still have to look it up with `:help range` if I’m doing anything non-standard.
 
@@ -145,7 +145,7 @@ The substitution is `:,/hello-10/s/hello/foo`. All those forward slashes in ther
 
 There is a ton of other stuff you can do with Vim ranges, but the truth is, most of them only exist to support outdated editing modes. You will likely find that `%`, `'<,'>`, and `,/pattern/` cover 95% of your use cases. Read through `:help range` once to make sure you know what other sorts of syntaxes are available, and don’t be afraid to look them up in the rare cases where one of the above is not sufficient.
 
-#### <a href="#_flags_global_and_ignore_case_substitutions" class="link">13.2.2. Flags (Global and Ignore Case Substitutions)</a>
+#### 13.2.2. Flags (Global and Ignore Case Substitutions)
 
 You can add “flags” at the end of any substitution (after the last `/`) to modify how the search and replace behaves. The most common flag you’ll use is `g` which stands for “global”. You’ll append it more often than not.
 
@@ -167,7 +167,7 @@ There are almost a dozen flags, but the only other useful ones are `i`, `I`, and
 
 Flags can be combined, so `:%s/hello/foo/gc` will do a global replace, confirming each one.
 
-#### <a href="#_handy_substitute_shortcuts" class="link">13.2.3. Handy Substitute Shortcuts</a>
+#### 13.2.3. Handy Substitute Shortcuts
 
 You don’t need to memorize this section, but once you get used to substituting, you’ll probably notice that some actions are rather repetitive and monotonous and you’d like to type them faster. Read through these tips so you remember to look them up when you are more comfortable with `:substitute`.
 
@@ -260,7 +260,7 @@ The `\(\S*\)` matches the same thing as `\S*` but it stores the result in a *cap
 </tbody>
 </table>
 
-### <a href="#_project_wide_search_and_replace" class="link">13.3. Project-wide Search and Replace</a>
+### 13.3. Project-wide Search and Replace
 
 LazyVim ships with a plugin called Grug-far.nvim to do a global find and replace in all files in the project. Without grug-far, you would probably (unenthusiastically) do this from the command line using `sed`, the stream-oriented evolution of `ed` that I mentioned.
 
@@ -303,7 +303,7 @@ Grug-far keeps track of your recent search and replace operations and allows you
 
 There are a few other useful keybindings in a menu you can pop up with `g?`, which I’ll leave you to peruse at your leisure.
 
-### <a href="#_the_text_case_plugin" class="link">13.4. The Text-case Plugin</a>
+### 13.4. The Text-case Plugin
 
 The [text-case.nvim](https://github.com/johmsalas/text-case.nvim) plugin by Johnny Salas provides a set of commands to quickly change the case of text. It has two related, but distinct, use cases:
 
@@ -339,7 +339,7 @@ Select the case style you want to switch the word to and you’re done! This sho
 
 Alternatively, you can put the cursor on the starting `f` and hit `gao` to instruct text-case to enter `operator-pending` mode **after** you select your target case. Then you can use any motion (e.g. `2w`) to tell text-case what block it should operate on.
 
-#### <a href="#_case_aware_substitution" class="link">13.4.1. Case-aware substitution</a>
+#### 13.4.1. Case-aware substitution
 
 The text-case plugin also supports a `:Subs` command that behaves similar to the `:substitute` command, but changes words in such a way that it always keeps its existing case shape.
 
@@ -365,7 +365,7 @@ Listing 35. Case-aware Substitution
 
 This feature is ridiculously useful…​ when it’s useful. The occasions where it is needed are relatively uncommon, but when you need it, no other tool is nearly so suitable.
 
-### <a href="#_perform_vim_commands_on_multiple_lines" class="link">13.5. Perform Vim Commands on Multiple Lines</a>
+### 13.5. Perform Vim Commands on Multiple Lines
 
 The `:substitute` command isn’t the only one that can operate on multiple lines at once, with a range. In fact, if you just want to write a few lines out to a separate file, you can pass a range to `:write`. The easiest way to do this is to select the range in Visual mode and type `:write <filename>`. Neovim will automatically convert it to `:'<,'>write` and only save those lines.
 
@@ -387,7 +387,7 @@ The `:substitute` command isn’t the only one that can operate on multiple line
 </tbody>
 </table>
 
-#### <a href="#_the_norm_command" class="link">13.5.1. The Norm Command</a>
+#### 13.5.1. The Norm Command
 
 When you first use it, `:norm` feels pretty weird. It allows you to perform a sequence of arbitrary Vim normal-mode commands (including navigation commands such as `hjkl` and `web` as well as modification commands like `d`, `c`, and `y`) across multiple lines.
 
@@ -449,7 +449,7 @@ It’s pretty common to get the command wrong the first time you try to apply it
 
 If the command is kind of complicated, you’ll probably get annoyed while editing it because you don’t have access to all the Vim navigation commands you are used to. So now is a great time to introduce Vim’s command line editor.
 
-### <a href="#_command_line_editor" class="link">13.6. Command Line Editor</a>
+### 13.6. Command Line Editor
 
 To display the command line editor, type `Control-f` while the little `Cmdline` window is focused. Or, if you are currently in Normal mode, type `q:`. This latter is not related to the “record to register” command typically associated with `q`. It is instead “Open the editable command line window”.
 
@@ -471,7 +471,7 @@ You will find this window is devilishly hard to escape, though. The escape key d
 
 Most importantly, you can use normal Vim commands to *edit* any line in this window. Just navigate to the line, use whatever mad editing skills you have (including other command-mode commands such as `:s`) to make the line look the way you want it to, return to Normal mode, and press `Enter`. The edited command will execute.
 
-### <a href="#_mixing_the_norm_command_with_recording" class="link">13.7. Mixing the Norm Command With Recording</a>
+### 13.7. Mixing the Norm Command With Recording
 
 Recall that the `q` command can record a sequence of commands to a register for later playback. And the `:norm` command can be used to apply a sequence of commands to a range of lines. The fact that you can `p` a register that has a recording in it means there are several ways you can later apply a recording to a range of lines using `:norm`:
 
@@ -481,7 +481,7 @@ Recall that the `q` command can record a sequence of commands to a register for 
 
 - `q:<range>inorm <Esc>"qp` will open the command line editor window, insert the word `norm` and copy the contents of register `q` into the line using the Normal mode register paste command.
 
-### <a href="#_the_global_command" class="link">13.8. The Global Command</a>
+### 13.8. The Global Command
 
 The `:norm` command operates on a range of lines, and Neovim ranges must be contiguous lines. It’s not possible to execute a command on e.g. lines 1 to 4 and 8 to 10, but not 5 to 7 (other than running `:norm` twice on different ranges).
 
@@ -567,7 +567,7 @@ Figure 71. Global Invert Match
 
 I don’t use `:global` nearly as often as I use `:norm`. But when I do, it is a hyper-efficient way to cause massive changes in a file. It takes some getting used to, and you’ll probably be looking up the syntax the first few times you need it, but it’s a really terrific tool to have in your toolbox.
 
-### <a href="#_summary_13" class="link">13.9. Summary</a>
+### 13.9. Summary
 
 This chapter was all about bulk editing text. We started with substitutions using the `:s[ubstitute]` ex command, and then took a tour of the UI for performing find and replace across multiple files using the Grug-far plugin.
 

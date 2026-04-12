@@ -1,4 +1,4 @@
-## <a href="#_objects_and_operator_pending_mode" class="link">Chapter 7. Objects and Operator-Pending Mode</a>
+## Chapter 7. Objects and Operator-Pending Mode
 
 The navigation and motion commands we’ve learned so far are invaluable, but Neovim also comes with several more advanced motions that can supercharge your editing workflow. LazyVim further amends this collection of motions with other powerful navigation capabilities powered by a variety of plugins.
 
@@ -23,7 +23,7 @@ I do use the paragraph motions all the time, though. A paragraph is defined as a
 
 Again, you might expect `{` to jump to a curly bracket, so it is a bit annoying that it means “empty line” instead, but once you get used to it, you’ll probably reach for it a lot.
 
-### <a href="#_unimpaired_mode" class="link">7.1. Unimpaired Mode</a>
+### 7.1. Unimpaired Mode
 
 LazyVim provides a bunch of other motions that can be accessed using square brackets. It will take a while to internalize them all, but luckily, you can get a menu by pressing a single `[` or `]`. Like the sentence and paragraph motions, the square brackets allow you to move to the previous or next *something*, except the *something* depends what key you type after the square bracket.
 
@@ -45,7 +45,7 @@ As a shortcut, you can also use `[%` and `]%` where the `%` key is basically a p
 
 That last one (square bracket), is important, because unlike the others, `[[` and `]]` do *not* jump out of square brackets, so using `[%` and `]%` is your only option if you need to jump out of them.
 
-#### <a href="#_jump_by_reference" class="link">7.1.1. Jump by Reference</a>
+#### 7.1.1. Jump by Reference
 
 Instead of jumping out of square brackets as you might expect, the easy to type `[[` and `]]` are reserved for a more common operation: jumping to other references to the variable under the cursor (in the same file).
 
@@ -53,7 +53,7 @@ This feature typically uses the language server for the current language, so it 
 
 As you move your cursor, LazyVim will automatically highlight other variable instances in the file so you can easily see where `]]` or `[[` will move the cursor to.
 
-#### <a href="#_jump_by_language_features" class="link">7.1.2. Jump by Language Features</a>
+#### 7.1.2. Jump by Language Features
 
 The `[c`, `]c`, `[f`, `]f`, `[m`, and `]m` keybindings allow you to navigate around a source code file by jumping to the previous or next class/type definition, function definition, or method definition. The usefulness of these features depends a bit on both the language you are using and the way the Language Service for the language is configured, but it works well in common languages.
 
@@ -63,7 +63,7 @@ Note that these are *not* the same as “jump out” behaviour: if you have a ne
 
 I personally don’t use these keybindings very much as there are other ways to navigate symbols in a document that we will discuss later. But if you are editing a large function and you want to quickly jump to the next function in the file, `]f` is probably going to get you there faster than using `j` with a count you need to calculate, or even a `Control-d` followed by `S` to go to seek mode.
 
-#### <a href="#_jump_to_end_of_indention" class="link">7.1.3. Jump to End of Indention</a>
+#### 7.1.3. Jump to End of Indention
 
 If you are working with indentation-based code such as Python or deeply nested tag-based markup such as HTML and JSX, you may find the `[i` and `]i` pairs helpful.
 
@@ -79,7 +79,7 @@ In addition, the plugin adds the unimpaired commands `[i` or `]i` to jump out of
 
 I use this functionality all the time when editing Python code and Svelte components. I use it less often in other languages where `[%` and `]%` tend to get me closer to where I need to go next. But the visual feedback of indent guides can be super helpful, even in bracket-heavy languages; I may be surprised by which curly bracket I will “jump out” to, but the indent guides are always obvious.
 
-#### <a href="#_jumping_to_diagnostics" class="link">7.1.4. Jumping to Diagnostics</a>
+#### 7.1.4. Jumping to Diagnostics
 
 I don’t know about you, but when I write code, I tend to introduce a lot of errors in it. Depending on the language, LazyVim is either preconfigured or can be configured to give me plenty of feedback about those errors, usually in the form of a squiggly underline.
 
@@ -102,7 +102,7 @@ Finally, if you use `TODO` or `FIXME` comments in your code, you can jump betwee
 
 Note that unlike most of the previous `]` and `[` keybindings, it is not possible to combine diagnostic jumps with a verb. So `d[d` will **not** delete from the current location to the nearest diagnostic. This is (probably) just an oversight in how LazyVim defines the keybindings.
 
-#### <a href="#_jumping_to_git_revisions" class="link">7.1.5. Jumping to Git Revisions</a>
+#### 7.1.5. Jumping to Git Revisions
 
 This is actually my favourite of the square bracket pairs: `[h` and `]h` allow you to jump to the next git “hunk”. If you aren’t familiar with the word (or if you’re from a generation that thinks it means a gorgeous man), a “git hunk” just refers to a section of a file that contains modifications that haven’t been staged or committed yet.
 
@@ -118,7 +118,7 @@ On the left side, to the right of the line numbers, you can see a green vertical
 
 Like diagnostics, `[h` and `]h` cannot be combined with a verb.
 
-### <a href="#_text_objects" class="link">7.2. Text Objects</a>
+### 7.2. Text Objects
 
 Combining verbs with motions is very useful, but it is often more helpful to combine those same verbs with *objects* instead of motions. Vim comes with several common objects, such as words, sentences and the contents of parenthesis. LazyVim adds a ridiculous pile of other text objects.
 
@@ -140,7 +140,7 @@ Figure 28. Operator Pending Menu
 
 Let’s cover most of these in detail next.
 
-#### <a href="#_textual_objects" class="link">7.2.1. Textual Objects</a>
+#### 7.2.1. Textual Objects
 
 The operators `w`, `s`, and `p` are used to perform an operation on an entire word, sentence, or paragraph, as defined previously: word is contiguous non-punctuation, sentence is anything that ends in a `.`, `?`, or `!`, and paragraph is anything separated by two newlines.
 
@@ -169,7 +169,7 @@ Finally, I can delete the entire paragraph with `dip` or `dap`. The difference i
 
 Typically, I use `i` when I am changing a word, sentence or paragraph, with a `c` verb, since I want to replace it with something else that will need to have surrounding whitespace. But I use `a` when I am deleting the textual object with `d` because I don’t intend to replace it, so I want the whitespace to behave as if that object never existed.
 
-#### <a href="#_quotes_and_brackets" class="link">7.2.2. Quotes and Brackets</a>
+#### 7.2.2. Quotes and Brackets
 
 The objects `"`, `'`, and `` ` `` operate on a string of text surrounded with double quotes, single quotes, or backticks. If you use the command `ci"`, you will end up with your cursor in Insert mode between two quotation marks, where everything inside the string was removed. If you use `da"`, however, it will delete the quotation marks as well.
 
@@ -203,7 +203,7 @@ You can also delete things between certain pieces of punctuation. For example, `
 
 If you want to operate on the entire buffer, use the `ag` or `ig` text object. So `cag` is the quickest way to scrap everything and start over and `yig` will copy the buffer so you can paste it into a pastebin or chatbot. The `g` may seem like an odd choice, but it has a symmetry to the fact that `gg` and `G` jump to the beginning or end of the file. If you need a mnemonic, think of `yig` as “yank in **g**lobal”.
 
-#### <a href="#_language_features" class="link">7.2.3. Language Features</a>
+#### 7.2.3. Language Features
 
 LazyVim adds some helpful operators to perform a command on an entire function or class definition, objects, and (in HTML and JSX), tags. These are summarized below:
 
@@ -217,11 +217,11 @@ LazyVim adds some helpful operators to perform a command on an entire function o
 
 - `i` Act on a “scope”, which is essentially an **i**ndentation level
 
-#### <a href="#_git_hunks" class="link">7.2.4. Git Hunks</a>
+#### 7.2.4. Git Hunks
 
 Remember the git hunks we discussed with Unimpaired mode? You can similarly act on an entire hunk with the `h` object. So one way to quickly revert an addition is to just type `dih`. But you probably won’t do this much as there are better ways to deal with git, as we will discuss in Chapter 15.
 
-#### <a href="#_next_and_last_text_object" class="link">7.2.5. Next and Last Text Object</a>
+#### 7.2.5. Next and Last Text Object
 
 The text object feature is great if you are already inside the object you want to operate on, but LazyVim is configured (using a plugin called mini.ai) so that you can even operate on objects that are only *near* your cursor position.
 
@@ -239,7 +239,7 @@ Listing 21. That Odd Class Again
 
 If my cursor is on the `{` of the `function bar` line, I can type `cin{` to delete the contents of the `fizz: 'buzz'` object and place my cursor there in insert mode. I can save myself an entire navigation with just one extra `n` keystroke. I think this is a really neat feature, but I tend to forget it exists…​ hopefully writing about it here will help me remember!
 
-### <a href="#_seeking_surrounding_objects" class="link">7.3. Seeking Surrounding Objects</a>
+### 7.3. Seeking Surrounding Objects
 
 The flash.nvim plugin that gave us `Seek` mode, has another trick up its sleeve: the holy grail of text objects. After specifying a verb, you can use the `S` key (there is no `i` or `a` required) to be presented with a bunch of paired labels around the primary code objects surrounding your cursor.
 
@@ -255,7 +255,7 @@ If the next character I press is `a` (or enter, to accept the default), then I w
 
 This is a super useful tool when you need to change, delete, or copy a complex structure that does not immediately map to any of the other objects.
 
-#### <a href="#_seeking_surrounding_objects_remotely" class="link">7.3.1. Seeking Surrounding Objects Remotely</a>
+#### 7.3.1. Seeking Surrounding Objects Remotely
 
 The `S` Operator-pending mode is useful for acting on objects that surround the cursor, but if your cursor isn’t currently within the object you want to select, it won’t suffice. You could use `s` to navigate to inside the object followed by `S` to select it, but you can save yourself a few keystrokes by instead using the `R` operator.
 
@@ -267,7 +267,7 @@ To put the icing on the cake, you can also perform a remote seek on any kind of 
 
 As a specific example, the command `drAth2w` will delete two words starting at the word “At” that gets the label `h`, then jump your cursor back to the position it was at before you started the delete. In other words, it is the same as the command `sAthd2w<Control-o>`, which will seek to the word “At” at label h, then delete two words, and use `Control-o` to jump back to your previous history location. The remote command is a little shorter, but it’s another one that I tend to forget to use. My brain goes into “move the cursor” mode before it figures out “delete” mode, so by the time I realize I could have done it remotely, it’s too late.
 
-### <a href="#_operating_on_surrounding_pairs" class="link">7.4. Operating on Surrounding Pairs</a>
+### 7.4. Operating on Surrounding Pairs
 
 We’ve already seen the text objects to operate on the *contents* of pairs of quotation marks or brackets, but what if you want to keep the content but change the surrounding pair?
 
@@ -275,7 +275,7 @@ Maybe you want to change a double quoted string such as `"hello world"` to a sin
 
 LazyVim ships with the mini.surround plugin for this kind of behaviour, but it’s not installed by default. It is a recommended extra, so if you followed my suggestion to enable all the recommended plugins, you may have it already.
 
-#### <a href="#_add_surrounding_pair" class="link">7.4.1. Add Surrounding Pair</a>
+#### 7.4.1. Add Surrounding Pair
 
 The default verb for adding a surrounding pair is `gsa`. That will place your editor in operator-pending mode, and you now have to type the motion or text object to cover the text you want to surround with something. Once you have finished inputting that object, you need to type the character you want to surround it with, such as `"` or `(` or `)`. The difference between the latter two is that, while both will surround the text with parentheses, the `(` will also put extra spaces *inside* the parentheses.
 
@@ -295,7 +295,7 @@ That may sound complicated, but it should make sense after you see some examples
 
 Depending on the context it can be a lot of characters to type, but it’s typically fewer keystrokes than navigating to and changing each end of the pair independently.
 
-#### <a href="#_delete_surrounding_pair" class="link">7.4.2. Delete Surrounding Pair</a>
+#### 7.4.2. Delete Surrounding Pair
 
 Deleting a pair is a little easier, as you don’t need to specify a text object. Just use `gsd` followed by the indicator of whichever pair you want to remove.
 
@@ -303,13 +303,13 @@ So if you want to delete the `[]` surrounding the cursor, you can use `gsd[`.
 
 If you want to delete deeply nested elements, you need to put a count *before* the `gsd` verb. So use `2gsd{` to delete the second set of curly braces outside your current cursor position. For example, if your cursor is inside the `def` of the string `{abc {def}}`, typing `2gsd{` results in `abc {def}`, leaving the “inner” curly braces around `def`, but removing the second outer set around the whole.
 
-#### <a href="#_replace_surrounding_pair" class="link">7.4.3. Replace Surrounding Pair</a>
+#### 7.4.3. Replace Surrounding Pair
 
 Replacing is similar to deleting, except the verb is `gsr` and you need to type the character you want to replace the existing character with *after* you type the existing character.
 
 So if you have the text `"hello world"` and your cursor is inside it, you can use `gsr"'` to change the double quotes to single quotes: `'hello world'`.
 
-#### <a href="#_navigate_surrounding_characters" class="link">7.4.4. Navigate Surrounding Characters</a>
+#### 7.4.4. Navigate Surrounding Characters
 
 Performing operations on surrounding pairs or on the entire contents of the pair is convenient, but sometimes you just want to move your cursor to the beginning or end of the pair. You can often do this using Seek mode, Find mode, or the Unimpaired mode commands such as `[(`, but there are other commands that are more syntax aware if you need them.
 
@@ -317,11 +317,11 @@ The easiest one has been built into Vim for a long time. If your cursor is curre
 
 The mini.pairs plugin comes with `gsf` and `gsF` keybindings, which can be used to move your cursor to the character in question. I don’t use these, because the mini.ai plugin provides a similar feature using the `g[` and `g]` shortcuts. These shortcuts both need to be followed by a character type, so e.g. `g[(` will jump back to the nearest surrounding open parenthesis, and `g]]` will jump to the nearest closing square bracket. If you give it a count, it will jump out of that many surrounding pairs.
 
-#### <a href="#_highlighting_surrounding_characters" class="link">7.4.5. Highlighting Surrounding Characters</a>
+#### 7.4.5. Highlighting Surrounding Characters
 
 If you just need to double check where the surrounding characters are, you can use something like `gsh(`, where `h` would mean “**h**ighlight”. This can sometimes be used as a dry run for a delete or replace operation that is using counts so you can double check that you are operating on the pairs you think you are.
 
-#### <a href="#_bonus_xml_or_html_tags" class="link">7.4.6. Bonus: XML or HTML Tags</a>
+#### 7.4.6. Bonus: XML or HTML Tags
 
 The mini.surround plugin is mostly for working with pairs of *characters*, but it can also operate on html-like tags.
 
@@ -339,7 +339,7 @@ If the tag you want to add has attributes, you can add them to the prompt. mini.
 
 Figure 31. Suround Tag Attributes
 
-#### <a href="#_modifying_the_keybindings" class="link">7.4.7. Modifying the Keybindings</a>
+#### 7.4.7. Modifying the Keybindings
 
 I love the mini.surround behaviour. I use it a lot. So much that I quickly got tired of typing `gs` repeatedly. I decided to replace the `gs` with a `;` so I can instead type `;d` or `;r` instead of `gsd` or `gsr`. For adding surrounds, I decided to leverage the fact that double keypresses are easy to type, so I used `;;` for that action instead of `gsa` or even `;a`.
 
@@ -387,12 +387,12 @@ The second definition also passes a custom `opts` table. It replaces the default
 <tbody>
 <tr>
 <td class="icon"></td>
-<td class="content">If I had known that <code>;</code> was being rebound by flash.nvim, I could have found this solution by reading the config for flash.nvim on the <a href="https://www.lazyvim.org">LazyVim website</a> and seeing what needed to be overwritten. However I wasn’t able to figure out where the <code>;</code> was being defined, and ended up asking for help on the LazyVim GitHub Discussions. People are really helpful there, and I encourage you to come say hello if you have any questions.</td>
+<td class="content">If I had known that <code>;</code> was being rebound by flash.nvim, I could have found this solution by reading the config for flash.nvim on the LazyVim website and seeing what needed to be overwritten. However I wasn’t able to figure out where the <code>;</code> was being defined, and ended up asking for help on the LazyVim GitHub Discussions. People are really helpful there, and I encourage you to come say hello if you have any questions.</td>
 </tr>
 </tbody>
 </table>
 
-### <a href="#_summary_7" class="link">7.5. Summary</a>
+### 7.5. Summary
 
 In this chapter, we learned a bunch of advanced code motion techniques that LazyVim gives us by its reimplementation of Unimpaired mode. Then we learned what text objects are and took in a crash course on the many, many text objects LazyVim provides.
 

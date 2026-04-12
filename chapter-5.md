@@ -1,10 +1,10 @@
-## <a href="#_configuration_and_plugin_basics" class="link">Chapter 5. Configuration and Plugin Basics</a>
+## Chapter 5. Configuration and Plugin Basics
 
 I’ve talked about plugins several times and you even got to see the Lazy.nvim plugin manager in action back in Chapter 1. LazyVim has a unique multi-layered approach to managing plugins that requires a bit of description, but is quite elegant in practice.
 
 Installing plugins allows you to configure Neovim to do things it can’t do by default. Plugins are typically written in either Lua or VimScript, though other languages are supported with Neovim’s remote plugin architecture.
 
-### <a href="#_the_three_categories_of_plugins_in_lazyvim" class="link">5.1. The Three Categories of Plugins in LazyVim</a>
+### 5.1. The Three Categories of Plugins in LazyVim
 
 The simplest plugins to use in LazyVim are pre-installed by LazyVim itself. You’ve used many of them already. Some, such as Snacks.nvim’s picker and explorer windows, and Lazy.nvim provide custom UI components to interact with them. Others, such as flash.nvim and which-key provide new commands or modes to work with. Still others operate quietly in the background auto-matching parentheses or tags and drawing indent guides.
 
@@ -27,7 +27,7 @@ is an alternative plugin for filesystem management that LazyVim does not explici
 
 From the underlying Neovim client’s point of view, all these plugins are exactly the same, as Neovim only knows about third-party plugins. LazyVim just comes with a bit of extra structure that you need to think about when using plugins. Usually this structure simplifies things, but occasionally it adds extra hassle.
 
-### <a href="#_lazy_extras" class="link">5.2. Lazy Extras</a>
+### 5.2. Lazy Extras
 
 In the previous chapter, I covered how to enable and use `mini.files`, but I was pretty terse on the installation instructions. Now we’ll get to dive deep.
 
@@ -49,9 +49,9 @@ While we’re in the `LazyExtras` screen, I recommend enabling the `lang.*` extr
 
 I wouldn’t install any other non-recommended extras until you’ve either encountered them later in this book or had a chance to research them after you finish the book. Otherwise, they may change behaviours in ways that I won’t have the foresight to write about.
 
-You can find more information on each extra by visiting <a href="https://lazyvim.org" class="bare">https://lazyvim.org</a> and clicking the “Extras” menu item on the left menu bar. It includes links to the list of plugins each extra installs as well as the configuration LazyVim brings for that extra.
+You can find more information on each extra by visiting https://lazyvim.org and clicking the “Extras” menu item on the left menu bar. It includes links to the list of plugins each extra installs as well as the configuration LazyVim brings for that extra.
 
-### <a href="#_disabling_a_built_in_plugin" class="link">5.3. Disabling a Built-in Plugin</a>
+### 5.3. Disabling a Built-in Plugin
 
 Sooner or later, you’re going to want to edit your LazyVim configuration. The out-of-the-box defaults are wonderful, but the odds are that they don’t 100% exactly match your personal needs.
 
@@ -116,7 +116,7 @@ Listing 13. Disabling Snacks featres
 
 The main point here is that I’ve disabled the `explorer` feature in opts. I also had to unset two keybindings by setting them to `false` so I can reuse them in the next section. You don’t need to do this if you like the Snacks Explorer view, but with Snacks providing such a large number of features for LazyVim, I wanted to make sure you knew how to turn any one of them off.
 
-### <a href="#_modifying_keybindings_example" class="link">5.4. Modifying Keybindings (Example)</a>
+### 5.4. Modifying Keybindings (Example)
 
 Keybindings are one of the few things I don’t love about working with LazyVim, although it’s not strictly LazyVim’s fault. I just never quite know **where** to define them!
 
@@ -190,7 +190,7 @@ To be clear, `keys` is a LazyVim concept (technically, it’s actually part of t
 
 Yes, that’s a lot of potential for conflicts, which is why I’m so glad LazyVim has done most of the configuration for me!
 
-#### <a href="#_structure_of_a_keys_entry" class="link">5.4.1. Structure of a Keys Entry</a>
+#### 5.4.1. Structure of a Keys Entry
 
 Each item in the `keys` table is another Lua table with (in this case) three fields. The first two fields are positional and represent the keybinding name and the Lua callback function that gets called whenever that keybinding is invoked. The third field is a named field, `desc` and provides a string description that will be shown in the Space mode menu.
 
@@ -200,7 +200,7 @@ After the `<leader>` string, we include any additional keys that need to be pres
 
 For the callbacks, we use Lua functions, which always start with `function` and end with `end`. These are anonymous (unnamed) functions, and they don’t accept any parameters inside the parentheses. In the function bodies, we call specific code to *open* mini.files the way we want. In two cases I just copied this code from LazyVim’s default mini.files configuration, and in the third, I cobbled it together by combining code from the Snacks.nvim and mini.files configurations. The `LazyVim` global is a handy library with a collection of utility functions to aid with configuration. The `LazyVim.root` function is used to find the root of a project and returns a string that we pass to `mini.files.open`.
 
-#### <a href="#_customizing_mini_files_options" class="link">5.4.2. Customizing Mini.files Options</a>
+#### 5.4.2. Customizing Mini.files Options
 
 As I mentioned, the `keys` table is merged with the default `keys` table that LazyVim has configured for mini.files. Similarly, most Neovim plugins can be configured with an `opts` table that contains custom configuration specific to that plugin. If you supply an opts `table`, it will be *merged* with the default LazyVim one (if there is one).
 
@@ -241,7 +241,7 @@ So now you know a little bit about configuring plugins in LazyVim. It is both a 
 
 - But it is harder because you sometimes have to think about how the option and keybinding merging happens, which wouldn’t be necessary if you just had one great big configuration object to begin with. This merging can get quite tricky for plugins that have complicated default LazyVim configurations. We’ll see some examples later.
 
-### <a href="#_modifying_existing_options" class="link">5.5. Modifying Existing Options</a>
+### 5.5. Modifying Existing Options
 
 Sometimes the “merging” behaviour LazyVim uses to overwrite options with the ones you provide in your plugin overrides is too simplistic. This most often happens when you are modifying a plugin that calls or defines a function for options behaviour instead of customizing it.
 
@@ -286,7 +286,7 @@ This `opts` function accepts the LazyVim-defined `opts` table as its second para
 
 This is harder to maintain than if I just had the whole configuration the way I wanted it in the first place, but easier to maintain than if I had to write that entire configuration from scratch. I am willing to accept that tradeoff for all the places that LazyVim configures things better than I would have done on my own.
 
-### <a href="#_installing_third_party_plugins" class="link">5.6. Installing Third-Party Plugins</a>
+### 5.6. Installing Third-Party Plugins
 
 Installing a third-party plugin is little different from configuring a LazyVim provided plugin, except that you don’t have to worry about how the keys and opts are merged with a default config. Instead you have to worry if they conflict with all the other plugins installed in your editor.
 
@@ -345,7 +345,7 @@ The best resource for finding third-party plugins is the github repository [rock
 
 In practice, LazyVim already ships with the best-in-class versions of most plugins (built-in or as extras), so you won’t have to add too many. But if you come across any “I wish LazyVim could…​” scenarios, the answer is probably “it does and the plugin to do it is listed in the Awesome Neovim repo”.
 
-### <a href="#_summary_5" class="link">5.7. Summary</a>
+### 5.7. Summary
 
 In this chapter, we learned about how LazyVim integrates with the wider Neovim plugin ecosystem. It provides sane default plugins and configuration, but makes it easy to customize that configuration for your own needs.
 

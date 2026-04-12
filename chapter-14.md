@@ -1,8 +1,8 @@
-## <a href="#_miscellaneous_editing_tips" class="link">Chapter 14. Miscellaneous Editing Tips</a>
+## Chapter 14. Miscellaneous Editing Tips
 
 Before we dive into some of the more “IDE-like” behaviours that LazyVim enables, I wanted to collect some tips that can make your editing life a little more fun. This chapter is a bit of a grab bag, and includes some commands and plugins that I couldn’t fit anywhere else.
 
-### <a href="#_word_counts" class="link">14.1. Word Counts</a>
+### 14.1. Word Counts
 
 Use `g<Control-g>` to spit out a message containing some helpful info about the current cursor position:
 
@@ -12,7 +12,7 @@ Figure 72. Word Count
 
 Most notably, the “Word 110 of 3179” tells me that this chapter has over 3000 words in it (obviously I updated this section after I wrote more words!)
 
-### <a href="#_transposed_characters" class="link">14.2. Transposed Characters</a>
+### 14.2. Transposed Characters
 
 How often do you type so fast that you accidentally transpose two chracters? I’m looking at you, `hte`!
 
@@ -20,7 +20,7 @@ Simply use `xp` to swap a character with the one to the right of it. For example
 
 This is not a special custom command. It just uses the default “delete character” and “put last deleted after the cursor” commands to move the character from its current position to the next one. You can use a similar idea to move other text around. For example, move a word with `dwwP` or use `daWwp` to delete an argument and move it later in a function signature.
 
-### <a href="#_commenting_and_uncommenting_code" class="link">14.3. Commenting and Uncommenting Code</a>
+### 14.3. Commenting and Uncommenting Code
 
 LazyVim ships with a plugin for commenting and uncommenting code in older versions of Neovim, but as of Neovim 0.10, this is actually a native Neovim feature.
 
@@ -36,7 +36,7 @@ The `gc` verb is actually a toggle, so if a line is currently commented, it will
 
 As a shortcut, if you want to add a new comment line above or below the current line, instead of commenting the current line, you can use `gcO` and `gco`. Technically this is a new verb, but for memory’s sake, think of it as combining `gc` with the verbs to open a new line (`o` and `O`).
 
-### <a href="#_incrementing_and_decrementing_numbers" class="link">14.4. Incrementing and Decrementing Numbers</a>
+### 14.4. Incrementing and Decrementing Numbers
 
 If your cursor is currently on a number in Normal mode, you can use `Control-a` to increment that number. This command is somewhat smart and does the “right thing” if your number needs new digits. So `9` becomes `10` and `99` becomes `100` when you press `Control-a` anywhere in the number.
 
@@ -114,13 +114,13 @@ Listing 45. Sync Up the Numbers
     Chapter 5: Navigating things
     ...
 
-#### <a href="#_the_dial_nvim_extra" class="link">14.4.1. The Dial.nvim Extra</a>
+#### 14.4.1. The Dial.nvim Extra
 
 If the increment and decrement keybindings sound kind of like that weird kitchen unitasker that is helpful once a year, you might want to consider installing the `editor.dial` extra from `:LazyExtras`.
 
 This extra installs the dial.nvim plugin which allows you to increment and decrement a bunch of other cool stuff in addition to numbers. I mostly use it to swap boolean expressions (both `Control-a` and `Control-x` will alternate `true` to `false` and vice versa.), but it can also increment words (“first” increments to “second”), months (“December” increments to “January”), version numbers, Markdown headers, and more. You can even extend it with your own patterns if you need to.
 
-### <a href="#_changing_indentation" class="link">14.5. Changing Indentation</a>
+### 14.5. Changing Indentation
 
 The `>` and `<` keybindings can be used in Normal mode to indent or dedent text. Most often, you’ll use them doubled up (as in `<<` and `>>`) to change the indentation of the current line. However, you can also change the indentation of any motion. Another common one is `>Sx` to indent a treesitter entity by some label `x`, and `>ap` will indent an entire blanks-delimited paragraph.
 
@@ -134,7 +134,7 @@ However, if you don’t want to save, or aren’t using conform.nvim, you can al
 
 You can also adjust indentation without leaving Insert mode. The `Control-t` and `Control-d` keybindings will indent and dedent the current line while inserting text. The mnemonics are “add **t**ab” and “**d**edent”.
 
-### <a href="#_reflowing_text" class="link">14.6. Reflowing Text</a>
+### 14.6. Reflowing Text
 
 I’ve used the `gw` command a lot while writing this book. It effectively rewraps (`w` for wrap) all the text at the eighty character limit (or any ruler number, configurable with `:set textwidth=<number>`), without breaking words.
 
@@ -142,7 +142,7 @@ Most often, I use `gww` to rewrap the current line so that it has linebreaks at 
 
 This command relies heavily on the existence of newlines. Effectively, any two consecutive lines will be joined into a single line (if they fit in 80 characters). For me, this has meant that if I forget to put a newline after a heading, my first paragraph gets tied up into the heading, which is obviously not what I want.
 
-### <a href="#_filtering_through_external_programs" class="link">14.7. Filtering Through External Programs</a>
+### 14.7. Filtering Through External Programs
 
 You can also pipe text out to any external program that is a good Unix citizen: one that processes input on STDIN and outputs it to STDOUT. To do so, visually select the text you want to pipe in Visual mode. Then type a `!`. This will open the command window with the visual selection as a range, and is a shortcut for `:'<,'>!`. Then type a command on the path and the selected text will be replaced with the output of that command.
 
@@ -171,13 +171,13 @@ Here are some examples, assuming some common Unix tools are installed:
 
 I think it is unfortunate that this feature is not used more. Many features that are built into Neovim or supplied as plugins could just as easily be CLI programs that operate on piped input and output. As just one example, the `:sort` command that ships with Neovim is, in my opinion, just bloating the editor when `!sort` can run the external sort utility just as well.
 
-### <a href="#_spell_check" class="link">14.8. Spell Check</a>
+### 14.8. Spell Check
 
 You can enable or disable spell check with `<Space>us`. When enabled, words that are not recognized by the spell checker are underlined with a curly underline similar to a diagnostic. But you have to jump between spelling errors with `[s` and `]s` instead of the diagnostic keybindings `[d` and `]d`.
 
 To ask Vim to give you suggestions for how to spell the word, use `z=`. This is about as unmemorable as you can get, so write it down. If you can remember it is in the `z` menu rather than `Space`, you can at least find it in the menu again. The spelling suggestions will pop up in a numbered menu; enter a number to replace the word with that spelling.
 
-### <a href="#_insert_mode_keybindings" class="link">14.9. Insert Mode Keybindings</a>
+### 14.9. Insert Mode Keybindings
 
 If you are in Insert mode, and want to perform a single Normal mode action before going back to Insert mode, you can use `ctrl-o`. Perform the one Normal mode command, and you’ll be back in Insert mode immediately. I don’t really see the point of this, since `Control-o<command>` adds two keypresses, and so does `<Escape><command>i`.
 
@@ -212,7 +212,7 @@ The important bit here is the `"i"` as the first argument. This tells Neovim tha
 
 Do not use this technique for expanding a sequence of text to a different sequence of text, though. For that, you are better off using either abbreviations or snippets, the topic of the next two sections.
 
-### <a href="#_abbreviations_and_filetype_configuration" class="link">14.10. Abbreviations (and Filetype Configuration)</a>
+### 14.10. Abbreviations (and Filetype Configuration)
 
 Vim abbreviations have been around since the earliest days of the editor. They are an easy way to have “shortcut” words that expand to something else entirely without leaving Insert mode.
 
@@ -254,7 +254,7 @@ The `frang` abbreviation shows another neat trick: You can use the string `<Esc>
 
 Vim abbreviations have been around forever and do the job well. I still use them (probably because I am old), but the world has largely moved on to snippets instead.
 
-### <a href="#_snippets" class="link">14.11. Snippets</a>
+### 14.11. Snippets
 
 LazyVim ships with the `blink.cmp` plugin, which provides the high-speed completions interface we’ve seen before. Among other completions, it connects to Neovim 0.10’s built-in snippets functionality. It can load [VS Code-style snippets](https://code.visualstudio.com/docs/editor/userdefinedsnippets#_create-your-own-snippets).
 
@@ -289,7 +289,7 @@ The key point is that “condition” is currently highlighted, and I can start 
 
 The `<Tab>` key only works like this if `nvim-snippets` is aware it is in a snippet that has fields.
 
-#### <a href="#_defining_new_snippets" class="link">14.11.1. Defining New Snippets</a>
+#### 14.11.1. Defining New Snippets
 
 If the `FriendlySnippets` snippets aren’t enough for you, you can define your own snippets using the now-ubiquitous VS Code Snippet syntax and load them in nvim-snippets. As a quick example, here’s how to create a snippet for a boilerplate Svelte component:
 
@@ -356,7 +356,7 @@ Listing 52. Snippet Output
     <style>
     </style>
 
-### <a href="#_summary_14" class="link">14.12. Summary</a>
+### 14.12. Summary
 
 This chapter introduced various editing tips, starting with word counts and transposing characters, and then moving on to managing comments, indentation and formatting.
 

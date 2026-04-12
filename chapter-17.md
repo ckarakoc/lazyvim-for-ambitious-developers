@@ -1,10 +1,10 @@
-## <a href="#_debugging" class="link">Chapter 17. Debugging</a>
+## Chapter 17. Debugging
 
 LazyVim supports debugging various programming languages right in the editor. To be honest, I’ve spent my entire career debugging largely with logging statements. I’ve always found that the trouble of setting up and integrating a debugger is not worth the time it takes. They work well in toy projects, but once you’re trying to get the debugger to co-operate with e.g. Docker (or get anything to co-operate with Docker for that matter), or async third party libraries, it always feels like it just wasn’t worth the effort.
 
 So what I’m saying is: I’ve never used LazyVim’s debugging system, so writing this chapter is a crash course for me as well. I always learn best by teaching (and teach best by learning)!
 
-### <a href="#_debug_adapter_protocol" class="link">17.1. Debug Adapter Protocol</a>
+### 17.1. Debug Adapter Protocol
 
 In addition to language server providers, VS Code also brought us the Debug Adapter Protocol, usually shortened to DAP. Like LSPs, DAP is an abstraction to allow editors to integrate with a variety of debuggers without having to reimplement the gritty language details of each one.
 
@@ -12,7 +12,7 @@ Neovim doesn’t have built-in support for DAP like it does for LSPs, but LazyVi
 
 If you have also enabled the lazy extras for your preferred programming language, it is probably already configured to work with DAP. To double check, see if the `lang.<your-preferred-language>` extra has a `nvim-dap` configuration section in it. If it does, you *hopefully* don’t need to configure anything.
 
-### <a href="#_basic_example_python" class="link">17.2. Basic Example: Python</a>
+### 17.2. Basic Example: Python
 
 If you have installed the `dap.core` and `lang.python` Lazy Extras, and you have Python installed on your system, you are ready to start debugging.
 
@@ -130,7 +130,7 @@ So that’s a whirlwind tour of the LazyVim debugger. It worked flawlessly in th
 </tbody>
 </table>
 
-### <a href="#_remote_debugging_an_example_with_go" class="link">17.3. Remote Debugging (An Example With Go)</a>
+### 17.3. Remote Debugging (An Example With Go)
 
 You can also run a debug service in a remote location (typically a ssh server or Docker container) and connect to it from your local Neovim. Personally, I would rather install Neovim in the remote location and just run it from there, but that’s a separate rant.
 
@@ -248,7 +248,7 @@ Keep an eye on the podman container output, as that is where the `fmt.Print` sta
 
 The dev experience with this isn’t great (although it’s pretty typical if you are used to working with containers). You have to stop and restart the container if you let it run to completion (or if you make changes to the code). So overall, I recommend doing your `go` coding and debugging outside the container. Go is designed to build statically self-contained binaries, after all. But if you have your reasons to use a container, now you know how to do it!
 
-### <a href="#_example_connect_to_chrome" class="link">17.4. Example: Connect to Chrome</a>
+### 17.4. Example: Connect to Chrome
 
 The Chrome debugger in the Browser dev tools window is excellent, so you are forgiven if you’d rather just use it than the nvim-dap-ui. (Hey, I won’t judge; I still use `console.log` for most of my Chrome debugging).
 
@@ -266,7 +266,7 @@ I tested this in a brand new Vite-react app, putting the breakpoint inside a cal
 
 Again, I don’t really see the utility of this over just using the Chrome devtools debugger. Normally, when I’m debugging frontend code, I’m more interested in how my interactions with the *browser* affect the state of the debug tools, so switching to my editor to continue to the next breakpoint isn’t actually convenient. But there are lots of types of coders out there, and now you know that it works.
 
-### <a href="#_summary_17" class="link">17.5. Summary</a>
+### 17.5. Summary
 
 This chapter was all about debugging code directly from your editor. This is a tricky topic for an author to cover well because debuggers are surprisingly simple when they work, but they don’t often work out of the box. LazyVim does as good a job as I’ve seen (no worse than VS Code) at out-of-the-box configuration, but you’ll still probably be mucking around with configurations before it works with your system. There’s no getting around that.
 

@@ -1,10 +1,10 @@
-## <a href="#_opening_files" class="link">Chapter 4. Opening Files</a>
+## Chapter 4. Opening Files
 
 Earlier, as a side-effect of learning about Command mode, we saw how to open files the old-fashioned Vim way, using the `:edit` command. Another old-school alternative is to open them directly from the terminal shell command line, using `nvim filename`.
 
 Both of these are occasionally handy, but LazyVim pre-configures more modern ways of navigating and opening files.
 
-### <a href="#_introducing_file_pickers" class="link">4.1. Introducing File Pickers</a>
+### 4.1. Introducing File Pickers
 
 LazyVim ships with the `snacks.nvim` plugin, which includes a bunch of quality-of-life improvements for a modern age. It’s maintained by Folke Lemaitre, the creator of LazyVim, so we have some confidence that they integrate nicely. It is really a collection of random small plugins that perform a huge variety of tasks.
 
@@ -75,7 +75,7 @@ If you need to scroll the *results* window to see something lower down in the li
 
 Finally, if you are in the picker window and decide you don’t want to open any files after all (or you got the information you needed from looking at the preview), press `Escape` **twice**. Why twice? The first time you press escape will put you into normal mode so you can use all the usual normal mode commands to edit your filter.
 
-### <a href="#_the_difference_between_root_and_cwd" class="link">4.2. The Difference Between “Root” and “Cwd”</a>
+### 4.2. The Difference Between “Root” and “Cwd”
 
 The `<Space><Space>` command is mapped to “Find Files (Root Directory)”. Two other ways to open the file picker are to use `<Space>f` to open the “file/find” menu, and follow it with either `f` again or `F`.
 
@@ -83,7 +83,7 @@ The `<Space><Space>` command is mapped to “Find Files (Root Directory)”. Two
 
 `<Space>fF`, where the second `F` is shifted, is slightly different; it is mapped to an action called “Find Files (cwd)”. If you run it in your project, you’ll *probably* find that it appears to do the exact same thing as “Find Files (Root Directory)” (depending on how your project is set up), so the purpose of two separate keybindings may be confusing.
 
-#### <a href="#_current_working_directory" class="link">4.2.1. Current Working Directory</a>
+#### 4.2.1. Current Working Directory
 
 “Cwd” stands for “Current Working Directory”, and by default, it refers to whatever directory your terminal was in when you typed `nvim` to open the editor. You can change the `cwd` for the entire editor by entering Command mode with `:` and then typing `cd path/to/directory` (remember, all commands are followed by a carriage return, so press `Enter` or `Return` afterwards). Now if you use `<Space>fF`, the list of files will be shown relative to the new directory you have changed into.
 
@@ -91,7 +91,7 @@ If you are unsure what directory you are in, you can use the `:pwd` (short for �
 
 We haven’t discussed splitting your editor or opening new tabs yet, but for future reference: It is actually possible to have *different* working directories for different windows. The command to change just the current window’s directory is `:lcd`, short for “local change directory”. This can be a powerful way to work on multiple projects at the same time (for example, if you are a full stack developer working on backend and frontend projects). However, the LazyVim concept of a “Root” directory can semi-automate this.
 
-#### <a href="#_root_directory" class="link">4.2.2. Root Directory</a>
+#### 4.2.2. Root Directory
 
 The root directory is not a Vim concept, but is instead a Language Server Protocol (LSP) concept. LSPs are the reason that VS Code became so popular so quickly; the idea was that the editor could call out to an external service running on your computer to find out useful things about the codebase. The LSP powers a lot of useful stuff such as go to definition and references, highlighting errors in your code, and showing documentation for a variable or class. It can even help with formatting and syntax highlighting.
 
@@ -107,12 +107,12 @@ However, it can sometimes be confusing, especially if you are working in a monor
 <tbody>
 <tr>
 <td class="icon"></td>
-<td class="content">The snacks picker is inspired by the command line tool <a href="https://github.com/junegunn/fzf">fzf</a> which means "fuzzy find". This tool allows you to quickly access files and open directories from your shell, and I highly recommend it to augment your terminal workflow.</td>
+<td class="content">The snacks picker is inspired by the command line tool fzf which means "fuzzy find". This tool allows you to quickly access files and open directories from your shell, and I highly recommend it to augment your terminal workflow.</td>
 </tr>
 </tbody>
 </table>
 
-### <a href="#_the_snacks_explorer_plugin" class="link">4.3. The Snacks Explorer Plugin</a>
+### 4.3. The Snacks Explorer Plugin
 
 Snacks.nvim also has an "explorer" a left-sidebar file explorer experience that should be familiar to users of many modern IDEs and editors. While, like many of those environments, the explorer works with the mouse, it is optimized for keyboard interactions, making it faster to work with once you learn “Explorer mode”.
 
@@ -180,7 +180,7 @@ Use the `m` keybinding to move a file to a new location or name.
 
 There is a *ton* of other cool stuff that the explorer can do. Use the `?` (mnemonic “ask question for help”) key while the explorer window is focused to get an overview.
 
-### <a href="#_the_mini_files_alternative" class="link">4.4. The Mini.files Alternative</a>
+### 4.4. The Mini.files Alternative
 
 As I mentioned, I don’t actually use the explorer for file navigation. I find that it feels kind of “foreign and un-vim-like”. To me, it is a completely separate experience that just happens to be embedded in a Neovim window. That said, I *also* don’t like the tree view sidebar experience in VS Code and the editors it emulates / is emulated by, so it’s possible that tree views just aren’t right for me.
 
@@ -211,7 +211,7 @@ In order to use mini.files, you have to enable it as a Lazy Extra. We’ll go in
 
 - Restart Neovim
 
-#### <a href="#_using_mini_files" class="link">4.4.1. Using Mini.files</a>
+#### 4.4.1. Using Mini.files
 
 Once installed, you can show the mini.files view using `<Space>fm` and `<Space>fM`. By default, these are *not* quite the same as the `cwd/root` structure we’ve seen in the picker and explorer. Instead, they are listed in the `<Space>f` menu as follows:
 
@@ -252,7 +252,7 @@ We haven’t really covered editing yet (I’m just as surprised as you are), bu
 
 We’ll discuss these commands and more in Chapter 6. The main point is that pretty much any navigation or editing command you learn in the future will work with mini.files.
 
-##### <a href="#_saving_filesystem_changes" class="link">Saving Filesystem Changes</a>
+##### Saving Filesystem Changes
 
 Any modification that you make using these keybindings will not actually be saved on the filesystem until you type the `=` key, which is a (rare) mini.files specific keybinding. I think of it as meaning “make the filesystem **equal** to what I’ve typed”. This will pop up a little window telling you what actions mini.files wants to take on your behalf, such as deleting, moving, renaming, or copying files. You can confirm or decline the changes with a `y` or `n` (**y**es or **n**o, of course).
 
@@ -264,7 +264,7 @@ I encourage you to play with both the Snacks explorer and mini.files until you c
 
 - You are *my kind of weird* and don’t want to use the explorer at all, preferring only mini.files. Disabling plugins is discussed in the next chapter.
 
-### <a href="#_summary_4" class="link">4.5. Summary</a>
+### 4.5. Summary
 
 In this chapter, we learned not one, but three different ways to open files and interact with the filesystem in LazyVim: the Snacks picker, explorer, and mini.files. Each provides a different mechanism for opening and managing files, and you will find some of them more comfortable than others.
 

@@ -1,10 +1,10 @@
-## <a href="#_testing" class="link">Chapter 18. Testing</a>
+## Chapter 18. Testing
 
 LazyVim can be configured with the Neotest plugin, a generic runner for selecting and running tests in a variety of languages and test frameworks. As with the debug adapter, Neotest is not enabled by default. However, if the plugin is enabled, most language extras ship with a pre-configured setup to make testing work automatically.
 
 Except when it doesn’t, of course. Much like debuggers, I find the in-editor features provided by testing extensions (regardless of editor) to be too finicky to be worth the effort of configuring them. I usually just have a test runner in watch mode running in a separate terminal, and that works well for me. I didn’t previously use Neotest, but after writing this chapter I changed my mind!
 
-### <a href="#_try_neotest" class="link">18.1. Try Neotest</a>
+### 18.1. Try Neotest
 
 If you haven’t already (as part of enabling recommended plugins) pop open the Lazy Extras interface and enable the `test.core` extra. This will set up Neotest and a couple dependencies for you.
 
@@ -26,7 +26,7 @@ Figure 98. Tests Run Successfully
 
 This screenshot of two tests was taken after I ran all tests in the file with `<Space>tt`. There’s one checkmark in the gutter and another to the right of the test in virtual text.
 
-### <a href="#_error_reporting" class="link">18.2. Error Reporting</a>
+### 18.2. Error Reporting
 
 Things get a bit more interesting when we introduce a test failure. First, a scrollable window pops up with the test output; this is the same output I would see if I had run the test command (`pytest` in this case) from the terminal:
 
@@ -61,7 +61,7 @@ Figure 101. Failing Tests In Trouble
 
 This is **super** convenient because I can now navigate between failing tests (possibly in multiple files) using `]q` and `[q`, or by focusing the Trouble window and using basic cursor movements.
 
-### <a href="#_test_summary" class="link">18.3. Test Summary</a>
+### 18.3. Test Summary
 
 The `<Space>tT` with a capitalized T does a “but bigger” style action, running all tests in your project instead of just the ones in the current file. Of course, you won’t see the test markers for any files that aren’t open. So you’ll probably want to use `<Space>ts` to toggle the summary window:
 
@@ -77,13 +77,13 @@ Figure 103. Test Summary Keyboard Mappings
 
 The `m` for “mark” command deserves a callout. It allows you to mark a test as “of interest”, so that when you use the `R` or `Run marked` command it will only run those tests. Use `M` (capitalized) to clear all marks or `m` while a line is marked to toggle a single mark off.
 
-### <a href="#_watch_mode_and_debugging" class="link">18.4. Watch Mode and Debugging</a>
+### 18.4. Watch Mode and Debugging
 
 You can toggle “watch” mode for the current file using `<Space>tw`. This will automatically run the test command every time your source code changes. The summary and test file icons will all update in real time.
 
 If you have enabled the debug adapter as described in Chapter 18, you can even have the test automatically add a breakpoint on failure by running it with `<Space>td`. This can be useful for quickly inspecting locals or adding watch statements instead of adding a bunch of print statements before an assertion.
 
-### <a href="#_installing_a_test_runner" class="link">18.5. Installing a Test Runner</a>
+### 18.5. Installing a Test Runner
 
 If you’re lucky, your language has a LazyVim extra that is preconfigured to work with Neotest. For example, the `lang.go`, and `lang.python` extras both include configuration to set up Neotest with those frameworks.
 
@@ -109,7 +109,7 @@ Then I restarted Neovim and opened a file that had a vitest test in it. `<Space>
 
 In the repo I was testing, `vitest` was installed with npm, so no extra installation was needed. In most cases I would expect the tooling that Neotest plugins call into to be installed already when they access your project. If not, you may be able to install it from the Mason menu, accessible from `<Space>cm`.
 
-### <a href="#_writing_your_own_test_adapter" class="link">18.6. Writing Your Own Test Adapter</a>
+### 18.6. Writing Your Own Test Adapter
 
 This is a bit out of the scope of this book, but I decided to include it because a) I needed to do it anyway, b) this chapter is suprisingly short, and c) it’s a good example for writing a simple plugin.
 
@@ -127,7 +127,7 @@ We won’t be implementing all the possible features (notably, the debugger will
 
 If you are unfamiliar with Bun, it is a Javascript/Typescript runtime and compiler, more or less an alternative to nodejs. The built-in command `bun test` runs a jest-like test suite. It is this command we will be binding to.
 
-#### <a href="#_initializing_a_local_plugin" class="link">18.6.1. Initializing a Local Plugin</a>
+#### 18.6.1. Initializing a Local Plugin
 
 By default, LazyVim downloads plugins from a provider such as GitHub. However, you can pass it any git url or point it at a local directory. We’ll be doing the latter.
 
@@ -168,7 +168,7 @@ To see if it’s working so far, open any file in Neovim and run `<Space>tt` to 
 </tbody>
 </table>
 
-#### <a href="#_implementing_the_neotest_adapter" class="link">18.6.2. Implementing the Neotest Adapter</a>
+#### 18.6.2. Implementing the Neotest Adapter
 
 Let’s flesh out the adapter interface. Open the `neotest-bun/init.lua` file and replace the `print` statement with the following content:
 
@@ -241,7 +241,7 @@ Listing 74. Is Test File Implementation
 
 If I open my `cohere.test.ts` file and run `<Space>tt`, I still get `No Tests found`. It is identifying the file as a Bun test file, but it doesn’t know how to look inside the file to find any tests.
 
-#### <a href="#_discovering_test_positions" class="link">18.6.3. Discovering Test Positions</a>
+#### 18.6.3. Discovering Test Positions
 
 Solving this requires implementing the `discover_positions` function, and that is…​ complicated. Typically, you would write Treesitter queries that identify namespaces and tests in the file. I suppose you could also write your own parser or use `string.match`, but Treesitter’s parser is probably better than anything we can write.
 
@@ -372,7 +372,7 @@ Now you can restart Neovim and open a bun test file to get a new error! New erro
 
 You’ll now notice that Neotest is identifying the positions of `describe` and `test` calls in the gutter. Instead of the red cross or green check we would expect from a successful test run, it will be an eye with a cross through it. I suspect this means the test was skipped or not runnable. The good news is it is finding the tests. The bad news is it is not *running* the tests.
 
-#### <a href="#_building_the_spec" class="link">18.6.4. Building the Spec</a>
+#### 18.6.4. Building the Spec
 
 We can run the tests by implementing the `build_spec` function. This function accepts various parameters to determine how the user kicked off the tests. If they used `<Space>tr` it’s in “single test” mode, but if they used `<Space>tt` it is in “file” mode, and `<Space>tT` would run it in “all tests” mode.
 
@@ -429,7 +429,7 @@ The returned object includes some necessary context that will be used when we pa
 
 Now we just need to extract the results from that file.
 
-#### <a href="#_parsing_results" class="link">18.6.5. Parsing Results</a>
+#### 18.6.5. Parsing Results
 
 This ended up being simpler than I expected, because `bun test` aggregates names in a way that maps to Neotest’s expected form quite easily. But it took me half a day of fussing around to get code that actually worked!
 
@@ -521,7 +521,7 @@ If a given line is not a test name, then it might be the name of the test file, 
 
 And that’s the basics of implementing our own test runner! It’s missing some features, notably debugging tests and capturing output, but it’s a good start.
 
-### <a href="#_summary_18" class="link">18.7. Summary</a>
+### 18.7. Summary
 
 This chapter covered the Neotest plugin, including various ways to invoke it and how to set it up the easy way, hard way, and extra hard way.
 

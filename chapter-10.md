@@ -1,4 +1,4 @@
-## <a href="#_programming_language_support" class="link">Chapter 10. Programming Language Support</a>
+## Chapter 10. Programming Language Support
 
 Visual Studio Code brought the world the concept of language servers, and all other text editors jumped on the idea. Early incarnations of language server protocol in Vim were frustrating and clunky and required plugins that tended to be fragile and complicated.
 
@@ -10,13 +10,13 @@ Language Server protocol gives us support for things like code navigation, signa
 
 There are two main tools for working with language servers in LazyVim: various language Lazy Extras, and the Mason.nvim plugin. We’ll get to know both of these and then learn how to better use some of the tooling they provide.
 
-### <a href="#_the_lang_lazy_extras" class="link">10.1. The lang.* Lazy Extras</a>
+### 10.1. The lang.* Lazy Extras
 
 We’ve already used LazyVim extras for plugin configuration, and I told you to install the extras for whichever languages you use regularly. These extras include preconfigured plugins that give best-in-class support for common programming languages. Most ship with language servers and many include additional Neovim plugins that are useful with those languages.
 
 Once you install these extras things will usually work out of the box, and you won’t have to learn any new keybindings for the commands each language provides. However, it wouldn’t hurt to read the Readmes for the plugins the extra installs (accessible by looking up the Extra’s documentation on the LazyVim website and clicking the headings) to make sure you aren’t missing out on any commands the language provides.
 
-### <a href="#_mason_nvim" class="link">10.2. Mason.nvim</a>
+### 10.2. Mason.nvim
 
 The Lazy Extras may not install everything you need. For example, instead of the default Typescript formatting and linting tools, I prefer to use the Biome formatter and linter.
 
@@ -32,7 +32,7 @@ But when I started working on this book, I decided I needed an advanced Markdown
 
 Unfortunately, I can’t help you with figuring out what is right for you, but once you find the tool in Mason, just use `i` to install the package under the cursor. The only other command you will use frequently in Mason is `Shift-U` to update all installed tools, and you can look up the remaining keybindings with `g?`.
 
-### <a href="#_validating_things_installed_cleanly" class="link">10.3. Validating Things Installed Cleanly</a>
+### 10.3. Validating Things Installed Cleanly
 
 As good as both LazyExtras and Mason are at installing language servers, linting, and formatting tools, setting such things up is one of the places most likely to go wrong, no matter which editor you are using. So now is a good time to introduce several commands to validate that everything is working as expected.
 
@@ -65,7 +65,7 @@ Figure 44. Lazy Health Warnings
 
 Tools that I have used recently (and also Ruby for some reason) are installed, and I have warnings for languages that I don’t generally need to edit files in. So if you don’t code in Java, there’s no reason to waste cycles trying to make the `java` warning go away.
 
-### <a href="#_diagnostics" class="link">10.4. Diagnostics</a>
+### 10.4. Diagnostics
 
 Language Servers fulfill several useful functions, including identifying code problems, linting, formatting, context-aware code navigation, and documentation. We’ll discuss all of these between this and the next chapter.
 
@@ -81,7 +81,7 @@ The colour of the diagnostic conveys the severity—​whether it is a hint, a w
 
 If the window doesn’t pop up when you navigate to the diagnostic, you can use the `<Space>cd` keybinding to invoke it as long as your cursor is positioned somewhere within the underlined text. You can make the window disappear by moving your cursor with any motion key.
 
-#### <a href="#_trouble_and_quick_fix" class="link">10.4.1. Trouble and Quick Fix</a>
+#### 10.4.1. Trouble and Quick Fix
 
 You can also navigate diagnostics using the Trouble menu. Trouble is a LazyVim plugin that provides an “enhanced quick fix” experience. Which is probably meaningless to you if you are new to Vim and don’t know what “quick fix” means!
 
@@ -109,7 +109,7 @@ For diagnostics, open the Trouble menu with `<Space>xx` or `<Space>xX`. The lowe
 
 If you’re wondering what the “Location List” is, it’s a Quick Fix window that is associated with the current window (NOT buffer). I never use it; my brain can only handle fixing one problem at a time, even if it is in hundreds of files!
 
-#### <a href="#_trouble_and_quick_fix_from_pickers" class="link">10.4.2. Trouble and Quick Fix from pickers</a>
+#### 10.4.2. Trouble and Quick Fix from pickers
 
 The Quick Fix and Trouble windows are not just for references. Many actions can result in a new list of file locations being added to these windows. One common one is to activate it from picker windows. Any picker window can be converted to a list of jumpable locations in the Quick Fix window by showing the picker and hitting `Control-q`. All files will become Quick Fix entries. You can also select a subset of files with `Tab` before sending only those files to Quick Fix with `Control-q`.
 
@@ -117,13 +117,13 @@ Sending files to Trouble from a picker is just as easy. Focus the file or select
 
 This feature is useful in various pickers, but I most often use it with search results and go-to-reference features that we’ll discuss in later chapters.
 
-### <a href="#_code_actions" class="link">10.5. Code Actions</a>
+### 10.5. Code Actions
 
 One of the things that made VS Code seem magical when it came out was code actions. Not that they existed, as the concept has been around for a long time, but that they WORKED. Nowadays, I kind of take them for granted.
 
 You may be used to accessing code actions by moving your hands to the mouse and clicking a light bulb or right clicking a diagnostic. In LazyVim it is (of course) a keybinding. Navigate to a diagnostic using whatever keybindings work for you (I live by `]d`) and then invoke the `<Space>ca` menu where `c` and `a` mean “code action.” A picker menu will pop up with a list of any actions you can take. You can use the arrow keys or `<Escape>` followed by `j` and `k` to navigate between them, or you can enter a number or any text from the line to filter. Hit `<Enter>` to perform the action, or `<Escape><Escape>` to cancel the menu (just one escape allows you to enter Normal mode in the search box so you can use the many LazyVim navigation keystrokes that you are, by now, accustomed to).
 
-### <a href="#_linting" class="link">10.6. Linting</a>
+### 10.6. Linting
 
 Linting is *mostly* handled using the `nvim-lint` plugin instead of the LSP. This was a major pain point in my pre-LazyVim days because getting the LSP and linter cooperating often required some serious troubleshooting. And then throw formatting into the mix and I’d lose a day or two. To be fair, this was true when I used VS Code, too.
 
@@ -148,7 +148,7 @@ Read `:help nvim-lint` for more information and refer to the LazyVim documentati
 
 The nice thing is that once you have your linting configured, the errors will show up using the same diagnostics described above and you can engage with them using the same keybindings, Trouble window, code actions, etc.
 
-### <a href="#_formatting" class="link">10.7. Formatting</a>
+### 10.7. Formatting
 
 Similar to linting, code formatting *can* be handled by some LSPs, but people have realized that using the language server is often more complicated than just invoking a formatter directly. So LazyVim ships with the conform.nvim plugin.
 
@@ -169,7 +169,7 @@ Listing 28. Conform Customization
 
 *Once* it’s set up (I acknowledge this may be no mean feat), formatting in LazyVim is typically fire and forget: save your file and it formats. If you want to invoke it manually without saving, use the `<Space>cf` keybinding. I can’t stress how lucky you are that this is the case; without LazyVim, countless hours have been wasted trying to get the autocommands for “format on save” to work!
 
-### <a href="#_configuring_non_standard_lsps" class="link">10.8. Configuring Non-standard LSPs</a>
+### 10.8. Configuring Non-standard LSPs
 
 If you have installed an LSP that LazyVim isn’t aware of, you may need to tweak the `nvim-lspconfig` plugin. You will minimally need to let it know that your language server is available, and possibly to configure it to your needs. For example, one of my favourite programming languages is Rescript, which doesn’t have a huge ecosystem and therefore, has no LazyVim extra. I was able to install the language server with Mason easily enough, but I also needed to add the following to my `extend-lspconfig.lua` file for LazyVim to pick it up:
 
@@ -201,7 +201,7 @@ Listing 30. Css Variable LSP Config
       },
     }
 
-### <a href="#_summary_10" class="link">10.9. Summary</a>
+### 10.9. Summary
 
 In this chapter, we learned how LazyVim integrates the language server protocol that VS Code brought to the world. It is *usually* quick and painless, which is more than can be said for manually configuring LSPs. However, there may be some headaches especially around linting and formatting. This is true in any editor, sometimes they hold your hand and sometimes they get in your way. If you get stuck, hit us up in the LazyVim discussions group on GitHub (but search it first; you’re probably not the first person to have trouble).
 

@@ -1,4 +1,4 @@
-## <a href="#_what_is_modal_editing_anyway" class="link">Chapter 2. What is Modal Editing, Anyway?</a>
+## Chapter 2. What is Modal Editing, Anyway?
 
 As the letters on the dashboard suggest, LazyVim is keyboard-centric. As many actions as possible can be performed without moving your hands between mouse and keyboard. Of course, it’s still possible to use the mouse. You can click anywhere in the editor, interact with buttons and modals when they pop up, use the scroll wheel or touchpad gestures to scroll, and resize editor panes by dragging their borders. But you can also do all of these things using the keyboard, and usually more efficiently.
 
@@ -6,7 +6,7 @@ More importantly, you can do most things by holding at most two keys, most often
 
 How does Vim do this? Modal editing.
 
-### <a href="#_introduction_to_modal_editing" class="link">2.1. Introduction to Modal Editing</a>
+### 2.1. Introduction to Modal Editing
 
 “Modes” in LazyVim simply mean that different keystrokes mean different things depending on which mode is currently active. For example, when you start the editor up, you are in a “Dashboard Mode”, and the most common interpretation of each keystroke in that mode are listed right on the dashboard. This discoverability of keybindings in a given mode is a common theme in LazyVim, and a huge improvement over the opaque default behaviour of Neovim itself.
 
@@ -76,7 +76,7 @@ You’ll find that you need to alternate between these a lot as you are navigati
 
 Two other very common operations are to insert at the very beginning or the very end of the current line. You *could* use navigation commands to move to the start or end and then use `i` and `a`, but it’s easier to use the commands `I` and `A` instead (The difference is that they are capitalized, so you need the `Shift` key with them).
 
-#### <a href="#_a_note_on_keybinding_mnemonics" class="link">2.1.1. A Note on Keybinding Mnemonics</a>
+#### 2.1.1. A Note on Keybinding Mnemonics
 
 It is common for related keybindings like these to be assigned to the lowercase and uppercase versions of the same key. You will often find that the lower case version means “do something” and the uppercase version means either “do the same thing only BIGGER” or “do the OPPOSITE thing”, depending on the situation. In this case, `i` and `a` mean “insert one character before or after the cursor” and `I` and `A` are “insert before or after the cursor, only BIGGER (i.e. at the beginning or end of the line)”.
 
@@ -105,11 +105,11 @@ Try all of those commands (`a`, `i`, `o`, `A`, `I`, `O`, and `gi`) repeatedly, e
 
 Get *really* comfortable with switching between Normal and Insert mode. You might think you’ll spend most of your time in Insert mode, but the truth is code is edited far more often than it is written afresh, and you’ll be alternating between them constantly.
 
-### <a href="#_visual_mode" class="link">2.2. Visual Mode</a>
+### 2.2. Visual Mode
 
 The other major mode that LazyVim inherits from its ancestors is “Visual” mode. Visual mode is used to select text. In general, you can enter Visual mode and then use many of the same navigation keys you would use in Normal mode to move your cursor around. Since we haven’t covered those navigation keystrokes yet, I’m going to defer a detailed discussion of Visual Mode until Chapter 8, when we will have the necessary foundation.
 
-### <a href="#_command_mode" class="link">2.3. Command Mode</a>
+### 2.3. Command Mode
 
 Command mode is different from the other modes we’ve seen, which were mostly either submenus or the editor-level “major” modes. You can get into command mode from Normal mode by using the `:` (i.e. `Shift-<semicolon>`) command. In LazyVim, this will pop up a little widget where you can type what is known as an “Ex Command.” This name comes from `vi`'s predecessor, `ex`, which hasn’t really been used (other than as part of Vim) in decades.
 
@@ -180,7 +180,7 @@ For now, remember `<Tab>` and `Control-y` and you’ll be able to navigate the C
 
 The most important command, by the way, is `:help`. Vim was created before folks had ready access to the Internet, so it has a tradition of shipping all of its documentation with the editor. So for example, if you can’t remember the keyboard shortcut to `put` text, try `:help put`. Or, if you want to know what the `Control-R` keyboard shortcut does, try `:help CTRL-R`. Of course, the Vim help documents have also been indexed by your favourite search engines and AI chat bots, so you can go all new-school and ask them if you prefer.
 
-### <a href="#_summary_2" class="link">2.4. Summary</a>
+### 2.4. Summary
 
 In this chapter, we became comfortable with the concept of modal editing and the most important LazyVim modes. There are other mini-modes that will come up as we progress through this book, but becoming comfortable with Normal, Insert, and Command mode (and how to switch between them) will take you a long way on your LazyVim journey.
 
