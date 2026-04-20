@@ -44,9 +44,9 @@ However, the character I want to hit is too far away to have a unique label, as 
 
 Figure 13. Seek `st` characters
 
-Now, all instances of `st` in the file are highlighted in blue, and since there aren't as many `st` as `s`, all of those instances have a label beside them. The text I want to move to is labelled with a `p`, so I press `p` and my cursor is moved to the `s` character I wanted to change. Now I can type `rx` to replace the `s` with an `x` (we'll discuss *editing* code in chapter 6, but now you've had a taste of it).
+Now, all instances of `st` in the file are highlighted in blue, and since there aren't as many `st` as `s`, all of those instances have a label beside them. The text I want to move to is labelled with a `p`, so I press `p` and my cursor is moved to the `s` character I wanted to change. Now I can type `rx` to replace the `x` with an `x` (we'll discuss _editing_ code in chapter 6, but now you've had a taste of it).
 
-If you have multiple files open in split windows (which we'll discuss in Chapter 9), Seek mode can be used to move your cursor *anywhere* on the screen, not just in the currently active split.
+If you have multiple files open in split windows (which we'll discuss in Chapter 9), Seek mode can be used to move your cursor _anywhere_ on the screen, not just in the currently active split.
 
 Seek mode does have drawbacks however, at least the way flash.nvim implements it. There are some characters you can't move to directly because you run out of text to search for before a labelled match targets that location. For me this happens most often when I want to edit the end of a line. If I type `sn` because I want to edit a line that has `n` as the last character, but there are a bunch of `n` characters closer to my cursor than the one I want to move to, flash may not label the `n` I want to move to, and it won't accept a carriage return as a "next character" input.
 
@@ -78,7 +78,7 @@ If that looks like a big menu, you don't know the half of it! There are a ton of
 
 The relative cursor keybindings I use exclusively are `zt`, `zb`, and `zz`. These move the line that the cursor is currently on to the **t**op, **b**ottom, or middle of the screen, respectively, where middle is represented by the easy-to-type double letter. When moving to the top or bottom it will leave a few lines of context above or below the cursor.
 
-There are others that will also move the cursor to the first column of the window, but instead of memorizing those shortcuts, I recommend combining the previous commands with `0` instead, as in `zt0`, `zb0`, and `zz0`. The `0` command just means "Go to the start of the line". You can also use *home* if your keyboard has a *home* key, but `0` is easier to hit on many keyboards.
+There are others that will also move the cursor to the first column of the window, but instead of memorizing those shortcuts, I recommend combining the previous commands with `0` instead, as in `zt0`, `zb0`, and `zz0`. The `0` command just means "Go to the start of the line". You can also use _home_ if your keyboard has a _home_ key, but `0` is easier to hit on many keyboards.
 
 You can find other scrolling keybindings in the Neovim documentation by typing `:help scrolling`, but the ones I just mentioned will probably more than cover your needs as you learn far more nuanced methods of navigating code.
 
@@ -98,11 +98,11 @@ If you are an English-speaker with a standard Qwerty keyboard, the letters `h`, 
 
 Open a largish file in Neovim (you can use `:e path/to/filename`) and experiment with moving the cursor left, right, up and down using the home row keys.
 
-Vim, Neovim, and LazyVim are all *really* good at reusing motions, so you will find that `h`, `j`, `k`, and `l` are used for a lot of different navigation sequences as you progress through this book. Take enough time to really get used to them. But recognize that if you ever have to push these keys more than twice in succession to move the cursor, you're wasting keystrokes.
+Vim, Neovim, and LazyVim are all _really_ good at reusing motions, so you will find that `h`, `j`, `k`, and `l` are used for a lot of different navigation sequences as you progress through this book. Take enough time to really get used to them. But recognize that if you ever have to push these keys more than twice in succession to move the cursor, you're wasting keystrokes.
 
 ### 3.4. Counting
 
-The vast majority of commands in Vim can be prefixed with a *count* to repeat the motion multiple times. The count is typically entered as a sequence of digits before the command you want to repeat.
+The vast majority of commands in Vim can be prefixed with a _count_ to repeat the motion multiple times. The count is typically entered as a sequence of digits before the command you want to repeat.
 
 So, for example, to move the cursor up 15 lines, you would enter Normal mode and hit the keys `15k`. To move it five characters to the right, use `5l`.
 
@@ -120,10 +120,9 @@ This line has the number `5` beside it, so I don't have to count lines or do any
 
 Now that you know what they are for, I suggest leaving relative numbers on until you get used to them. If you find them distracting or just don't use them, you can change to normal line numbers by editing your LazyVim configuration. Open the file `~/.config/nvim/lua/config/options.lua`, which should have been created for you by LazyVim but currently won't have anything in it other than a comment describing what it is for.
 
-|||
-| -- | -- | 
+|                                     |                                                                                                                                                                                                                                                                          |
+| ----------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | ![info](./media/chapter-3/info.png) | You can use the Space mode command `&lt;Space&gt;fc` to quickly find files in the LazyVim configuration directory. This will pop up one of the file pickers that we'll discuss in detail in the next chapter. Type `options` and press `&lt;Enter&gt;` to open the file. |
-
 
 To disable relative file numbers by default, add this line to the file and save it:
 
@@ -144,7 +143,7 @@ Listing 8. Disable All Line Numbers
 
 If you need to move your cursor to a position that is relatively close to its current position, you may want to use LazyVim's Find mode instead of the Seek mode we described earlier. The default Find mode in Neovim is rather limited, but the flash.nvim plugin that enables Seek mode makes it much nicer to use.
 
-To enter Find mode, press the `f` key. Like Seek mode, a portion of your screen will dim, indicating that you should type another character. After you do so, all instances of that character *after the cursor* will be highlighted. For example, `fs` will highlight all instances of the letter `s` after the current cursor position.
+To enter Find mode, press the `f` key. Like Seek mode, a portion of your screen will dim, indicating that you should type another character. After you do so, all instances of that character _after the cursor_ will be highlighted. For example, `fs` will highlight all instances of the letter `s` after the current cursor position.
 
 This is where the similarities between `Find` mode and `Seek` mode end, however. Instead of showing a label, the cursor immediately jumps forward to the first matching character after the cursor. You'll also notice that none of the text before the cursor has been dimmed, and that none of the matching characters in the lines before the cursor are highlighted.
 
@@ -156,7 +155,7 @@ Moreover, if you know that the character you are looking for is behind or above 
 
 There is also a subtle variation of Find mode that I call "**T**o" mode, although the official Vim mnemonic is actual "'**T**il" mode. You enter it with a `t` or `T` depending on what direction you want to go.
 
-"To" mode behaves identically to Find mode except that it jumps to *just before* the target character.
+"To" mode behaves identically to Find mode except that it jumps to _just before_ the target character.
 
 You might think that To mode is kind of redundant because you could fairly easily use Find mode followed by a single `h` to move the cursor left. But "To" mode is extremely useful when you are combining it with operations to edit the text, which we will discuss later. As a taste, if you use the command `d2ts`, it will delete all text between the cursor and the second `s` it encounters, but leave that `s` alone. This is much easier than the `d2fsis<Escape>` that would be required if you used a find command and then had to enter Insert mode to add the `s` back.
 
@@ -166,13 +165,13 @@ When `f` or `t` feels too big, and cursors with counts feel too small, you'll mo
 
 Neovim is easier; you don't have to move your hands to the arrow key section of the keyboard and you don't have to hold down multiple keys at once.
 
-Instead, you can just enter Normal mode and press the `w` key to move to the beginning of the next word. If you instead want to move to the *end* of the current word, use the `e` key. If you are *already* at the end of the current word, `e` will go to the end of the *next* word.
+Instead, you can just enter Normal mode and press the `w` key to move to the beginning of the next word. If you instead want to move to the _end_ of the current word, use the `e` key. If you are _already_ at the end of the current word, `e` will go to the end of the _next_ word.
 
 This is useful when you want to combine it with counts: If you need to move to the end of the word that is two words after the current word, press `3e`. This is the same as pressing `e` three times, which would move to the end of the current word, then the next word, and finally to the end of the word you want to hit. `w` can also be prefixed with a count if you need to move to the beginning of a word that is a certain number of words after the current one.
 
 Use the `b` key if you want to move backwards instead. This will move you to the beginning of the current word, or if you are already at the beginning of the word, it will move to the beginning of the previous word. As before, use a count to move to the beginning of even more words.
 
-Surprisingly, it takes a bit more work to move to the end of the *previous* word, as you need to press two keys: `g` followed by `e`. The mnemonic for this is "**g**o to **e**nd of previous word". In practice, you'll find that you hardly ever need this functionality for some reason, and the honest truth is I usually use `be` (`b` to move to beginning of previous word, then `e` to go to end of that word) to move to the end of the previous word. If you do use `ge`, however, it can be combined with a count as well. You'll need to type something like `4ge`, depending on the count. The command `g4e` wouldn't do anything useful.
+Surprisingly, it takes a bit more work to move to the end of the _previous_ word, as you need to press two keys: `g` followed by `e`. The mnemonic for this is "**g**o to **e**nd of previous word". In practice, you'll find that you hardly ever need this functionality for some reason, and the honest truth is I usually use `be` (`b` to move to beginning of previous word, then `e` to go to end of that word) to move to the end of the previous word. If you do use `ge`, however, it can be combined with a count as well. You'll need to type something like `4ge`, depending on the count. The command `g4e` wouldn't do anything useful.
 
 Collectively, you may occasionally hear the `w`, `e`, and `b` commands referred as the "web" words. It just means "moving by words". These are probably the most common movements you will use, more than individual cursor positions, simply because most editing actions tend to involve changing or deleting a word or sequence of words.
 
@@ -234,9 +233,9 @@ All this jumping around can make you feel a little lost. Luckily, there are two 
 
 This is super handy when you're editing code deep in a file or module and realize you need to import a library at the top of the file. You can use `gg` to jump to the top of the file, `s` to seek to the line you want to add the import on, and then enter Insert mode to add the import. Now you want to go back to the code you were working on so you can actually use the import. `Control-o` a couple times will take you there.
 
-Neovim keeps a history of *all* your jumps, so you can jump between several locations (perhaps to look up documentation or the call signature for a function) and always find a way back.
+Neovim keeps a history of _all_ your jumps, so you can jump between several locations (perhaps to look up documentation or the call signature for a function) and always find a way back.
 
-If you jump too far, you can use the `Control-i` keybinding to jump *forward* in history. It's just the opposite of `Control-o`. I don't know why `i` and `o` were chosen for these; maybe because they are side-by-side on a Qwerty keyboard? They are used commonly enough that once you learn them, you won't forget.
+If you jump too far, you can use the `Control-i` keybinding to jump _forward_ in history. It's just the opposite of `Control-o`. I don't know why `i` and `o` were chosen for these; maybe because they are side-by-side on a Qwerty keyboard? They are used commonly enough that once you learn them, you won't forget.
 
 ### 3.11. Summary
 

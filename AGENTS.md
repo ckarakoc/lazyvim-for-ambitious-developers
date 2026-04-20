@@ -13,6 +13,7 @@ This is a markdown-based book about LazyVim. 20 chapters + associated media imag
 ### Adding or Modifying Content
 
 When editing chapters:
+
 - Each chapter is a standalone markdown file
 - Media images are stored in `media/chapter-N/` matching the chapter number
 - Images are referenced as relative paths: `./media/chapter-N/filename.png`
@@ -26,9 +27,7 @@ When editing chapters:
 
 ## Git Workflow
 
-- Early-stage repo: only 3 commits so far, initial setup phase
 - Commit style: conventional commits (`chore:`, `init:`, etc.)
-- Author: Celal Karakoç (c.karakoc@live.nl)
 - Editor config: `core.editor=nvim`
 
 ## No Build, Test, or Lint Steps
