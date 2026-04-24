@@ -131,3 +131,20 @@ Chapter 4 introduces three different file management systems in LazyVim: the Sna
 | `yy` (in mini.files) | Yank (copy) file or folder |
 | `p` (in mini.files) | Put (paste) file or folder |
 | `=` (in mini.files) | Save filesystem changes |
+
+## Chapter 5. Configuration and Plugin Basics
+
+Chapter 5 explains LazyVim's multi-layered plugin management system, covering three categories of plugins (built-in, Lazy Extras, and third-party), and demonstrates how to install, disable, customize plugins, modify keybindings, and configure options through Lua files.
+
+| Shortcut | Action |
+|----------|--------|
+| `x` (from dashboard) | Access Lazy Extras mode |
+| `:LazyExtras` | Open Lazy Extras from Command mode |
+| `:lua Snacks.dashboard()` | Show the dashboard |
+| `c` (from dashboard) | Open config directory |
+| `Space fc` | Find Config File |
+| `x` (in LazyExtras) | Install/disable extra plugin |
+| `:help lua` | Open Lua help documentation |
+| `:help lua-guide-api` | Learn about Vim-specific Lua APIs |
+| `:help plugin-name` | Get help for specific plugin |
+| `Space qs` | Select from list of recent sessions |
