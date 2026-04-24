@@ -82,3 +82,52 @@ Chapter 3 covers efficient code navigation in LazyVim using Seek mode, scrolling
 | `G` (without count) | Jump to end of file |
 | `Control-o` | Jump to previous location (jump history backward) |
 | `Control-i` | Jump to next location (jump history forward) |
+
+## Chapter 4. Opening Files
+
+Chapter 4 introduces three different file management systems in LazyVim: the Snacks picker for fuzzy file search, the Snacks explorer for tree-view navigation, and mini.files for columnar file management with Vim-native keybindings.
+
+| Shortcut | Action |
+|----------|--------|
+| `Space Space` or `Space ff` | Open Files In Current Project (Root Dir) |
+| `Space fF` | Find Files (cwd) |
+| `Alt-s` (in picker) | Show seek labels in picker |
+| `Tab` (in picker) | Select file for multiple selection |
+| `Enter` (in picker) | Open selected file(s) |
+| `Control-d`, `Control-u` (in picker) | Scroll results window down/up |
+| `Control-f`, `Control-b` (in picker) | Scroll preview window forward/backward |
+| `Escape` twice (in picker) | Exit picker |
+| `:cd path/to/directory` | Change directory |
+| `:pwd` | Print working directory |
+| `:lcd` | Local change directory (for current window only) |
+| `Space e` | Explore Snacks (root directory) |
+| `Space E` | Explore Snacks (cwd) |
+| `q` or `Escape` (in explorer) | Hide explorer |
+| `j`, `k` (in explorer) | Move up and down |
+| `Enter` (in explorer) | Open file or expand folder |
+| `Tab` (in explorer) | Select multiple files |
+| `i` (in explorer) | Enter Insert mode to search |
+| `Alt-s` (in explorer) | Seek to any line |
+| `Backspace` (in explorer) | Navigate up the tree |
+| `d` (in explorer) | Delete file |
+| `a` (in explorer) | Add file or folder (trailing `/` for folder) |
+| `r` (in explorer) | Rename file or folder |
+| `y` (in explorer) | Yank (copy) file |
+| `p` (in explorer) | Put (paste) file |
+| `m` (in explorer) | Move file |
+| `H` (in explorer) | Show/hide dotfiles |
+| `I` (in explorer) | Show/hide gitignored files |
+| `?` (in explorer) | Show help |
+| `:LazyExtras` | Open LazyExtras menu |
+| `x` (in LazyExtras) | Install/toggle extra |
+| `Space fm` | Open mini.files (Directory of Current File) |
+| `Space fM` | Open mini.files (cwd) |
+| `j`, `k` (in mini.files) | Move up and down |
+| `l` (in mini.files) | Move into folder or open file |
+| `h` (in mini.files) | Move out of folder |
+| `q` (in mini.files) | Close mini.files |
+| `o` (in mini.files) | Create new file or folder |
+| `dd` (in mini.files) | Delete file or folder |
+| `yy` (in mini.files) | Yank (copy) file or folder |
+| `p` (in mini.files) | Put (paste) file or folder |
+| `=` (in mini.files) | Save filesystem changes |
