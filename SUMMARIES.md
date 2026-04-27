@@ -238,3 +238,60 @@ Chapter 7 covers advanced text objects and operator-pending mode, including Unim
 | `gsh` + bracket | Highlight surrounding brackets |
 | `gsaa` + object + `t` | Add surrounding HTML/XML tag around object |
 | `c`/`y`/`d` + text object | Common verbs with text objects (change/yank/delete) |
+
+## Chapter 8. Clipboard, Registers, and Selection
+
+Chapter 8 covers clipboard operations, Visual mode (character/line/block-wise selection), registers (named, clipboard, numbered, special), register recording and playback, editing recordings, and the yanky.nvim plugin for clipboard history management.
+
+| Shortcut | Action |
+|----------|--------|
+| `p` | Paste clipboard contents after cursor |
+| `P` | Paste clipboard contents before cursor |
+| `[count]p` | Paste clipboard N times |
+| `Control-r` (in Insert mode) | Paste from clipboard (shows register menu) |
+| `y<motion>` | Yank (copy) text to clipboard |
+| `yy` | Yank entire line |
+| `Y` | Yank from cursor to end of line |
+| `[count]y<motion>` | Yank with count |
+| `v` | Enter Visual Character mode |
+| `V` | Enter Visual Line mode |
+| `Control-v` | Enter Visual Block mode |
+| `Control-v$` | Visual Block mode extending to end of line |
+| `j`, `k`, `h`, `l` (in Visual mode) | Move selection |
+| `d`/`c`/`y`/`x` (in Visual mode) | Delete/change/yank/delete selection |
+| `r<char>` (in Visual mode) | Replace all selected characters with char |
+| `Escape` or `v` (in Visual mode) | Exit Visual mode |
+| `gv` | Return to last Visual selection |
+| `o` (in Visual mode) | Move cursor to opposite end of selection |
+| `"` | Show all registers (Normal mode) |
+| `"<register><verb>` | Operate using named register (e.g., `"ad3w`) |
+| `"<REGISTER><verb>` | Append to named register (e.g., `"Ad3w`) |
+| `"a` through `"z` | Access named registers (a-z) |
+| `"*` | System clipboard register (Unix selection) |
+| `"+` | System clipboard register (explicit copy) |
+| `"_` | Black hole register (delete without copying) |
+| `"0` | Last yanked text register |
+| `".` | Last inserted text register |
+| `"1` through `"9` | Numbered registers (most recent deletes) |
+| `"-` | Small delete register (less than one line) |
+| `"%` | Current filename register |
+| `:let @a = @b` | Copy register b contents to register a |
+| `Space s"` | Open picker to search and paste from registers |
+| `Control-r` (Command mode) | Show registers menu |
+| `qa` | Start recording to register a (q-z any letter) |
+| `q` | Stop recording |
+| `qA` | Append to recording in register a |
+| `@a` | Play back recording from register a |
+| `@@` | Play back most recently played recording |
+| `Q` | Play back most recently recorded command |
+| `"ap` | Paste register contents as text (to edit recording) |
+| `f2` (after pasting recording) | Jump to character (for editing) |
+| `r3` | Replace character (for editing recording) |
+| `"ayiw` | Replace register contents with edited text |
+| `Space p` | Open Yanky clipboard history picker |
+| `[y` | Cycle backward through clipboard history (after paste) |
+| `]y` | Cycle forward through clipboard history (after paste) |
+| `[p` | Paste on line above with auto-indent |
+| `]p` | Paste on line below with auto-indent |
+| `>p`/`>P` | Paste with added indentation |
+| `<p`/`<P` | Paste with removed indentation |
