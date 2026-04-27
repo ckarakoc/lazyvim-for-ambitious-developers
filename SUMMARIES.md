@@ -148,3 +148,93 @@ Chapter 5 explains LazyVim's multi-layered plugin management system, covering th
 | `:help lua-guide-api` | Learn about Vim-specific Lua APIs |
 | `:help plugin-name` | Get help for specific plugin |
 | `Space qs` | Select from list of recent sessions |
+
+## Chapter 6. Basic Editing
+
+Chapter 6 covers the fundamental editing verbs in Vim (delete, change, repeat), character-level modifications, case manipulation, command recording and playback, and undo/redo functionality.
+
+| Shortcut | Action |
+|----------|--------|
+| `d<motion>` | Delete text from cursor to motion destination |
+| `dh` | Delete character to the left of cursor |
+| `d3w` | Delete three words |
+| `3dw` | Delete one word, three separate times |
+| `d^` | Delete from cursor to beginning of line |
+| `d$` | Delete from cursor to end of line |
+| `d0` | Delete from cursor to first column of line |
+| `dw` | Delete word |
+| `db` | Delete word backward |
+| `dj` | Delete down one line |
+| `dk` | Delete up one line |
+| `dd` | Delete entire line |
+| `d3d` or `3dd` | Delete three lines |
+| `D` | Delete from cursor to end of line (shortcut for `d$`) |
+| `c<motion>` | Change text from cursor to motion destination (delete and enter Insert mode) |
+| `cw` | Change word |
+| `cc` | Change entire line |
+| `c3c` or `3cc` | Change three lines |
+| `C` | Change from cursor to end of line (shortcut for `c$`) |
+| `x` | Delete character under cursor |
+| `[count]x` | Delete multiple characters starting from cursor |
+| `X` | Delete character before cursor |
+| `[count]X` | Delete multiple characters to the left |
+| `r<char>` | Replace character under cursor with `<char>` |
+| `[count]r<char>` | Replace multiple characters with same character |
+| `J` | Join current line with next line |
+| `[count]J` | Join multiple lines |
+| `gJ` | Join lines without modifying whitespace |
+| `gU<motion>` | Convert text to UPPERCASE |
+| `gUU` | Convert entire line to UPPERCASE |
+| `gu<motion>` | Convert text to lowercase |
+| `guu` | Convert entire line to lowercase |
+| `~` | Toggle case of character under cursor |
+| `[count]~` | Toggle case of multiple characters |
+| `.` | Repeat last command (dot repeat) |
+| `[count].` | Repeat last command with new count |
+| `qq` | Start recording macro |
+| `q` | Stop recording macro |
+| `qQ` | Append to recording in append mode |
+| `Q` | Play back most recent recording |
+| `u` | Undo last change |
+| `Control-r` | Redo (undo an undo) |
+
+## Chapter 7. Objects and Operator-Pending Mode
+
+Chapter 7 covers advanced text objects and operator-pending mode, including Unimpaired mode navigation (sentences, paragraphs, references, diagnostics, git hunks), text objects for words/brackets/language features, Seek surrounding objects, and the mini.surround plugin for manipulating surrounding pairs.
+
+| Shortcut | Action |
+|----------|--------|
+| `(` / `)` | Jump to previous/next sentence |
+| `{` / `}` | Jump to previous/next paragraph |
+| `[count](` etc. | Use count to jump multiple sentences/paragraphs |
+| `[(` / `](` / `[{` / `]}` / `[<` / `]>` | Jump to unmatched parenthesis/bracket/angle bracket (jump out) |
+| `[%` / `]%` | Jump to beginning/end of current bracket pair |
+| `[[` / `]]` | Jump to previous/next variable reference |
+| `[c`/`]c`, `[f`/`]f`, `[m`/`]m` | Jump to previous/next class/function/method definition |
+| `[C`/`]C`, `[F`/`]F`, `[M`/`]M` | Jump to end of previous/next class/function/method |
+| `[i` / `]i` | Jump to top/bottom of current indentation level |
+| `[d`/`]d`, `[e`/`]e`, `[w`/`]w` | Jump to previous/next diagnostic/error/warning |
+| `[s` / `]s` | Jump to previous/next spelling error |
+| `[t` / `]t` | Jump to previous/next TODO/FIXME comment |
+| `[h` / `]h` | Jump to previous/next git hunk |
+| `di`/`da` + `w`/`W`/`s`/`p` | Delete inside/around word/big-word/sentence/paragraph |
+| `di`/`da` + `"`/`'`/`` ` `` / `q` | Delete inside/around quotes (specific or auto-detect) |
+| `di`/`da` + `(`/`[`/`{`/`<`/`b` | Delete inside/around brackets (specific or nearest) |
+| `di`/`da` + `*`/`_` | Delete inside/around markup (bold/italic) |
+| `di`/`da` + `c`/`f`/`o`/`t`/`i` | Delete inside/around class/function/object/tag/indentation |
+| `di`/`da` + `h` | Delete inside/around git hunk |
+| `di`/`da` + `n`/`l` + object | Delete inside/around next/last text object |
+| `dig` / `dag` | Delete inside/around entire buffer |
+| `dS` / `cS` / `yS` | Act on surrounding object via Seek labels |
+| `dR` / `cr` / `yr` | Act on object found via remote Seek |
+| `%` | Jump between matching bracket pair |
+| `g[(`/`g])`/`g[[`/`g]]` | Jump to nearest opening/closing bracket |
+| `gsai(` / `gsai)` | Add surrounding parentheses around motion |
+| `gsa` + motion + bracket/quote | Add surrounding pair around motion |
+| `gsd` + bracket/quote | Delete surrounding pair |
+| `2gsd` + bracket | Delete nth surrounding pair (with count) |
+| `gsr` + old + new | Replace surrounding pair with new character |
+| `gsf`/`gsF` + bracket | Navigate to opening/closing bracket |
+| `gsh` + bracket | Highlight surrounding brackets |
+| `gsaa` + object + `t` | Add surrounding HTML/XML tag around object |
+| `c`/`y`/`d` + text object | Common verbs with text objects (change/yank/delete) |
